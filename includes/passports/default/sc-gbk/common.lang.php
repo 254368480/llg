@@ -18,6 +18,7 @@ return array(
 
     'touser_apply' => '有用户发出了升级申请，请处理！',
     'touser_do' => '您的升级申请被拒绝，请联系相关人员获得具体信息！',
+	
     'code_example' => "图片标签：[img]http://ecmall.shopex.cn/images/logo.gif[/img]<br/>超链接标签：[url=http://ecmall.shopex.cn]ECMall官方网站[/url]",
 );
 
