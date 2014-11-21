@@ -1063,15 +1063,17 @@ form label.validate_right { padding-left:12px; background:transparent url(../ima
 
 
 /* tianwei */
-.user_table {
-	margin: 20px;
-}
 .user_table{
-	border: 1px solid #000;	
+	border: 1px solid #000;
+	width:750px;
+	margin-bottom: 20px;
+	margin-left:auto;
+	margin-right:auto;
+	
 }
 .user_table td {
 	border: 1px solid #000;
-	width:150px;
+	min-width:150px;
 	height:30px;
 	line-height:30PX;
 	padding-left: 10px;
@@ -1125,4 +1127,10 @@ form label.validate_right { padding-left:12px; background:transparent url(../ima
 	border-bottom-style: solid;
 	border-left-style: solid;	
 	padding-left:10px;
+}
+.user_info h1{
+	text-align: center;
+	font-size: 18px;
+	line-height: 50px;
+	height:50px;
 }

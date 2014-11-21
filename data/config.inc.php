@@ -1,8 +1,8 @@
 <?php
 
 return array (
-  'SITE_URL' => 'http://127.0.0.2',
-  'DB_CONFIG' => 'mysql://root:root@localhost:3306/ecmall_2',
+  'SITE_URL' => 'http://www.llg.com',
+  'DB_CONFIG' => 'mysql://root:@localhost:3306/llg',
   'DB_PREFIX' => 'ecm_',
   'LANG' => 'sc-gbk',
   'COOKIE_DOMAIN' => '',

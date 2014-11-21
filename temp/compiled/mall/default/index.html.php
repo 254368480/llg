@@ -151,7 +151,7 @@ $(function(){
 								<ul class="51buypic">
 									<li><a href="http://www.linglegou.com/index.php?app=store&id=275&act=search&cate_id=1219" target="_blank"><img src="<?php echo $this->res_base . "/" . 'img/01.jpg'; ?>" width="748" height="420" /></a></li>
 									<li><a href="http://www.linglegou.com/index.php?act=index&keyword=%B4%BF%BB%FD%B7%D6&app=search&Submit=" target="_blank"><img src="<?php echo $this->res_base . "/" . 'img/02.jpg'; ?>" width="748" height="420" /></a></li>
-                                                                        <li><a href="http://www.linglegou.com/index.php?app=goods&id=215" target="_blank"><img src="<?php echo $this->res_base . "/" . 'img/03.jpg'; ?>" width="748" height="420" /></a></li>
+                                                                        <li><a href="http://www.linglegou.com/index.php?act=index&keyword=%CC%AB%BF%D5%C2%C1&app=search" target="_blank"><img src="<?php echo $this->res_base . "/" . 'img/03.jpg'; ?>" width="748" height="420" /></a></li>
                                                                         <li><a href="http://www.linglegou.com/index.php?app=goods&id=45" target="_blank"><img src="<?php echo $this->res_base . "/" . 'img/04.jpg'; ?>" width="748" height="420" /></a></li>
                                                                         <li><a href="http://www.linglegou.com/index.php?app=store&id=275&act=search&cate_id=1219" target="_blank"><img src="<?php echo $this->res_base . "/" . 'img/05.jpg'; ?>" width="748" height="420" /></a></li>
 									
@@ -232,12 +232,13 @@ $(function(){
 									<li class="act"><a href="http://www.linglegou.com/index.php?app=category">本周热销</a></li>
 									<li><a href="http://www.linglegou.com/index.php?app=category">精品推荐</a></li>
 									<li><a href="http://www.linglegou.com/index.php?app=category">新品上市</a></li>
+									<li><a href="http://www.linglegou.com/index.php?app=category">限量抢购</a></li>
 									<div class="clear"></div>
 								</ul>
 							</div>
 							<div class="box_body" style="display:block;">
 								<ul>
-									<?php $_from = $this->_var['recom1']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'goods');$this->_foreach['loop'] = array('total' => count($_from), 'iteration' => 0);
+									<?php $_from = $this->_var['recom']['16']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'goods');$this->_foreach['loop'] = array('total' => count($_from), 'iteration' => 0);
 if ($this->_foreach['loop']['total'] > 0):
     foreach ($_from AS $this->_var['goods']):
         $this->_foreach['loop']['iteration']++;
@@ -263,7 +264,7 @@ if ($this->_foreach['loop']['total'] > 0):
 							
 							<div class="box_body">
 								<ul>
-									<?php $_from = $this->_var['recom2']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'goods');$this->_foreach['loop'] = array('total' => count($_from), 'iteration' => 0);
+									<?php $_from = $this->_var['recom']['17']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'goods');$this->_foreach['loop'] = array('total' => count($_from), 'iteration' => 0);
 if ($this->_foreach['loop']['total'] > 0):
     foreach ($_from AS $this->_var['goods']):
         $this->_foreach['loop']['iteration']++;
@@ -289,7 +290,33 @@ if ($this->_foreach['loop']['total'] > 0):
 							
 							<div class="box_body">
 								<ul>
-									<?php $_from = $this->_var['recom3']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'goods');$this->_foreach['loop'] = array('total' => count($_from), 'iteration' => 0);
+									<?php $_from = $this->_var['recom']['18']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'goods');$this->_foreach['loop'] = array('total' => count($_from), 'iteration' => 0);
+if ($this->_foreach['loop']['total'] > 0):
+    foreach ($_from AS $this->_var['goods']):
+        $this->_foreach['loop']['iteration']++;
+?>
+										
+										<li>
+											<a href="<?php echo url('app=goods&id=' . $this->_var['goods']['goods_id']. ''); ?>" target="_blank"><img src="<?php echo $this->_var['goods']['default_image']; ?>" width="210"></a>
+											<a href="<?php echo url('app=goods&id=' . $this->_var['goods']['goods_id']. ''); ?>" target="_blank">
+											<div class="info" style="text-align:center;">
+												<?php echo sub_str($this->_var['goods']['goods_name'],30); ?><br>
+												<font color="#FF0000">
+												￥<?php echo $this->_var['goods']['price']; ?>
+												 + <?php echo $this->_var['goods']['integral']; ?>分
+												</font>
+											</div>
+											</a>
+										</li>
+										
+									<?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
+								</ul>
+								<div class="clear"></div>
+							</div>
+							
+							<div class="box_body">
+								<ul>
+									<?php $_from = $this->_var['recom']['22']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'goods');$this->_foreach['loop'] = array('total' => count($_from), 'iteration' => 0);
 if ($this->_foreach['loop']['total'] > 0):
     foreach ($_from AS $this->_var['goods']):
         $this->_foreach['loop']['iteration']++;
@@ -333,7 +360,7 @@ if ($this->_foreach['loop']['total'] > 0):
 					</div>
 					<div class="index_content_three_body">
 						<ul>
-							<?php $_from = $this->_var['recom4']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'goods');$this->_foreach['loop'] = array('total' => count($_from), 'iteration' => 0);
+							<?php $_from = $this->_var['recom']['19']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'goods');$this->_foreach['loop'] = array('total' => count($_from), 'iteration' => 0);
 if ($this->_foreach['loop']['total'] > 0):
     foreach ($_from AS $this->_var['goods']):
         $this->_foreach['loop']['iteration']++;
@@ -414,7 +441,7 @@ if ($this->_foreach['loop']['total'] > 0):
 					</div>
 					<div class="index_content_three_body">
 						<ul>
-							<?php $_from = $this->_var['recom5']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'goods');$this->_foreach['loop'] = array('total' => count($_from), 'iteration' => 0);
+							<?php $_from = $this->_var['recom']['20']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'goods');$this->_foreach['loop'] = array('total' => count($_from), 'iteration' => 0);
 if ($this->_foreach['loop']['total'] > 0):
     foreach ($_from AS $this->_var['goods']):
         $this->_foreach['loop']['iteration']++;
@@ -586,9 +613,20 @@ if ($this->_foreach['loop']['total'] > 0):
 		   
 		   <div class="copyrightbg">
 		   	  <div class="copyright">
-			 	 荣鑫华亚旗下荣誉出品，最终解释权归荣鑫华亚所有<br>
-				 Copyright 2014-2017 linglegou.com All rights reserved.<br>
-				《中华人民共和国电信与信息服务业务经营许可证》编号：<a href="http://www.miit.gov.cn" target="_blank" rel="nofollow">鄂ICP备13013377号-2</a><br>
+			 	 工商企业注册号：420106000123928<br>
+                
+              客服热线：027-51116880，传真：027-86830588<br>
+
+              荣鑫华亚旗下荣誉出品，最终解释权归荣鑫华亚所有<br>
+          
+          Copyright 2014-2017 linglegou.com All rights reserved.<br>
+           
+           行政运营中心：武汉市武昌区徐东大街汪家墩国际城6栋2103<br>
+           
+           旗舰展示中心：武汉市武昌区徐东大街汪家墩国际城6栋1701<br>
+
+《中华人民共和国电信与信息服务业务经营许可证》编号：<a href="http://www.miit.gov.cn" target="_blank" rel="nofollow">鄂ICP备13013377号-2</a><br>
+  
 				<br>
 				<img src="<?php echo $this->res_base . "/" . 'img/di.png'; ?>">
 		 	  </div>

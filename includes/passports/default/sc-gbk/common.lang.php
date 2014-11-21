@@ -15,7 +15,9 @@ return array(
     'toseller_store_droped_notify' => '您的店铺已被删除',
     'toseller_store_passed_notify' => '恭喜，您的店铺已开通，赶快来用户中心发布商品吧。',
     'toseller_store_refused_notify'=> '抱歉，您的开店申请已被拒绝，原因如下： {$reason}',
-    
+
+    'touser_apply' => '有用户发出了升级申请，请处理！',
+    'touser_do' => '您的升级申请被拒绝，请联系相关人员获得具体信息！',
     'code_example' => "图片标签：[img]http://ecmall.shopex.cn/images/logo.gif[/img]<br/>超链接标签：[url=http://ecmall.shopex.cn]ECMall官方网站[/url]",
 );
 

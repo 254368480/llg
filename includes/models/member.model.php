@@ -160,6 +160,8 @@ class MemberModel extends BaseModel
         }
         return $droped_rows;
     }
+
+
 }
 
 ?>

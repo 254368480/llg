@@ -354,7 +354,7 @@ ul,li{
 	border-bottom-color: #ee9e2f;	
 }
 .tab_title ul li{
-	width:200px;
+	width:232px;
 	text-align:center;
 	background-color:#e2e2e2;
 	float:left;
@@ -368,7 +368,7 @@ ul,li{
 .act{
 	background-attachment: scroll;
 	background-image: url(../img/tebbj.gif);
-	background-repeat: no-repeat;
+	background-repeat: repeat-x;
 }
 .act a{
 	color: #FFFFFF !important;
@@ -739,4 +739,7 @@ ul,li{
 	top:0px;
 	left:0px;
 	z-index:999;	
+}
+#time4{
+	text-align: right;
 }

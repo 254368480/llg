@@ -626,6 +626,13 @@ class MemberbaseApp extends MallbaseApp
                     'icon'  => 'ico4',
 					
                 ),
+                'uprecode'  => array(
+                    'text'  => 升级记录,
+                    'url'   => 'index.php?app=member&act=uprecode',
+                    'name'  => 'uprecode',
+                    'icon'  => 'ico4',
+
+                ),
 				 'upgrade'  => array(
                     'text'  => 用户激活,
                     'url'   => 'index.php?app=member&act=upgrade',

@@ -34,16 +34,18 @@ class MemberApp extends MemberbaseApp
 		//会员使用日期
 		$time = $user_info['use_time'] - gmtime();
 		$time = round($time/3600/24);
-		
+
 		//上线
 		$deposit = $user_info['deposit'];
 		$sql = "select * FROM {$user_mod->table} WHERE user_name = '$deposit'";
 		$deposit_user = $user_mod->getRow($sql);
+
 		if($deposit_user != ""){
 					$sql = "select * FROM {$user_mod->table} WHERE user_name = '$user_info[fxs]'";
 					$fxs = $user_mod->getRow($sql);
 					$sql = "select * FROM {$user_mod->table} WHERE user_name = '$user_info[dls]'";
 					$dls = $user_mod->getRow($sql);
+
 					$this->assign('fxs', $fxs);
 					$this->assign('dls', $dls);
 					$this->assign('deposit_user', $deposit_user);
@@ -820,65 +822,205 @@ class MemberApp extends MemberbaseApp
     {
 		$user = $this->visitor->get();
         $user_mod =& m('member');
+        $apply_mod =& m('gradeapply');
+        $ms =& ms(); //连接用户中心
         $user_info = $user_mod->get_info($user['user_id']);
-        $user['portrait'] = portrait($user['user_id'], $info['portrait'], 'middle');
         $this->assign('user', $user);
-		
-		if($user_info['grade'] != '代理商'){
-			if($user_info['grade'] == '免费会员'){
-				$this->show_warning('亲，您的专属代理商正在等候您的联系，他们会为您提供7x24小时贴心服务，祝您购物愉快！');
-				return;
+
+        if($user_info['grade'] != '代理商'){
+            if($user_info['grade'] == '免费会员'){
+                $sql = "SELECT COUNT(*) FROM {$apply_mod->table} WHERE `uid` = $user[user_id]";
+                $num = $apply_mod->getOne($sql);
+                if($num > 0){
+                    $this->show_warning('您已经申请过了，请耐心等待', '返回上一页', '/index.php?app=member');
+                    exit;
+                }
+                if(IS_POST){
+                    $grade = $_POST['grade'];
+                    $int = array(600, 1000, 2500);//用户升级所需积分
+                    if($user_info['integral'] < $int[$grade]){
+                        $this->show_warning('升级所需积分不足，无法升级！', '返回上一页', '/index.php?app=member');
+                        exit;
+                    }
+                    $sql = "SELECT user_id FROM {$user_mod->table} WHERE `user_name` = '$user_info[fxs]'";
+                    $fxs = $user_mod->getRow($sql);
+                    $sql = "SELECT user_id FROM {$user_mod->table} WHERE `user_name` = '$user_info[dls]'";
+                    $dls = $user_mod->getRow($sql);
+                    $data = array(
+                        'uid' => $user['user_id'],
+                        'user_name' => $user['user_name'],
+                        'fid' => isset($fxs['user_id']) ? $fxs['user_id'] : 0,
+                        'did' => $dls['user_id'],
+                        'grade' => $grade,
+                        'time' => gmtime(),
+                        'state' => isset($fxs['user_id']) ? 0 : 1,
+                    );
+                    $apply_mod->add($data);
+                    //发送站短
+
+                    if(isset($fxs['user_id'])) {
+                        $content = get_msg('touser_apply', array());
+                        $ms->pm->send(MSG_SYSTEM, $fxs['user_id'], '', $content);
+                    }else{
+                        $content = get_msg('touser_apply', array());
+                        $ms->pm->send(MSG_SYSTEM, $dls['user_id'], '', $content);
+                    }
+                    $this->show_message('申请成功，请耐心等待！', '返回上一页', '/index.php?app=member');
+                    exit;
+                }else {
+                    /* 当前用户中心菜单 */
+                    $this->_curlocal(LANG::get('member_center'), url('app=member'), LANG::get('用户升级'));
+                    $this->_curmenu('upgrade');
+                    $this->_curitem('upgrade');
+                    $this->_config_seo('title', Lang::get('member_center'));
+                    $this->display('toupgrade.html');
+                    exit;
+                }
 			}
-			if($user_info['grade'] == 'VIP会员' || $user_info['grade'] == '分销商'){
-				$this->show_warning('亲，您已经是正式用户，无需激活，祝您购物愉快！');
-				return;
-			}
-		}
-		if(!IS_POST){
-		}
-		else{
-			$name = trim($_POST['name']);
-			$sta = 1;
-			$sql = "SELECT * FROM  {$user_mod->table} WHERE `user_name` = '$name'";
-			$cu = $user_mod->getRow($sql);
-			if($cu == ''){
-				$this->show_warning('没有这个用户！');
-				return;
-			}
-			if($cu['dls'] != $user_info['user_name']){
-				$this->show_warning('该用户不属于您的市场，无法查看！');
-				return;
-			}
-			if($cu['grade'] != '免费会员'){
-				$this->show_warning('该用户不是免费会员，无法升级！');
-				return;
-			}
-		
-			
-			$sql = "SELECT * FROM  {$user_mod->table} WHERE `user_name` = '$cu[fxs]'";
-			$fxs = $user_mod->getRow($sql);
-			$sql = "SELECT * FROM  {$user_mod->table} WHERE `user_name` = '$user_info[user_name]'";
-			$dls = $user_mod->getRow($sql);
-			
-			
-		}
-	
-		$this->assign('cu', $cu);
-		$this->assign('fxs', $fxs);
-		$this->assign('dls', $dls);
-		$this->assign('sta', $sta);
-		/* 当前用户中心菜单 */
-		$this->_curlocal(LANG::get('member_center'), url('app=member'), LANG::get('用户升级'));
-		$this->_curmenu('upgrade');
-		$this->_curitem('upgrade');
-			
-		  
-		$this->_config_seo('title', Lang::get('member_center'));
-		$this->display('upgrade.html');
+            if($user_info['grade'] == 'VIP会员'){
+                $this->show_warning('亲，您已经是正式用户，无需激活，祝您购物愉快！');
+                exit;
+            }
+            if($user_info['grade'] == '分销商'){
+                if(isset($_GET['id'])){
+                    $id = intval($_GET['id']);
+                    $do = intval($_GET['do']);
+                    $sql = "SELECT * FROM  {$apply_mod->table} WHERE `id` = $id";
+                    $apply = $apply_mod->getRow($sql);
+                    if(empty($apply)){
+                        $this->show_warning('该升级申请不存在！');
+                        exit;
+                    }
+                    if($apply['fid'] != $user['user_id'] || $apply['state'] != 0){
+                        $this->show_warning('该升级申请不属于你的范围！');
+                        exit;
+                    }
+                    if($do == 0){
+                        $apply_mod->drop($id);
+                        //发送短信通知
+                        $content = get_msg('touser_do', array());
+                        $ms->pm->send(MSG_SYSTEM, $apply['uid'], '', $content);
+                    }else{
+                        $apply_mod->edit($id, array('state' => 1));
+                    }
+                    $this->show_message('审核完成！');
+                    exit;
+                }else {
+                    $sql = "SELECT * FROM  {$apply_mod->table} WHERE `fid` = '$user[user_id]' AND `state` = 0 ";
+                    $applys = $user_mod->getAll($sql);
+                    $arr = array('VIP会员', '分销商', '代理商');
+
+                    $this->assign('arr', $arr);
+                    $this->assign('applys', $applys);
+                    $this->_curlocal(LANG::get('member_center'), url('app=member'), LANG::get('用户升级'));
+                    $this->_curmenu('upgrade');
+                    $this->_curitem('upgrade');
+                    $this->_config_seo('title', Lang::get('member_center'));
+                    $this->display('fxsupgrade.html');
+                    exit;
+                }
+            }
+		}else {
+            if(isset($_GET['id'])){
+                $id = intval($_GET['id']);
+                $do = intval($_GET['do']);
+                $sql = "SELECT * FROM  {$apply_mod->table} WHERE `id` = $id";
+                $apply = $apply_mod->getRow($sql);
+                if(empty($apply)){
+                    $this->show_warning('该升级申请不存在！');
+                    exit;
+                }
+                if($apply['did'] != $user['user_id'] || $apply['state'] != 1){
+                    $this->show_warning('该升级申请不属于你的范围！');
+                    exit;
+                }
+                if($do == 0){
+                    $apply_mod->drop($id);
+                    //发送短信通知
+                    $content = get_msg('touser_do', array());
+                    $ms->pm->send(MSG_SYSTEM, $apply['uid'], '', $content);
+                    $this->show_message('审核完成！');
+                }
+                exit;
+            }else {
+                $sql = "SELECT * FROM  {$apply_mod->table} WHERE `did` = '$user[user_id]' AND `state` = 1 ";
+                $applys = $user_mod->getAll($sql);
+                $arr = array('VIP会员', '分销商', '代理商');
+                $this->assign('arr', $arr);
+                $this->assign('applys', $applys);
+                /* 当前用户中心菜单 */
+                $this->_curlocal(LANG::get('member_center'), url('app=member'), LANG::get('用户升级'));
+                $this->_curmenu('upgrade');
+                $this->_curitem('upgrade');
+                $this->_config_seo('title', Lang::get('member_center'));
+                $this->display('dlsupgrade.html');
+            }
+        }
 		
 		
 	}
-	
+
+    function uprecode(){
+        $user = $this->visitor->get();
+        $user_mod =& m('member');
+        $user_info = $user_mod->get_info($user['user_id']);
+        /* 当前用户中心菜单 */
+        $this->_curlocal(LANG::get('member_center'), url('app=member'), LANG::get('用户升级记录'));
+        $this->_curmenu('uprecode');
+        $this->_curitem('uprecode');
+        $this->_config_seo('title', Lang::get('member_center'));
+        if($user_info['grade'] == '免费会员' || $user_info['grade'] == 'VIP会员'){
+            $sql = "SELECT user_name FROM {$user_mod->table} WHERE `deposit` = '$user[user_name]'";
+            $mydeposit = $user_mod->getAll($sql);
+            if(!empty($mydeposit)){
+                $uprecode_mod = & m('uprecode');
+                foreach($mydeposit as $value){
+                    $sql = "SELECT * FROM {$uprecode_mod->table} WHERE `user_name` = '$value[user_name]'";
+                    $row = $uprecode_mod->getAll($sql);
+                    if(!empty($row)){
+                        $uprecodes[] = $row;
+                    }
+                }
+            }
+            $this->display('uprecode.html');
+        }
+        if($user_info['grade'] == '分销商'){
+            $sql = "SELECT user_name FROM {$user_mod->table} WHERE `fxs` = '$user[user_name]'";
+            $mydeposit = $user_mod->getAll($sql);
+            if(!empty($mydeposit)){
+                $uprecode_mod = & m('uprecode');
+                foreach($mydeposit as $value){
+                    $sql = "SELECT * FROM {$uprecode_mod->table} WHERE `user_name` = '$value[user_name]'";
+                    $row = $uprecode_mod->getAll($sql);
+                    if(!empty($row)){
+                        $uprecodes[] = $row;
+                    }
+                }
+            }
+            $this->display('uprecode.html');
+        }
+        if($user_info['grade'] == '代理商'){
+            $sql = "SELECT user_name FROM {$user_mod->table} WHERE `dls` = '$user[user_name]'";
+            $mydeposit = $user_mod->getAll($sql);
+            if(!empty($mydeposit)){
+                $uprecode_mod = & m('uprecode');
+                foreach($mydeposit as $value){
+                    $sql = "SELECT * FROM {$uprecode_mod->table} WHERE `user_name` = '$value[user_name]'";
+                    $row = $uprecode_mod->getAll($sql);
+                    if(!empty($row)){
+                        $uprecodes[] = $row;
+                    }
+                }
+            }
+
+            $this->display('uprecode.html');
+        }
+
+        /* 当前用户中心菜单 */
+
+
+    }
+
 	//升级方法
 	function _upgrade($d, $u, $f, $user_mod, $d_int, $f_int, $u_int, $mon, $grade){
 					if($f != ''){
@@ -904,9 +1046,40 @@ class MemberApp extends MemberbaseApp
 					  'time' 	  => gmtime()
 					);
 					$uprecode_mod->add($data);
-	}
-	//我间接推荐的人
-	function get_myjj($u, $user_mod){
+
+                    //将扣分信息插入积分信息表
+                    $recode_mod =& m('recode');
+                    $udata = array(
+                        'touser' => '系统扣除',
+                        'fromuser' => $u['user_name'],
+                        'integral' => $u_int,
+                        'time' => gmtime(),
+                        'content' => '用户 '.$u['user_name'].' 升级为'.$grade,
+                    );
+                    $recode_mod->add($udata);
+                    $ddata = array(
+                        'touser' => '系统扣除',
+                        'fromuser' => $d['user_name'],
+                        'integral' => $d_int,
+                        'time' => gmtime(),
+                        'content' => '用户 '.$u['user_name'].' 升级为'.$grade,
+                    );
+                    $recode_mod->add($ddata);
+                    if(!empty($f)){
+                        $fdata = array(
+                            'touser' => '系统扣除',
+                            'fromuser' => $f['user_name'],
+                            'integral' => $f_int,
+                            'time' => gmtime(),
+                            'content' => '用户 '.$u['user_name'].' 升级为'.$grade,
+                        );
+                        $recode_mod->add($fdata);
+                    }
+
+    }
+
+    //我间接推荐的人
+    function get_myjj($u, $user_mod){
 					$sql = "SELECT * FROM {$user_mod->table} WHERE jjtjr != ''";
 					$jj_deposit = $user_mod->getAll($sql);
 					foreach($jj_deposit as $value){
@@ -1001,11 +1174,24 @@ class MemberApp extends MemberbaseApp
      */
 	function to_upgrade()
     {
-		$id = $_POST['id'];
-		$grade = $_POST['grade'];
+        $user = $this->visitor->get();
+        $aid = intval($_GET['id']);
+        $apply_mod =& m('gradeapply');
+        $sql = "SELECT * FROM {$apply_mod->table} WHERE `id` = $aid";
+        $apply = $apply_mod->getRow($sql);
+        if(empty($apply)){
+            $this->show_warning('该申请不存在！', '返回上一页', '/index.php?app=member&act=upgrade');
+            return;
+        }
+        if($apply['did'] != $user['user_id'] || $apply['state'] != 1){
+            $this->show_warning('该申请不属于你的范围！', '返回上一页', '/index.php?app=member&act=upgrade');
+            return;
+        }
+        $id = $apply['uid'];
+		$grade = $apply['grade'];
 		$money = array(880,7800,38000);
-		
-		$user_mod =& m('member');
+
+        $user_mod =& m('member');
         $user_info = $user_mod->get_info($id); //被升级的用户
 		if($user_info['grade'] != '免费会员'){
 			$this->show_warning('该用户不是免费会员，无法升级！', '返回上一页', '/index.php?app=member&act=upgrade');
@@ -1027,6 +1213,7 @@ class MemberApp extends MemberbaseApp
 			if($fxs == ''){
 				if($user_info['integral'] >= 600 && $dls['integral'] >= 200){
 					$this->_upgrade($dls, $user_info, '', $user_mod, 200, 0, 600, $money[0], 'VIP会员');//升级
+                    $apply_mod->drop($aid);
 					$this->show_message('升级成功', '返回', '/index.php?app=member&act=upgrade' );
 					return;
 				}
@@ -1038,6 +1225,7 @@ class MemberApp extends MemberbaseApp
 			else{
 				if($user_info['integral'] >= 600 && $dls['integral'] >= 120 && $fxs['integral'] >= 80){
 					$this->_upgrade($dls, $user_info, $fxs, $user_mod, 120, 80, 600, $money[0], 'VIP会员');//升级
+                    $apply_mod->drop($aid);
 					$this->show_message('升级成功', '返回', '/index.php?app=member&act=upgrade' );
 					return;
 				}
@@ -1066,7 +1254,7 @@ class MemberApp extends MemberbaseApp
 					
 					//如果我间接推荐的人的分销商不是我下面的人，那么就更新我间接推荐的人分销商为我自己
 					$this->jj_fxs_edit($myjj_deposit, $user_info, $user_mod);
-					
+                    $apply_mod->drop($aid);
 					$this->show_message('升级成功', '返回', '/index.php?app=member&act=upgrade' );
 					return;
 				}
@@ -1087,7 +1275,7 @@ class MemberApp extends MemberbaseApp
 					
 					//如果我间接推荐的人的分销商不是我的直接或者间接推荐人，那么就更新我间接推荐的人分销商为我自己
 					$this->jj_fxs_edit($myjj_deposit, $user_info, $user_mod);
-					
+                    $apply_mod->drop($aid);
 					$this->show_message('升级成功', '返回', '/index.php?app=member&act=upgrade' );
 					return;
 				}
@@ -1123,7 +1311,7 @@ class MemberApp extends MemberbaseApp
 					
 					//如果我间接推荐的人的分销商不是我的直接或者间接推荐人，那么就更新我间接推荐的人分销商为我自己
 					$this->jj_dls_edit($myjj_deposit, $user_info, $user_mod);
-					
+                    $apply_mod->drop($aid);
 					$this->show_message('升级成功', '返回', '/index.php?app=member&act=upgrade' );
 					return;
 				}
@@ -1150,7 +1338,7 @@ class MemberApp extends MemberbaseApp
 					
 					//如果我间接推荐的人的分销商不是我的直接或者间接推荐人，那么就更新我间接推荐的人分销商为我自己
 					$this->jj_dls_edit($myjj_deposit, $user_info, $user_mod);
-					
+                    $apply_mod->drop($aid);
 					$this->show_message('升级成功', '返回', '/index.php?app=member&act=upgrade' );
 					return;
 				}

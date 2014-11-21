@@ -5,15 +5,17 @@
 	    <h1>会员中心首页</h1>
         <div class="wrap_line margin1">
 		     <div class="user_info"> 
+			 		<h1>服务中心</h1>
+			 		<table class="user_table" border="1" bordercolor="#FFF" >
+						<tr><th>代理商</th><td><?php echo $this->_var['dls']['user_name']; ?></td><th>代理商电话</th><td><?php echo $this->_var['dls']['im_msn']; ?></td></tr>
+						<tr><th>分销商</th><td><?php echo $this->_var['fxs']['user_name']; ?></td><th>分销商电话</th><td><?php echo $this->_var['fxs']['im_msn']; ?></td></tr>
+						<tr><th>开户单位</th><td><?php echo $this->_var['user_info']['deposit']; ?></td><th>开户单位电话</th><td><?php echo $this->_var['deposit_user']['im_msn']; ?></td></tr>
+				   </table>
+				   <h1>个人信息</h1>
 				   <table class="user_table" border="1" bordercolor="#FFF" >
 				   <tr><?php if ($this->_var['time'] <= 30): ?><div style="color:#FF0000;margin-left:20px;margin-top:10px;">亲爱的会员！还有<?php echo $this->_var['time']; ?>天，您的平台使用费就要到期了，请及时缴费!</div><?php endif; ?></tr>
 				   
-				   <div style="padding-left:22px;margin-top:10px;line-height:20px;">
-					   代理商信息:用户名<?php echo $this->_var['dls']['user_name']; ?>，电话<?php echo $this->_var['dls']['im_msn']; ?><br>
-					   分销商信息:用户名<?php echo $this->_var['fxs']['user_name']; ?>，电话<?php echo $this->_var['fxs']['im_msn']; ?><br>
-					   开户单位信息:用户名<?php echo $this->_var['user_info']['deposit']; ?>，电话<?php echo $this->_var['deposit_user']['im_msn']; ?>
-				   </div>
-					<tr>
+				   <tr>
 						<th>积分余额</th>
 						<td> <?php echo $this->_var['user_info']['integral']; ?>分</td>
 						<th>您目前是</th>
@@ -38,6 +40,10 @@
 						<td><?php echo $this->_var['user_info']['deposit']; ?></td>
 						<th>今日赚分记录</th>
 						<td><?php echo $this->_var['user_info']['td_int']; ?>分</td>
+					</tr>
+					<tr>
+						<th>推广链接 </th>
+						<td colspan="3">http://www.linglegou.com/index.php?app=member&act=register&tid=<?php echo $this->_var['user']['user_id']; ?></td>
 					</tr>
 				   </table>
 			   

@@ -1,0 +1,12 @@
+<?php
+/**
+ *  @Created By ECMall PhpCacheServer
+ *  @Time:2014-11-21 02:14:41
+ */
+return array (
+  1 => 'ÆÕÍ¨ÉÌ¼Ò',
+  2 => 'ÈÏÖ¤µêÆÌ',
+  3 => 'ÁãÀÖ¹ºÆì½¢µê',
+);
+
+?>

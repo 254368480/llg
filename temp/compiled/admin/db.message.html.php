@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=<?php echo $this->_var['charset']; ?>" />
-<title> 零乐购系统消息 </title>
+<title> ECMall系统消息 </title>
 <link href="templates/style/admin.css" rel="stylesheet" type="text/css" />
 <style>
 <!--

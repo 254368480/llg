@@ -143,7 +143,7 @@ $(function(){
 								<ul class="51buypic">
 									<li><a href="http://www.linglegou.com/index.php?app=store&id=275&act=search&cate_id=1219" target="_blank"><img src="{res file=img/01.jpg}" width="748" height="420" /></a></li>
 									<li><a href="http://www.linglegou.com/index.php?act=index&keyword=%B4%BF%BB%FD%B7%D6&app=search&Submit=" target="_blank"><img src="{res file=img/02.jpg}" width="748" height="420" /></a></li>
-                                                                        <li><a href="http://www.linglegou.com/index.php?app=goods&id=215" target="_blank"><img src="{res file=img/03.jpg}" width="748" height="420" /></a></li>
+                                                                        <li><a href="http://www.linglegou.com/index.php?act=index&keyword=%CC%AB%BF%D5%C2%C1&app=search" target="_blank"><img src="{res file=img/03.jpg}" width="748" height="420" /></a></li>
                                                                         <li><a href="http://www.linglegou.com/index.php?app=goods&id=45" target="_blank"><img src="{res file=img/04.jpg}" width="748" height="420" /></a></li>
                                                                         <li><a href="http://www.linglegou.com/index.php?app=store&id=275&act=search&cate_id=1219" target="_blank"><img src="{res file=img/05.jpg}" width="748" height="420" /></a></li>
 									
@@ -222,12 +222,13 @@ $(function(){
 									<li class="act"><a href="http://www.linglegou.com/index.php?app=category">本周热销</a></li>
 									<li><a href="http://www.linglegou.com/index.php?app=category">精品推荐</a></li>
 									<li><a href="http://www.linglegou.com/index.php?app=category">新品上市</a></li>
+									<li><a href="http://www.linglegou.com/index.php?app=category">限量抢购</a></li>
 									<div class="clear"></div>
 								</ul>
 							</div>
 							<div class="box_body" style="display:block;">
 								<ul>
-									<!--{foreach from=$recom1 item=goods name=loop}-->
+									<!--{foreach from=$recom[16] item=goods name=loop}-->
 										
 										<li>
 											<a href="{url app=goods&id=$goods.goods_id}" target="_blank"><img src="{$goods.default_image}" width="210"></a>
@@ -249,7 +250,7 @@ $(function(){
 							
 							<div class="box_body">
 								<ul>
-									<!--{foreach from=$recom2 item=goods name=loop}-->
+									<!--{foreach from=$recom[17] item=goods name=loop}-->
 										
 										<li>
 											<a href="{url app=goods&id=$goods.goods_id}" target="_blank"><img src="{$goods.default_image}" width="210"></a>
@@ -271,7 +272,29 @@ $(function(){
 							
 							<div class="box_body">
 								<ul>
-									<!--{foreach from=$recom3 item=goods name=loop}-->
+									<!--{foreach from=$recom[18] item=goods name=loop}-->
+										
+										<li>
+											<a href="{url app=goods&id=$goods.goods_id}" target="_blank"><img src="{$goods.default_image}" width="210"></a>
+											<a href="{url app=goods&id=$goods.goods_id}" target="_blank">
+											<div class="info" style="text-align:center;">
+												{$goods.goods_name|truncate:30}<br>
+												<font color="#FF0000">
+												￥{$goods.price}
+												 + {$goods.integral}分
+												</font>
+											</div>
+											</a>
+										</li>
+										
+									<!--{/foreach}-->
+								</ul>
+								<div class="clear"></div>
+							</div>
+							
+							<div class="box_body">
+								<ul>
+									<!--{foreach from=$recom[22] item=goods name=loop}-->
 										
 										<li>
 											<a href="{url app=goods&id=$goods.goods_id}" target="_blank"><img src="{$goods.default_image}" width="210"></a>
@@ -311,7 +334,7 @@ $(function(){
 					</div>
 					<div class="index_content_three_body">
 						<ul>
-							<!--{foreach from=$recom4 item=goods name=loop}-->
+							<!--{foreach from=$recom[19] item=goods name=loop}-->
 							
 									<a href="{url app=goods&id=$goods.goods_id}" target="_blank"><li>
 										<img src="{$goods.default_image}" width="150" height="150" >
@@ -386,7 +409,7 @@ $(function(){
 					</div>
 					<div class="index_content_three_body">
 						<ul>
-							<!--{foreach from=$recom5 item=goods name=loop}-->
+							<!--{foreach from=$recom[20] item=goods name=loop}-->
 							
 									<a href="{url app=goods&id=$goods.goods_id}" target="_blank"><li>
 										<img src="{$goods.default_image}" width="150" height="150" >
@@ -542,9 +565,20 @@ $(function(){
 		   
 		   <div class="copyrightbg">
 		   	  <div class="copyright">
-			 	 荣鑫华亚旗下荣誉出品，最终解释权归荣鑫华亚所有<br>
-				 Copyright 2014-2017 linglegou.com All rights reserved.<br>
-				《中华人民共和国电信与信息服务业务经营许可证》编号：<a href="http://www.miit.gov.cn" target="_blank" rel="nofollow">鄂ICP备13013377号-2</a><br>
+			 	 工商企业注册号：420106000123928<br>
+                
+              客服热线：027-51116880，传真：027-86830588<br>
+
+              荣鑫华亚旗下荣誉出品，最终解释权归荣鑫华亚所有<br>
+          
+          Copyright 2014-2017 linglegou.com All rights reserved.<br>
+           
+           行政运营中心：武汉市武昌区徐东大街汪家墩国际城6栋2103<br>
+           
+           旗舰展示中心：武汉市武昌区徐东大街汪家墩国际城6栋1701<br>
+
+《中华人民共和国电信与信息服务业务经营许可证》编号：<a href="http://www.miit.gov.cn" target="_blank" rel="nofollow">鄂ICP备13013377号-2</a><br>
+  
 				<br>
 				<img src="{res file=img/di.png}">
 		 	  </div>

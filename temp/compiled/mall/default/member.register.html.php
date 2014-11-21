@@ -178,8 +178,15 @@ $(function(){
                             </tr>
 							<tr>
                                 <td>开户单位:</td>
-                                <td><input type="text" name="deposit" class="text width10" id="deposit" /></td>
-                                <td class="padding3 fontColor4"><label class="field_notice">没有则填gongsi</label><label id="checking_user1" class="checking">检查中...</label></td>
+								<?php if ($this->_var['deposit']): ?>
+									<input type="hidden" name="deposit" id="deposit" value="<?php echo $this->_var['deposit']['user_name']; ?>"/>
+                                	<td>&nbsp;&nbsp;<?php echo $this->_var['deposit']['user_name']; ?></td>
+								<?php else: ?>
+									<td><input type="text" name="deposit" class="text width10" id="deposit" /></td>
+                               		<td class="padding3 fontColor4"><label class="field_notice">没有则填gongsi</label>
+									<label id="checking_user1" class="checking">检查中...</label></td>
+								<?php endif; ?>
+								
                             </tr>
                             <?php if ($this->_var['captcha']): ?>
                             <tr>

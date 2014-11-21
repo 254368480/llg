@@ -20,7 +20,7 @@ $(function(){
 </head>
 <body>
 <div id="enter">
-    <h1><img alt="ecmall_admin" src="templates/style/images/enter_logo.gif" /></h1>
+    <h1><img alt="商城后台" src="templates/style/images/enter_logo.gif" /></h1>
     <table>
     <form method="post">
         <tr>
@@ -28,7 +28,7 @@ $(function(){
             <td colspan="3"><input class="text" type="text" id="user_name" name="user_name" /></td>
         </tr>
         <tr>
-            <td>密码:</td>
+            <td>密&nbsp;&nbsp;&nbsp;码:</td>
             <td class="width160"><input class="text" type="password" name="password" /></td>
             <?php if ($this->_var['captcha']): ?>
             <td>验证码:</td>
