@@ -1,0 +1,43 @@
+{include file="header.html"}
+<div id="rightTop">
+  <p>{$lang.upgrade}</p>
+</div>
+<table class="int_table" border="3">
+	<form method="post" name="time" action="/admin/index.php?app=upgrade&act=search">
+	<tr>
+		<td>&nbsp;时间从 <input type="text" name="time_start" class="queryInput"  {if $time_start}value="{$time_start}"{/if}>到&nbsp;&nbsp;<input type="text" name="time_end" class="queryInput"  {if $time_end}value="{$time_end}"{/if}></td>
+			
+		<td rowspan="2"><input type="submit" value="查询" class="formbtn"></td>
+	</tr>
+	<tr>
+		<td>
+			<select name="condition">
+				<option value="user_name" {if $condition == 'user_name'}selected="selected"{/if}>升级用户</option>
+				<option value="operator" {if $condition == 'operator'}selected="selected"{/if}>操作人</option>
+				<option value="grade" {if $condition == 'grade'}selected="selected"{/if}>升级前等级</option>
+			</select>
+			<input type="text" class="queryInput" name="query" style="width:190px;" {if $query}value="{$query}"{/if}>
+		</td>
+	</tr>
+	</form>
+</table>
+{if $list}
+<table class="int_table" border="3">
+	<tr>
+		<th>升级用户</th><th>操作人</th><th>升级时间</th><th>升级前等级</th><th>升级后等级</th>
+	</tr>
+	<!--{foreach from=$list item=value}-->
+		<tr>
+			<td>{$value.user_name}</td><td>{$value.operator}</td><td>{$value.time|date}</td><td>{$value.grade}</td><td>{$value.upgrade}</td>
+		</tr>
+	<!--{/foreach}-->
+</table>
+{else}
+    <h1 style="text-align:center;line-height:50px;">今天暂时还没有升级记录！</h1>
+{/if}
+		<div style="clear:both"></div>
+		<div class="pageLinks">
+				{if $list}{include file=page.bottom.html}{/if}
+		</div>
+
+{include file="footer.html"}

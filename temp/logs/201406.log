@@ -1,0 +1,13 @@
+Thu, 05 Jun 2014 02:28:00 +0000	[256]MySQL Error[1054]: Unknown column 'g.integral' in 'field list'
+MySQL Query:SELECT g.goods_id, g.goods_name, g.integral, g.default_image, gs.price, gs.stock FROM ecm_recommended_goods AS rg    LEFT JOIN ecm_goods AS g ON rg.goods_id = g.goods_id    LEFT JOIN ecm_goods_spec AS gs ON g.default_spec = gs.spec_id    LEFT JOIN ecm_store AS s ON g.store_id = s.store_id WHERE g.if_show = 1 AND g.closed = 0 AND s.state = 1 AND rg.recom_id = '16' AND g.goods_id IS NOT NULL ORDER BY rg.sort_order LIMIT 4
+Wrong File:  E:\PHPnow\vhosts\127.0.0.2\includes\models\recommend.model.php[74]	\eccore\model\mysql.php	286
+Thu, 05 Jun 2014 02:44:35 +0000	[256]MySQL Error[1064]: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'DESC0' at line 1
+MySQL Query:SELECT article_id, title, add_time,article.article_id FROM ecm_article article WHERE cate_id= 2 AND if_show = 1 ORDER BY sort_order ASC, add_time DESC0
+Wrong File:  E:\PHPnow\vhosts\127.0.0.2\eccore\model\mysql.php[534]	\eccore\model\mysql.php	286
+Sat, 07 Jun 2014 03:12:09 +0000	[2]include(E:\PHPnow\vhosts\127.0.0.2/includes/payments/alipayto/alipayto.payment.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory	\app\frontend.base.php	454
+Sat, 07 Jun 2014 03:15:41 +0000	[2]include(E:\PHPnow\vhosts\127.0.0.2/includes/payments/alipayto/alipayto.payment.php) [<a href='function.include'>function.include</a>]: failed to open stream: No such file or directory	\app\frontend.base.php	454
+Tue, 17 Jun 2014 03:19:42 +0000	[2]unlink(./ad/1402973784.jpg) [<a href='function.unlink'>function.unlink</a>]: No such file or directory	\admin\app\advert.app.php	164
+Tue, 17 Jun 2014 03:20:05 +0000	[2]unlink() [<a href='function.unlink'>function.unlink</a>]: open_basedir restriction in effect. File(/ad/1402973784.jpg) is not within the allowed path(s): (E:\PHPnow\vhosts\127.0.0.2;C:\Windows\Temp;)	\admin\app\advert.app.php	164
+Tue, 17 Jun 2014 03:21:12 +0000	[2]unlink(../ad/1402975231.png) [<a href='function.unlink'>function.unlink</a>]: No such file or directory	\admin\app\advert.app.php	164
+Tue, 17 Jun 2014 03:21:41 +0000	[2]unlink(../ad/1402975231.png) [<a href='function.unlink'>function.unlink</a>]: No such file or directory	\admin\app\advert.app.php	165
+Mon, 23 Jun 2014 01:01:35 +0000	[2]in_array() [<a href='function.in-array'>function.in-array</a>]: Wrong datatype for second argument	\app\order.app.php	46

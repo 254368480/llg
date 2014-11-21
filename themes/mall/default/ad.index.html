@@ -1,0 +1,40 @@
+{include file=header.html}
+{include file=curlocal.html}
+<div class="content">
+    <div class="commodity_assort">
+        <div class="module_sidebar">
+            <h2>赚积分</h2>
+            <div class="wrap">
+                <div class="wrap_child">
+                    <div class="recommend">
+					
+                        <ul class="ad_list_ul">
+                            <!--{foreach from=$ads item=value}-->
+                         			<li class="ad_list_li">
+										<a href="/index.php?app=ad&act=to_link&ad_id={$value.ad_id}" target="_blank">
+										<div class="ad_img"><img src="/{$value.ad_img}" width="150" height="150"  /></div>
+										<div class="ad_info">
+											<div class="ad_name">{$value.ad_name|truncate:40}</div>
+											<div class="ad_int">获得积分：<strong style="color:#FF0000">{$value.ad_int}分</strong></div>
+											<div class="ad_vip">点击权限：{$vip[$value.ad_vip]}</div>
+										</div>
+										</a>
+									</li>
+                            <!--{/foreach}-->
+                      	</ul>
+						
+                    </div>
+                </div>
+            </div>
+			
+			<div class="pageLinks" style="float:right;margin-top:20px;mairgin">
+				{if $ads}{include file=page.bottom.html}{/if}
+			</div>
+        </div>
+    </div>
+
+    <div class="ad_sidebar_list" area="right" widget_type="area">
+        <!--{widgets page=gcategory area=right}-->
+    </div>
+</div>
+{include file=footer.html}

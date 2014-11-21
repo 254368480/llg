@@ -1,0 +1,25 @@
+{include file="header.html"}
+<div id="rightTop">
+  <p>{$lang.int_total}</p>
+</div>
+
+<table class="int_table" border="3">
+	<tr>
+		<th>会员等级</th><th>总积分</th><th>总余额</th><th>人数</th>
+	</tr>
+	<tr>
+		<td>免费用户</td><td>{$mf.sum(integral)}</td><td>{$mf.sum(money)}</td><td>{$mf.count(*)}</td>
+	</tr>
+	<tr>
+		<td>VIP用户</td><td>{$vip.sum(integral)}</td><td>{$vip.sum(money)}</td><td>{$vip.count(*)}</td>
+	</tr>
+	<tr>
+		<td>分销商</td><td>{$fxs.sum(integral)}</td><td>{$fxs.sum(money)}</td><td>{$fxs.count(*)}</td>
+	</tr>
+	<tr>
+		<td>代理商</td><td>{$dls.sum(integral)}</td><td>{$dls.sum(money)}</td><td>{$dls.count(*)}</td>
+	</tr>
+</table>
+
+
+{include file="footer.html"}

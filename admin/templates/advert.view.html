@@ -1,0 +1,36 @@
+{include file="header.html"}
+
+<div class="">
+		<h2>查看广告</h2>
+</div>
+
+
+<table class="ad_view_table" border="3">
+		<tr>
+			<th style="width:100px;">广告序号</th><th>广告名称</th><th>广告图片</th><th style="width:100px;" align="center">广告链接</th><th style="width:100px;">广告积分</th><th style="width:100px;">广告权限</th><th style="width:100px;">操作</th>
+		</tr>
+		<!--{foreach from=$ads item=value}-->
+			<tr>
+				<td align="center" style="width:100px;">{$value.ad_id}</td>
+			    <td align="center">{$value.ad_name}</td>
+				<td align="center"><a href="/{$value.ad_img}" target="_blank"><img src="/{$value.ad_img}" width="80" height="80"></a></td>
+				<td align="center" style="width:100px;"><div style="width:300px;white-space: normal;"><a href="{$value.ad_link}" target="_blank">链接地址</a></div></td>
+				<td align="center" style="width:100px;">{$value.ad_int}</td>
+				<td align="center" style="width:100px;">{$vip[$value.ad_vip]}</td>
+				<td align="center" style="width:100px;">
+				<a href="index.php?app=advert&act=ad_edit&ad_id={$value.ad_id}">编辑</a>&nbsp;
+				<a href="index.php?app=advert&act=ad_drop&ad_id={$value.ad_id}">删除</a>
+				</td>
+			</tr>
+		<!--{/foreach}-->
+</table>		
+		<div style="clear:both"></div>
+		<div class="pageLinks" style="">
+				{if $ads}{include file=page.bottom.html}{/if}
+		</div>
+   		
+		
+		
+
+
+{include file="footer.html"}

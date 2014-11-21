@@ -1,0 +1,130 @@
+{include file=member.header.html}
+<div class="content">
+    {include file=member.menu.html}
+    <div id="right">
+	    <h1>会员中心首页</h1>
+        <div class="wrap_line margin1">
+		     <div class="user_info"> 
+				   <table class="user_table" border="1" bordercolor="#FFF" >
+				   <tr>{if $time <= 30}<div style="color:#FF0000;margin-left:20px;margin-top:10px;">亲爱的会员！还有{$time}天，您的平台使用费就要到期了，请及时缴费!</div>{/if}</tr>
+				   
+				   <div style="padding-left:22px;margin-top:10px;line-height:20px;">
+					   代理商信息:用户名{$dls.user_name}，电话{$dls.im_msn}<br>
+					   分销商信息:用户名{$fxs.user_name}，电话{$fxs.im_msn}<br>
+					   开户单位信息:用户名{$user_info.deposit}，电话{$deposit_user.im_msn}
+				   </div>
+					<tr>
+						<th>积分余额</th>
+						<td> {$user_info[integral]}分</td>
+						<th>您目前是</th>
+						<td> {$user_info[grade]}</td>
+					</tr>
+					
+					<tr>
+						<th>您的预存款</th>
+						<td> ￥{$user_info[money]}</td>
+						<th>订单总数量</th>
+						<td>{$order_num} [<a href="index.php?app=buyer_order">查看订单列表]</a></td>
+					</tr>
+					
+					<tr>
+						<th>最后登录时间</th>
+						<td> {$user.last_login|date}</td>
+						<th>注册时间</th>
+						<td> {$user.reg_time|date}</td>
+					</tr>
+					<tr>
+						<th>开户单位</th>
+						<td>{$user_info[deposit]}</td>
+						<th>今日赚分记录</th>
+						<td>{$user_info.td_int}分</td>
+					</tr>
+				   </table>
+			   
+			 </div>
+			 
+            <div class="wrap_bottom"></div>
+        </div>
+        <div class="wrap_line margin1">
+            <div class="public_index">
+                <div class="information_index">
+                    <h3 class="title">{$lang.buyer_remind}</h3>
+                    <!--{if $buyer_stat && $buyer_stat.sum}-->
+                    <div class="remind">
+                        <dl>
+                            <dt>{$lang.order_remind}</dt>
+                            <dd>{sprintf lang=order_for_pay_remind var1=buyer_stat.pending}</dd>
+                            <dd>{sprintf lang=order_for_confirm_remind var1=buyer_stat.shipped}</dd>
+                            <dd>{sprintf lang=order_for_evaluate_remind var1=buyer_stat.finished}</dd>
+                        </dl>
+                       
+                        <a href="{url app=buyer_order}" class="btn pos1" title="{$lang.look_order}"><span class="pic1">{$lang.look_order}</span></a>
+                    </div>
+                    <!--{else}-->
+                    <div class="awoke">
+                        {$lang.go_shopping}
+                    </div>
+                    <!--{/if}-->
+                </div>
+
+            </div>
+            <div class="wrap_bottom"></div>
+        </div>
+<!--{if $store}-->
+        <div class="wrap_line">
+            <div class="public_index">
+                <div class="information_index">
+                    <h3 class="title">{$lang.seller_remind}
+                        <p>
+                        <span>{$lang.store_grade}: {$sgrade.grade_name}</span>
+                        <span>{$lang.expire_time}: <!--{if $sgrade.add_time}-->{sprintf lang=leaving_day var1=sgrade.add_time}<!--{else}-->{$lang.no_limit}<!--{/if}--></span>
+                        <span>{$lang.goods_put}: {$sgrade.goods.used}/<!--{if $sgrade.goods.total}-->{$sgrade.goods.total}<!--{else}-->{$lang.no_limit}<!--{/if}--></span>
+                        <span>{$lang.space_use}: {$sgrade.space.used}M/<!--{if $sgrade.space.total}-->{$sgrade.space.total}M<!--{else}-->{$lang.no_limit}<!--{/if}--></span>
+                        </p>
+                    </h3>
+                    <div class="remind">
+                        <dl>
+                            <dt>{$lang.order_remind}</dt>
+                            <dd>{sprintf lang=order_for_settle_remind var1=seller_stat.submitted}</dd>
+                            <dd>{sprintf lang=order_for_ship_remind var1=seller_stat.accepted}</dd>
+                        </dl>
+                        <dl>
+                            <dt>{$lang.groupbuy_remind}</dt>
+                            <dd>{sprintf lang=groupbuy_for_end_remind var1=seller_stat.groupbuy_end}</dd>
+                        </dl>
+                        <a href="{url app=store&id=$store.store_id}" title="{$lang.look_store}" target="_blank" class="btn1 pos2"><span class="pic2">{$lang.look_store}</span></a>
+                        <a href="{url app=seller_order}" class="btn pos3" title="{$lang.manage_order}"><span class="pic1">{$lang.manage_order}</span></a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="wrap_bottom"></div>
+        </div>
+<!--{/if}-->
+<!--{if $applying}-->
+        <div class="wrap_line">
+            <div class="public_index">
+                <div class="information_index">
+                    <h3 class="title">{$lang.apply_remind}</h3>
+                    <div class="remind">
+                        <dl>
+                            <dt>{$lang.apply_state}</dt>
+                            <dd>{sprintf lang=store_applying var1=user.sgrade}</dd>
+                        </dl>
+                        <a href="index.php?app=apply&step=2&id={$user.sgrade}" title="{$lang.edit_store_info}" class="btn1 pos2"><span class="pic2">{$lang.edit_store_info}</span></a>
+                    </div>
+                </div>
+
+            </div>
+            <div class="wrap_bottom"></div>
+        </div>
+<!--{/if}-->
+        <div class="clear"></div>
+        <div class="adorn_right1"></div>
+        <div class="adorn_right2"></div>
+        <div class="adorn_right3"></div>
+        <div class="adorn_right4"></div>
+    </div>
+    <div class="clear"></div>
+</div>
+{include file=footer.html}

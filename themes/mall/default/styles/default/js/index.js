@@ -1,0 +1,20 @@
+$(document).ready(function(){
+						$("#tab").find("li").first().mouseover(function(){
+							$(this).addClass("act");
+							$(this).siblings().removeClass("act");
+							$(".box_body").hide();
+							$(".box_body").first().show();
+						});
+						$("#tab").find("li").eq(1).mouseover(function(){
+							$(this).addClass("act");
+							$(this).siblings().removeClass("act");
+							$(".box_body").hide();
+							$(".box_body").eq(1).show();
+						});
+						$("#tab").find("li").last().mouseover(function(){
+							$(this).addClass("act");
+							$(this).siblings().removeClass("act");
+							$(".box_body").hide();
+							$(".box_body").last().show();
+						});
+});

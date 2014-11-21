@@ -1,0 +1,26 @@
+.kf{
+	position: fixed;
+	right:15px;
+	top:290px;
+	border-top-width: 1px;
+	border-right-width: 1px;
+	border-left-width: 1px;
+	border-top-style: solid;
+	border-right-style: solid;
+	border-left-style: solid;
+	border-top-color: #CCCCCC;
+	border-right-color: #CCCCCC;
+	border-left-color: #CCCCCC;
+	padding-bottom: 0px !important;
+	background-color: transparent;
+}
+.kf a{
+	display: block;
+	height: 30px;
+	width: 50px;
+	text-align: center;
+	padding-top:20px;
+	border-bottom-width: thin;
+	border-bottom-style: solid;
+	border-bottom-color: #CCCCCC;	
+}

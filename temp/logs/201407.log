@@ -1,0 +1,6 @@
+Thu, 10 Jul 2014 08:09:28 +0000	[256]MySQL Error[1064]: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+MySQL Query:select * from ecm_advert where ad_id = 
+Wrong File:  E:\PHPnow\vhosts\127.0.0.2\eccore\model\mysql.php[589]	\eccore\model\mysql.php	286
+Thu, 10 Jul 2014 08:10:52 +0000	[256]MySQL Error[1064]: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+MySQL Query:select * from ecm_advert where ad_id = 
+Wrong File:  E:\PHPnow\vhosts\127.0.0.2\eccore\model\mysql.php[589]	\eccore\model\mysql.php	286
