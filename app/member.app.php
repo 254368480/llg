@@ -969,19 +969,38 @@ class MemberApp extends MemberbaseApp
         $this->_curmenu('uprecode');
         $this->_curitem('uprecode');
         $this->_config_seo('title', Lang::get('member_center'));
+        if(IS_POST){
+            $star = strtotime($this->_ckinput($_POST['star']));
+            $end =  strtotime($this->_ckinput($_POST['end'])) + 60*60*24;
+            if($star > $end){
+                $this->show_warning("查询失败，起始时间大于结束时间！", '返回上一页', '/index.php?app=member&act=uprecode');
+                exit;
+            }
+        }
+
         if($user_info['grade'] == '免费会员' || $user_info['grade'] == 'VIP会员'){
             $sql = "SELECT user_name FROM {$user_mod->table} WHERE `deposit` = '$user[user_name]'";
             $mydeposit = $user_mod->getAll($sql);
             if(!empty($mydeposit)){
                 $uprecode_mod = & m('uprecode');
-                foreach($mydeposit as $value){
-                    $sql = "SELECT * FROM {$uprecode_mod->table} WHERE `user_name` = '$value[user_name]'";
-                    $row = $uprecode_mod->getAll($sql);
-                    if(!empty($row)){
-                        $uprecodes[] = $row;
+                if(isset($star)){
+                    $sql = "SELECT * FROM {$uprecode_mod->table} WHERE time > $star AND time < $end";
+                }else {
+                    $sql = "SELECT * FROM {$uprecode_mod->table} WHERE date(from_unixtime(time)) = CURDATE()";
+                }
+                $res = $uprecode_mod->getAll($sql);
+                if(!empty($res)) {
+                    foreach($res as $val){
+                        foreach($mydeposit as $value){
+                            if($val['user_name'] == $value['user_name']) {
+                                $uprecodes[] = $val;
+                                break;
+                            }
+                        }
                     }
                 }
             }
+            $this->assign('uprecodes', $uprecodes);
             $this->display('uprecode.html');
         }
         if($user_info['grade'] == '分销商'){
@@ -989,14 +1008,24 @@ class MemberApp extends MemberbaseApp
             $mydeposit = $user_mod->getAll($sql);
             if(!empty($mydeposit)){
                 $uprecode_mod = & m('uprecode');
-                foreach($mydeposit as $value){
-                    $sql = "SELECT * FROM {$uprecode_mod->table} WHERE `user_name` = '$value[user_name]'";
-                    $row = $uprecode_mod->getAll($sql);
-                    if(!empty($row)){
-                        $uprecodes[] = $row;
+                if(isset($star)){
+                    $sql = "SELECT * FROM {$uprecode_mod->table} WHERE time > $star AND time < $end";
+                }else {
+                    $sql = "SELECT * FROM {$uprecode_mod->table} WHERE date(from_unixtime(time)) = CURDATE()";
+                }
+                $res = $uprecode_mod->getAll($sql);
+                if(!empty($res)) {
+                    foreach($res as $val){
+                        foreach($mydeposit as $value){
+                            if($val['user_name'] == $value['user_name']) {
+                                $uprecodes[] = $val;
+                                break;
+                            }
+                        }
                     }
                 }
             }
+            $this->assign('uprecodes', $uprecodes);
             $this->display('uprecode.html');
         }
         if($user_info['grade'] == '代理商'){
@@ -1004,21 +1033,37 @@ class MemberApp extends MemberbaseApp
             $mydeposit = $user_mod->getAll($sql);
             if(!empty($mydeposit)){
                 $uprecode_mod = & m('uprecode');
-                foreach($mydeposit as $value){
-                    $sql = "SELECT * FROM {$uprecode_mod->table} WHERE `user_name` = '$value[user_name]'";
-                    $row = $uprecode_mod->getAll($sql);
-                    if(!empty($row)){
-                        $uprecodes[] = $row;
+                if(isset($star)){
+                    $sql = "SELECT * FROM {$uprecode_mod->table} WHERE time > $star AND time < $end";
+                }else {
+                    $sql = "SELECT * FROM {$uprecode_mod->table} WHERE date(from_unixtime(time)) = CURDATE()";
+                }
+                $res = $uprecode_mod->getAll($sql);
+                if(!empty($res)) {
+                    foreach($res as $val){
+                        foreach($mydeposit as $value){
+                            if($val['user_name'] == $value['user_name']) {
+                                $uprecodes[] = $val;
+                                break;
+                            }
+                        }
                     }
                 }
             }
-
+            $this->assign('uprecodes', $uprecodes);
             $this->display('uprecode.html');
         }
 
         /* 当前用户中心菜单 */
 
 
+    }
+
+    function _ckinput($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
     }
 
 	//升级方法
