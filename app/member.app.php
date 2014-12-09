@@ -639,11 +639,62 @@ class MemberApp extends MemberbaseApp
 				}
 			}
 		}
-		
-      
-		
 	}
-	
+
+    function payint(){
+        if(!empty($_POST['dosubmit'])) {
+            $int = intval($this->_check_input($_POST['itotal']));
+            $user_name = $this->_check_input($_POST['user_name']);
+            $password = $this->_check_input($_POST['password']);
+            $touser = $this->_check_input($_POST['touser']);
+            $user_mod =& m('member');
+            $sql = "SELECT * FROM {$user_mod->table} where user_name  = '$user_name'";
+            $user = $user_mod->getRow($sql);
+            if(!empty($user)){
+                $sql = "SELECT * FROM {$user_mod->table} where user_name  = '$touser'";
+                $tuser = $user_mod->getRow($sql);
+                if(empty($tuser)){
+                    $this->show_warning('交易失败，接收积分的用户不存在！');
+                    return;
+                }
+                if($user['password'] != md5($password)){
+                    $this->show_warning('交易失败，密码错误！');
+                    return;
+                }
+                if($user['grade'] == "免费会员"){
+                    $this->show_warning('免费会员无法支付积分！');
+                    return;
+                }
+                if($int > $user['integral']){
+                    $this->show_warning('交易失败，用户积分不足！');
+                    return;
+                }
+                $this->db = &db();
+                $sql = "UPDATE {$user_mod->table} SET integral = integral - '$int' WHERE user_id = '$user[user_id]'";
+                $this->db->query($sql);
+                $sql = "UPDATE {$user_mod->table} SET integral = integral + '$int' WHERE user_id = '$tuser[user_id]'";
+                $this->db->query($sql);
+
+                $recode_mod =& m('recode');
+                $data = array(
+                    'touser' => $touser,
+                    'fromuser' => $user['user_name'],
+                    'integral' => $int,
+                    'content' => '实体店购买物品支付积分！',
+                    'time' => gmtime()
+                );
+                $recode_mod->add($data);
+                $this->show_message('支付成功');
+                exit;
+            }else{
+                $this->show_warning('交易失败，该用户不存在！');
+                return;
+            }
+        }else{
+            $this->show_warning('未定义操作！');
+            return;
+        }
+    }
 	
 	
 	
@@ -902,6 +953,8 @@ class MemberApp extends MemberbaseApp
                         $ms->pm->send(MSG_SYSTEM, $apply['uid'], '', $content);
                     }else{
                         $apply_mod->edit($id, array('state' => 1));
+                        $content = get_msg('touser_apply', array());
+                        $ms->pm->send(MSG_SYSTEM, $apply['did'], '', $content);
                     }
                     $this->show_message('审核完成！');
                     exit;
@@ -1708,6 +1761,13 @@ class MemberApp extends MemberbaseApp
         }
         $uploader->root_dir(ROOT_PATH);
         return $uploader->save('data/files/mall/portrait/' . ceil($user_id / 500), $user_id);
+    }
+
+    function _check_input($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
     }
 }
 
