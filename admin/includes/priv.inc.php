@@ -47,6 +47,9 @@ $menu_data = array
         'user'  => 'user|all',//会员管理
         'admin' => 'admin|all',//管理员管理
         'notice' => 'notice|all',//会员通知
+		'int_total' => 'int|all',
+		'upgrade' => 'upgrade|all',
+        'upchange_log' => 'upchange_log|all'
     ),
     'order' => array
     (

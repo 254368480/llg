@@ -129,8 +129,19 @@ return array(
                 'text' => Lang::get('user_notice'),
                 'url'  => 'index.php?app=notice',
              ),
-			 
-        ),
+			  'int_total' => array(
+                'text' => Lang::get('int_total'),
+                'url'  => 'index.php?app=int',
+             ),
+			 'upgrade' => array(
+                'text' => Lang::get('upgrade'),
+                'url'  => 'index.php?app=upgrade',
+             ),
+            'upchange_log' => array(
+                'text' => Lang::get('upchange_log'),
+                'url'  => 'index.php?app=upchange_log',
+            ),
+		 ),
     ),
     // 交易
     'trade' => array(
