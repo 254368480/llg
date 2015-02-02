@@ -4,20 +4,20 @@ class DefaultApp extends MallbaseApp
 {
     function index()
     {
-        $this->assign('index', 1); // æ ‡è¯†å½“å‰é¡µé¢æ˜¯é¦–é¡µï¼Œç”¨äºè®¾ç½®å¯¼èˆªçŠ¶æ€
+        $this->assign('index', 1); // ±êÊ¶µ±Ç°Ò³ÃæÊÇÊ×Ò³£¬ÓÃÓÚÉèÖÃµ¼º½×´Ì¬
         $this->assign('icp_number', Conf::get('icp_number'));
 
-        /* çƒ­é—¨æœç´  */
+        /* ÈÈÃÅËÑËØ */
         $this->assign('hot_keywords', $this->_get_hot_keywords());
 
         $this->_config_seo(array(
             'title' =>  Conf::get('site_title'),
         ));
 		
-		 /* å–å¾—å•†å“åˆ†ç±» */
+		 /* È¡µÃÉÌÆ··ÖÀà */
         $gcategorys = $this->_list_gcategory();
 		
-		/* å–å¾—åˆä½œä¼™ä¼´ */
+		/* È¡µÃºÏ×÷»ï°é */
 		$partner_mod =& m('partner');
 		$partner = $partner_mod->find(array(
 		'conditions'    => 'store_id = 0',
@@ -25,7 +25,7 @@ class DefaultApp extends MallbaseApp
                 'limit' => '0,6',
 		));
 		
-		/* å–å¾—å•†åŸå…¬å‘Š */
+		/* È¡µÃÉÌ³Ç¹«¸æ */
 		
 		$article_mod =& m('article');
         $art = $article_mod->find(array(
@@ -41,35 +41,142 @@ class DefaultApp extends MallbaseApp
 		$art_all[38] = $this->_get_art('cate_id= 38 AND if_show = 1');
 		$art_all[39] = $this->_get_art('cate_id= 39 AND if_show = 1');
 		
-		/*å–å¾—æœ¬å‘¨çƒ­é”€*/
+		/*È¡µÃ±¾ÖÜÈÈÏú*/
 		$recom_mod =& m('recommend');
-        $recom1 = $recom_mod->get_recommended_goods(16, 4, true); //å–å¾—æœ¬å‘¨çƒ­é”€
-		$recom2 = $recom_mod->get_recommended_goods(17, 4, true); //å–å¾—æœ¬å‘¨çƒ­é”€
-		$recom3 = $recom_mod->get_recommended_goods(18, 4, true); //å–å¾—æœ¬å‘¨çƒ­é”€
-		$recom4 = $recom_mod->get_recommended_goods(19, 14, true); //å–å¾—æœ¬å‘¨çƒ­é”€
-		$recom5 = $recom_mod->get_recommended_goods(20, 14, true); //å–å¾—æœ¬å‘¨çƒ­é”€
+        $recom[16] = $recom_mod->get_recommended_goods(16, 4, true); //È¡µÃ±¾ÖÜÈÈÏú
+		$recom[17] = $recom_mod->get_recommended_goods(17, 4, true); //È¡µÃ±¾ÖÜÈÈÏú
+		$recom[18] = $recom_mod->get_recommended_goods(18, 4, true); //È¡µÃ±¾ÖÜÈÈÏú
+		$recom[19] = $recom_mod->get_recommended_goods(19, 14, true); //È¡µÃ±¾ÖÜÈÈÏú
+		$recom[20] = $recom_mod->get_recommended_goods(20, 14, true); //È¡µÃ±¾ÖÜÈÈÏú
+		$recom[22] = $recom_mod->get_recommended_goods(22, 4, true); //È¡µÃ±¾ÖÜÈÈÏú
 		
-		/*å–å¾—åº—é“º*/
+		/*È¡µÃµêÆÌ*/
 		$recommended_stores = $this->_recommended_stores(6);
 		
 		
 		$this->assign('recommended_stores', $recommended_stores);
 		$this->assign('partner', $partner);
 		$this->assign('art_all', $art_all);
-		$this->assign('recom1', $recom1);
-		$this->assign('recom2', $recom2);
-		$this->assign('recom3', $recom3);
-		$this->assign('recom4', $recom4);
-		$this->assign('recom5', $recom5);
+		$this->assign('recom', $recom);
 		$this->assign('art', $art);
 		$this->assign('gcategorys', $gcategorys);
         $this->assign('page_description', Conf::get('site_description'));
         $this->assign('page_keywords', Conf::get('site_keywords'));
         $this->display('index.html');
     }
+	
+	function payint(){
+        if(!empty($_POST['dosubmit'])) {
+            $int = intval($this->_check_input($_POST['itotal']));
+            $user_name = $this->_check_input($_POST['user_name']);
+            $password = $this->_check_input($_POST['password']);
+            $touser = $this->_check_input($_POST['touser']);
+
+            $user_mod =& m('member');
+            $sql = "SELECT * FROM {$user_mod->table} where user_name  = '$user_name'";
+            $user = $user_mod->getRow($sql);
+            if(!empty($user)){
+                $sql = "SELECT * FROM {$user_mod->table} where user_name  = '$touser'";
+                $tuser = $user_mod->getRow($sql);
+                if(empty($tuser)){
+                    $this->show_warning('Ö§¸¶Ê§°Ü£¬½ÓÊÜ»ı·ÖµÄÓÃ»§²»´æÔÚ£¡');
+                    exit;
+                }
+                if($user['password'] != md5($password)){
+                    $this->show_warning('Ö§¸¶Ê§°Ü£¬ÃÜÂëÊäÈë´íÎó£¡');
+                    exit;
+                }
+                if($user['grade'] == "Ãâ·Ñ»áÔ±"){
+                    $this->show_warning('Ö§¸¶Ê§°Ü£¬Ãâ·Ñ»áÔ±ÎŞ·¨Ö§¸¶£¡');
+                    exit;
+                }
+                if($int > $user['integral']){
+                    $this->show_warning('Ö§¸¶Ê§°Ü£¬ÓÃ»§»ı·Ö²»×ã£¡');
+                    exit;
+                }
+                $this->db = &db();
+                $sql = "UPDATE {$user_mod->table} SET integral = integral - '$int' WHERE user_id = '$user[user_id]'";
+                $this->db->query($sql);
+                $sql = "UPDATE {$user_mod->table} SET integral = integral + '$int' WHERE user_id = '$tuser[user_id]'";
+                $this->db->query($sql);
+
+                $recode_mod =& m('recode');
+                $data = array(
+                    'touser' => $touser,
+                    'fromuser' => $user['user_name'],
+                    'integral' => $int,
+                    'content' => 'ÊµÌåµê¹ºÂòÎïÆ·Ö§¸¶»ı·Ö£¡',
+                    'time' => gmtime()
+                );
+                $recode_mod->add($data);
+                $this->show_message('Ö§¸¶³É¹¦£¡', '·µ»ØÊ×Ò³', '/');
+                exit;
+            }else{
+                $this->show_warning('Ö§¸¶Ê§°Ü£¬Ö§¸¶ÓÃ»§²»´æÔÚ£¡');
+                exit;
+            }
+        }else{
+            $this->show_warning('Î´¶¨Òå²Ù×÷£¡');
+            exit;
+        }
+    }
+
+    function backint(){
+        if(!empty($_POST['dosubmit'])) {
+            $int = intval($this->_check_input($_POST['int']));
+            $user_name = $this->_check_input($_POST['shop_user']);
+            $buyer = $this->_check_input($_POST['buyer']);
+
+            $user_mod =& m('member');
+            $sql = "SELECT * FROM {$user_mod->table} where user_name  = '$user_name'";
+            $user = $user_mod->getRow($sql);
+            if(!empty($user)){
+                $sql = "SELECT * FROM {$user_mod->table} where user_name  = '$buyer'";
+                $tuser = $user_mod->getRow($sql);
+                if(empty($tuser)){
+                    $this->show_warning('Ö§¸¶Ê§°Ü£¬½ÓÊÜ»ı·ÖµÄÓÃ»§²»´æÔÚ£¡');
+                    exit;
+                }
+                if($int > $user['integral']){
+                    $this->show_warning('Ö§¸¶Ê§°Ü£¬ÓÃ»§»ı·Ö²»×ã£¡');
+                    exit;
+                }
+                $this->db = &db();
+                $sql = "UPDATE {$user_mod->table} SET integral = integral - '$int' WHERE user_id = '$user[user_id]'";
+                $this->db->query($sql);
+                $sql = "UPDATE {$user_mod->table} SET integral = integral + '$int' WHERE user_id = '$tuser[user_id]'";
+                $this->db->query($sql);
+
+                $recode_mod =& m('recode');
+                $data = array(
+                    'touser' => $buyer,
+                    'fromuser' => $user['user_name'],
+                    'integral' => $int,
+                    'content' => 'ÊµÌåµêÍË»õ·µ»¹»ı·Ö£¡',
+                    'time' => gmtime()
+                );
+                $recode_mod->add($data);
+                $this->show_message('Ö§¸¶³É¹¦£¡', '·µ»ØÊ×Ò³', '/');
+                exit;
+            }else{
+                $this->show_warning('Ö§¸¶Ê§°Ü£¬Ö§¸¶ÓÃ»§²»´æÔÚ£¡');
+                exit;
+            }
+        }else{
+            $this->show_warning('Î´¶¨Òå²Ù×÷£¡');
+            exit;
+        }
+    }
+	
+	function _check_input($data) {
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
 
 	
-	//å–å¾—æ–‡ç« 
+	//È¡µÃÎÄÕÂ
 	function _get_art($conditions){
 			 $article_mod =& m('article');
 			 $art = $article_mod->find(array(
@@ -108,7 +215,7 @@ class DefaultApp extends MallbaseApp
 
         return $data;
     }
-		   /* å–å¾—æ¨èåº—é“º */
+		   /* È¡µÃÍÆ¼öµêÆÌ */
 	 function _recommended_stores($num)
     {
         $store_mod =& m('store');

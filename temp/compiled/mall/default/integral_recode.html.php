@@ -1,9 +1,39 @@
 <?php echo $this->fetch('member.header.html'); ?>
+<link href="/public/date/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="/public/date/date.js" charset="utf-8"></script>
+<script>
+    $(function () {
+        $("input.date").manhuaDate({
+            Event: "click", //可选
+            Left: 0, //弹出时间停靠的左边位置
+            Top: -16, //弹出时间停靠的顶部边位置
+            fuhao: "-", //日期连接符默认为-
+            isTime: false, //是否开启时间值默认为false
+            beginY: 1949, //年份的开始默认为1949
+            endY: 2100//年份的结束默认为2049
+        });
+    });
+</script>
+
 <div class="content">
     <?php echo $this->fetch('member.menu.html'); ?>
     <div id="right">
 	    <h1>积分操作记录</h1>
         <div class="wrap_line margin1">
+            <div class="recode_search" style="margin-top: 20px;margin-left: 20px;margin-bottom: 10px">
+                <form style="float: left" method="post">
+                    转出会员：<input type="text" name="inuser" >
+                    转入会员：<input type="text" name="touser" >
+                    时间从：<input type="text" class="date" name="start"> — <input class="date" type="text" name="end">
+                    <input class="btn" type="submit" name="dosubmit" value="搜索">
+
+                </form>
+                <form style="float: left;margin-left: 5px" method="post">
+                    <input type="hidden" name="con" value="<?php echo $this->_var['con']; ?>">
+                    <input class="btn" type="submit" name="download" value="导出列表">
+                </form>
+                <div style="clear:both;width: 0;"></div>
+            </div>
 		    <table class="recode_table" border="3" >
 				<tr>
 					<th align="left">转出会员</th>

@@ -2,7 +2,7 @@
 
 return array (
   'SITE_URL' => 'http://www.llg.com',
-  'DB_CONFIG' => 'mysql://root:@localhost:3306/llg',
+  'DB_CONFIG' => 'mysql://root:root@127.0.0.1:3306/llg',
   'DB_PREFIX' => 'ecm_',
   'LANG' => 'sc-gbk',
   'COOKIE_DOMAIN' => '',

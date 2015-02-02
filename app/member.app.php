@@ -527,7 +527,6 @@ class MemberApp extends MemberbaseApp
 	}
 	 /**
      *    我要转分
-     *
      *    @author    tianwei
      *    @return    void
      */
@@ -574,15 +573,15 @@ class MemberApp extends MemberbaseApp
 		$int = $_POST['int'];
 		$member = $_POST['user'];
 		$password = $_POST['password'];
-		
-		if($user_info['user_name'] == $member){
+
+		if(strtolower($user_info['user_name']) == strtolower($member)){
 			$this->show_warning("不能转分给自己！");
 			return;
 		}
 		
 		$sql = "SELECT COUNT(*) FROM {$user_mod->table} where user_name  = '$member'";
 		$num = $user_mod->getOne($sql);
-		
+
 		
 		if($user_info['password'] != md5($password)){
 			$this->show_warning('密码错误');
@@ -603,7 +602,7 @@ class MemberApp extends MemberbaseApp
 		else{
 			$sql = "SELECT * FROM {$user_mod->table} where user_name  = '$member'";
 			$cm = $user_mod->getRow($sql);
-			
+
 			if($cm != ''){
 				$inta = $cm['integral'] + $int; 
 				$intb = $user_info['integral'] - $int;
@@ -641,60 +640,7 @@ class MemberApp extends MemberbaseApp
 		}
 	}
 
-    function payint(){
-        if(!empty($_POST['dosubmit'])) {
-            $int = intval($this->_check_input($_POST['itotal']));
-            $user_name = $this->_check_input($_POST['user_name']);
-            $password = $this->_check_input($_POST['password']);
-            $touser = $this->_check_input($_POST['touser']);
-            $user_mod =& m('member');
-            $sql = "SELECT * FROM {$user_mod->table} where user_name  = '$user_name'";
-            $user = $user_mod->getRow($sql);
-            if(!empty($user)){
-                $sql = "SELECT * FROM {$user_mod->table} where user_name  = '$touser'";
-                $tuser = $user_mod->getRow($sql);
-                if(empty($tuser)){
-                    $this->show_warning('交易失败，接收积分的用户不存在！');
-                    return;
-                }
-                if($user['password'] != md5($password)){
-                    $this->show_warning('交易失败，密码错误！');
-                    return;
-                }
-                if($user['grade'] == "免费会员"){
-                    $this->show_warning('免费会员无法支付积分！');
-                    return;
-                }
-                if($int > $user['integral']){
-                    $this->show_warning('交易失败，用户积分不足！');
-                    return;
-                }
-                $this->db = &db();
-                $sql = "UPDATE {$user_mod->table} SET integral = integral - '$int' WHERE user_id = '$user[user_id]'";
-                $this->db->query($sql);
-                $sql = "UPDATE {$user_mod->table} SET integral = integral + '$int' WHERE user_id = '$tuser[user_id]'";
-                $this->db->query($sql);
-
-                $recode_mod =& m('recode');
-                $data = array(
-                    'touser' => $touser,
-                    'fromuser' => $user['user_name'],
-                    'integral' => $int,
-                    'content' => '实体店购买物品支付积分！',
-                    'time' => gmtime()
-                );
-                $recode_mod->add($data);
-                $this->show_message('支付成功');
-                exit;
-            }else{
-                $this->show_warning('交易失败，该用户不存在！');
-                return;
-            }
-        }else{
-            $this->show_warning('未定义操作！');
-            return;
-        }
-    }
+    
 	
 	
 	
@@ -712,21 +658,61 @@ class MemberApp extends MemberbaseApp
         //获取当前用户的所有信息
 		$sql = "SELECT * FROM {$user_mod->table} where user_id = ".$user['user_id'];
 		$user_info = $user_mod->getRow($sql);
-		
+
+        if(isset($_GET['dosubmit'])){
+            $inuser = $this->_check_input($_GET['inuser']);
+            $touser = $this->_check_input($_GET['touser']);
+            $start = $this->_check_input($_GET['start']);
+            $end = $this->_check_input($_GET['end']);
+
+            if(!empty($end) && empty($start)){
+                $this->show_warning('输入错误，请输入起始时间！');
+                exit;
+            }
+            $start = strtotime($start);
+            $end = strtotime($end)+60*60*24-1;
+            if($start > $end){
+                $this->show_warning('输入错误，起始时间不能大于结束时间！');
+                exit;
+            }
+            $this->assign('get', $_GET);
+        }
+
+        if(isset($_POST['download'])){
+            $condition = $this->_check_input($_POST['con']);
+            $recode_mod =& m('recode');
+            $recodes = $recode_mod->find(array(
+                'conditions'    => $condition,
+                'order'         => 'id DESC ', //必须加别名
+            ));
+            foreach($recodes as $key => $value){
+                $recodes[$key]['time'] = date('Y-m-d H:i:s', $value['time']);
+            }
+            $title = array('记录编号', '转入会员', '转出会员', '操作积分', '操作时间', '备注');
+            $this->exportexcel($recodes,$title);
+            exit;
+        }
+        $where = "(touser = '$user_info[user_name]' or fromuser = '$user_info[user_name]')";
+        $where1 = !empty($inuser) ? "fromuser = '$inuser'" : "1=1";
+        $where2 = !empty($touser) ? "touser = '$touser'" : "1=1";
+        $where3 = !empty($start) && !empty($end) ? "time > '$start' AND time < '$end'" : "1=1";
 		$recode_mod =& m('recode');
-		
 		$page   =   $this->_get_page(20);  //获取分页信息
 		$recodes = $recode_mod->find(array(
-			'conditions'    => "touser = '$user_info[user_name]' or fromuser = '$user_info[user_name]'",
+			'conditions'    => $where." AND ".$where1." AND ".$where2." AND ".$where3,
             'limit'         => $page['limit'],  //获取当前页的数据
 			'order'         => 'id DESC ', //必须加别名
             'count'         => true             //允许统计
-        )); 
+        ));
+
+        $con = $where." AND ".$where1." AND ".$where2." AND ".$where3;
+        $this->assign('con', $con);
+
 		$page['item_count'] = $recode_mod->getCount();   //获取统计的数据
 		$this->_format_page($page);
 		$this->assign('page_info', $page);
 		$this->assign('recode', $recodes);
-		
+        $this->assign('user_name', $user_info['user_name']);
         /* 当前位置 */
         $this->_curlocal(LANG::get('member_center'),    url('app=member'),
                          LANG::get('积分操作记录'));
@@ -1189,18 +1175,39 @@ class MemberApp extends MemberbaseApp
 					return $myjj_deposit;
 	}
 	//升级用户间接推荐的人的分销商修改
-	function jj_fxs_edit($myjj_deposit, $u, $user_mod){
-					if($myjj_deposit != ''){
+	function jj_fxs_edit($myjj_deposit, $u, $user_mod, $log_mod){
+                    $ctime = gmtime();
+					if(!empty($myjj_deposit)){
 						foreach($myjj_deposit as $value){
-							if($value['fxs'] != ''){
+							if(!empty($value['fxs'])){
 								$sql = "SELECT * FROM {$user_mod->table} WHERE `user_name` = '$value[fxs]'";
-								$zz_fxs = $user_mod->getRow($sql);
-                                $arr = explode(",",$zz_fxs['jjtjr']);
-                                if(!in_array($u['user_name'], $arr) || $zz_fxs['deposit'] != $u['user_name'] ){
+								$zz_fxs = $user_mod->getRow($sql); //我的间接下线的分销商
+                                $arr = explode(",",$zz_fxs['jjtjr']);//我的间接下线的分销商的间接下线
+                                if(!in_array($u['user_name'], $arr) && $zz_fxs['deposit'] != $u['user_name'] ){
                                     $user_mod->edit($value['user_id'], array('fxs' =>$u['user_name']));
+                                    //记录个人信息变动日志
+                                    $data = array(
+                                        'uid' => $value['user_id'],
+                                        'user_name' => $value['user_name'],
+                                        'upuser' => $u['user_name'],
+                                        'content' => "$value[user_name]的分销商更新为$u[user_name]",
+                                        'dateline' => $ctime,
+                                        'reason' => "$value[user_name]的间接上线$u[user_name]升级分销商，并且$value[user_name]之前的分销商$zz_fxs[user_name]不是$u[user_name]的下线。",
+                                    );
+                                    $log_mod->add($data);
                                 }
 							}else{
                                 $user_mod->edit($value['user_id'], array('fxs' =>$u['user_name']));
+                                //记录个人信息变动日志
+                                $data = array(
+                                    'uid' => $value['user_id'],
+                                    'user_name' => $value['user_name'],
+                                    'upuser' => $u['user_name'],
+                                    'content' => "$value[user_name]的分销商更新为$u[user_name]",
+                                    'dateline' => $ctime,
+                                    'reason' => "$value[user_name]的间接上线$u[user_name]升级分销商,并且$value[user_name]之前没有分销商。",
+                                );
+                                $log_mod->add($data);
                             }
 						}
 					}
@@ -1251,13 +1258,12 @@ class MemberApp extends MemberbaseApp
 								}
 								$are = explode(",",$zz_fxs['jjtjr']);
 								//如果我间接推荐的人的分销商是我下面的人，那么这个人的分销商保留
-								if(in_array($u['user_name'], $are) || $zz_fxs['deposit'] == $u['user_name'] ){
+								if( in_array($u['user_name'], $are) || $zz_fxs['deposit'] == $u['user_name'] ){
 									$dls_data = array('dls' =>$u['user_name'], 'jjtjr'=>$jjtjr);
 									$user_mod->edit($value['user_id'], $dls_data);
-								}
-								//如果我间接推荐的人的分销商不是我下面的人，那么这个人的分销商更新为空
-								else{
-									$dls_data = array('dls' =>$u['user_name'], 'jjtjr'=>$jjtjr, 'fxs'=>'');
+								}else{
+                                    //如果我间接推荐的人的分销商不是我下面的人，那么这个人的分销商更新为空
+                                    $dls_data = array('dls' =>$u['user_name'], 'jjtjr'=>$jjtjr, 'fxs'=>'');
 									$user_mod->edit($value['user_id'], $dls_data);
 								}
 							}
@@ -1302,6 +1308,8 @@ class MemberApp extends MemberbaseApp
 		$dls = $user_mod->getRow($sql);
 		$time = gmtime() + (3600*24*365);
 		$this->db = &db();
+        $ctime = gmtime();
+        $log_mod =& m('upchange_log');
 		
 		if($grade == 0){
 			if($dls['money'] < $money[0]){
@@ -1342,16 +1350,13 @@ class MemberApp extends MemberbaseApp
 			if($fxs == ''){
 				if($user_info['integral'] >= 1000 && $dls['integral'] >= 4000){
 					$this->_upgrade($dls, $user_info, '', $user_mod, 4000, 0, 1000, $money[1], '分销商');//升级
-					
 					//推荐人为$user_info[user_name]的分销商更新为$user_info[user_name]
-					$sql = "UPDATE {$user_mod->table} SET `fxs` = '$user_info[user_name]' WHERE `deposit` = '$user_info[user_name]'";
-					$this->db->query($sql);
-					
+					$this->db->query("UPDATE {$user_mod->table} SET `fxs` = '$user_info[user_name]' WHERE `deposit` = '$user_info[user_name]'");
+
 					//我间接推荐的人
 					$myjj_deposit = $this->get_myjj($user_info, $user_mod);
-					
 					//如果我间接推荐的人的分销商不是我下面的人，那么就更新我间接推荐的人分销商为我自己
-					$this->jj_fxs_edit($myjj_deposit, $user_info, $user_mod);
+					$this->jj_fxs_edit($myjj_deposit, $user_info, $user_mod, $log_mod);
                     $apply_mod->drop($aid);
 					$this->show_message('升级成功', '返回', '/index.php?app=member&act=upgrade' );
 					return;
@@ -1360,8 +1365,7 @@ class MemberApp extends MemberbaseApp
 					$this->show_warning('积分不足，无法完成升级！', '返回上一页', '/index.php?app=member&act=upgrade');
 					return;
 				}
-			}
-			else{
+			}else{
 				if($user_info['integral'] >= 1000 && $dls['integral'] >= 3000 && $fxs['integral'] >= 1000){
 					$this->_upgrade($dls, $user_info, $fxs, $user_mod, 3000, 1000, 1000, $money[1], '分销商');//升级
 					//推荐人为$user_info[user_name]的分销商更新为$user_info[user_name]
@@ -1372,7 +1376,7 @@ class MemberApp extends MemberbaseApp
 					$myjj_deposit = $this->get_myjj($user_info, $user_mod);
 					
 					//如果我间接推荐的人的分销商不是我的直接或者间接推荐人，那么就更新我间接推荐的人分销商为我自己
-					$this->jj_fxs_edit($myjj_deposit, $user_info, $user_mod);
+					$this->jj_fxs_edit($myjj_deposit, $user_info, $user_mod, $log_mod);
                     $apply_mod->drop($aid);
 					$this->show_message('升级成功', '返回', '/index.php?app=member&act=upgrade' );
 					return;
@@ -1769,6 +1773,35 @@ class MemberApp extends MemberbaseApp
         $data = htmlspecialchars($data);
         return $data;
     }
+
+    function exportexcel($data=array(),$title=array(),$filename='report'){
+        header("Content-type: text/html; charset=uft-8");
+        header("Content-type:application/octet-stream");
+        header("Accept-Ranges:bytes");
+        header("Content-type:application/vnd.ms-excel");
+        header("Content-Disposition:attachment;filename=".$filename.".xls");
+        header("Pragma: no-cache");
+        header("Expires: 0");
+        //导出xls 开始
+        if (!empty($title)){
+            foreach ($title as $k => $v) {
+                $title[$k]=iconv("GBK", "GBK",$v);
+            }
+            $title= implode("\t", $title);
+            echo "$title\n";
+        }
+        if (!empty($data)){
+            foreach($data as $key=>$val){
+                foreach ($val as $ck => $cv) {
+                    $data[$key][$ck]=iconv("GBK", "GBK", $cv);
+                }
+                $data[$key]=implode("\t", $data[$key]);
+
+            }
+            echo implode("\n",$data);
+        }
+    }
+
 }
 
 ?>
