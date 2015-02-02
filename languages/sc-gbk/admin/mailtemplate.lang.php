@@ -40,5 +40,7 @@ return array(
     'toseller_store_droped_notify_desc' => '<strong>[给卖家]</strong>店铺被管理员删除时的通知',
     'toseller_store_passed_notify_desc' => '<strong>[给卖家]</strong>开店申请被通过时的通知',
     'toseller_store_refused_notify_desc' => '<strong>[给卖家]</strong>开店申请被拒绝时的通知',
+	'touser_find_user_name' => '<strong>[给用户]</strong>发送用户编号到用户邮箱',
+	'touser_userinfo_desc'  => '<strong>[给推荐人，分销商，代理商]</strong>发送注册用户信息的通知',
 );
 ?>
