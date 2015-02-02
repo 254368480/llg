@@ -1,0 +1,41 @@
+{include file="header.html"}
+<link href="/public/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="/public/css/common.css" rel="stylesheet" type="text/css" />
+<div id="rightTop">
+  <p>{$lang.upgrade}</p>
+</div>
+<div class="search">
+    <form method="get">
+        <input type="hidden" name="app" value="upchange_log">
+        <label class="control-label">影响用户：</label>
+        <input type="text" name="user_name" class="form-control inline width150" value="{$user_name}">
+        <label class="control-label">升级用户：</label>
+        <input type="text" name="upuser" class="form-control inline width150" value="{$upuser}">
+        <input type="submit" value="搜索" class="btn btn-info">
+        <a href="/admin/index.php?app=upchange_log" class="btn btn-info">重置</a>
+    </form>
+</div>
+{if $list}
+<table class="table table-striped">
+	<tr>
+		<th>影响用户</th><th>升级用户</th><th>变更内容</th><th>变更时间</th><th>变更原因</th>
+	</tr>
+	<!--{foreach from=$list item=value}-->
+		<tr>
+			<td>{$value.user_name}</td>
+            <td>{$value.upuser}</td>
+            <td>{$value.content}</td>
+            <td>{$value.dateline|date}</td>
+            <td>{$value.reason}</td>
+		</tr>
+	<!--{/foreach}-->
+</table>
+{else}
+    <h1 style="text-align:center;line-height:50px;">没有该记录</h1>
+{/if}
+		<div style="clear:both"></div>
+		<div class="pageLinks">
+				{if $list}{include file=page.bottom.html}{/if}
+		</div>
+
+{include file="footer.html"}

@@ -208,6 +208,14 @@ class BackendApp extends ECBaseApp
         $this->assign('real_backend_url', site_url());
         parent::display($tpl);
     }
+
+    /*过滤用户输入字符*/
+    function checkVar($data){
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
 }
 
 /**

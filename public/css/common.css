@@ -1,0 +1,13 @@
+.inline{
+    display: inline-block;
+}
+.width150{
+    width: 150px;
+}
+.btn{
+    float: none;
+    margin: 0;
+}
+.search{
+    margin: 10px;
+}
