@@ -313,6 +313,7 @@ class UserApp extends BackendApp
 //                'phone_mob' => $_POST['phone_mob'],
                 'im_qq'     => $_POST['im_qq'],
                 'im_msn'    => $_POST['im_msn'],
+                'sfz'       => $_POST['sfz'],
 				'bank'    => $_POST['bank'],
 				'grade'    => $_POST['grade'],
 				'integral'    => $_POST['integral'],
@@ -354,6 +355,7 @@ class UserApp extends BackendApp
 			$c_use = $this->_user_mod->get_info($id);
 			
 			$user_mod =& m('member');
+            $log_mod =& m('upchange_log');
 			if($c_use['grade'] != $data['grade']){
 				$this->db = &db();
 				if($data['grade'] == '分销商'){
@@ -365,24 +367,44 @@ class UserApp extends BackendApp
 					$jj_deposit = $user_mod->getAll($sql);
 					foreach($jj_deposit as $value){
 						$arr = explode(",",$value['jjtjr']);
-						if(in_array($c_use[user_name], $arr)){
+						if(in_array($c_use['user_name'], $arr)){
 							$myjj_deposit[] = $value;
 						}			
 					}
 					
 					//如果我间接推荐的人的分销商不是我的直接或者间接推荐人，那么就更新我间接推荐的人分销商为我自己
-					if($myjj_deposit != ''){
+					if(!empty($myjj_deposit)){
+
 						foreach($myjj_deposit as $value){
-							if($value['fxs'] != ''){
+							if(!empty($value['fxs'])){
 								$sql = "SELECT * FROM {$user_mod->table} WHERE `user_name` = '$value[fxs]'";
 								$zz_fxs = $user_mod->getRow($sql);
                                 $arr = explode(",",$zz_fxs['jjtjr']);
                                 if(!in_array($c_use['user_name'], $arr) && $zz_fxs['deposit'] != $c_use['user_name']){
                                     $user_mod->edit($value['user_id'], array('fxs' =>$c_use['user_name']));
+                                    //记录个人信息变动日志
+                                    $cdata = array(
+                                        'uid' => $value['user_id'],
+                                        'user_name' => $value['user_name'],
+                                        'upuser' => $c_use['user_name'],
+                                        'content' => "$value[user_name]的分销商更新为$c_use[user_name]",
+                                        'dateline' => gmtime(),
+                                        'reason' => "$value[user_name]的间接上线$c_use[user_name]升级分销商,并且$value[user_name]之前的分销商$value[fxs]不是$c_use[user_name]的下线。",
+                                    );
+                                    $log_mod->add($cdata);
                                 }
-                            }
-                            else{
+                            }else{
                                 $user_mod->edit($value['user_id'], array('fxs' =>$c_use['user_name']));
+                                //记录个人信息变动日志
+                                $cdata = array(
+                                    'uid' => $value['user_id'],
+                                    'user_name' => $value['user_name'],
+                                    'upuser' => $c_use['user_name'],
+                                    'content' => "$value[user_name]的分销商由空更新为$c_use[user_name]",
+                                    'dateline' => gmtime(),
+                                    'reason' => "$value[user_name]的间接上线$c_use[user_name]升级分销商。",
+                                );
+                                $log_mod->add($cdata);
                             }
 						}
 					}
@@ -409,40 +431,16 @@ class UserApp extends BackendApp
 					
 					
 					//如果我间接推荐的人的分销商不是我的直接或者间接推荐人，那么就更新我间接推荐的人分销商为我自己
-					if($myjj_deposit != ''){
+					if(!empty($myjj_deposit)){
 						foreach($myjj_deposit as $value){
-							if($value[dls] != ''){
+							if(!empty($value['dls'])){
 								$sql = "SELECT * FROM {$user_mod->table} WHERE `user_name` = '$value[dls]'";
 								$zz_dls = $user_mod->getRow($sql);
 							}
-							$jjtjr = array();
 							$arr = explode(",",$zz_dls['jjtjr']);
-							if(in_array($c_use[user_name], $arr) || $zz_dls['deposit'] == $c_use[user_name] ){
-							}
-							else{
-								$array =explode(",", $value['jjtjr']);
-								if($array != ''){
-									foreach($array as $key=>$val){
-										if($val == $c_use['user_name']){
-											$mykey = $key;
-										}
-									}
-									if($mykey != ''){
-										for($i = $mykey;$i<count($array);$i++){
-											$jjtjr[] = $array[$i];
-										}
-										if(count($jjtjr) > 1){
-											$jjtjr = implode(',',$jjtjr);
-										}
-										else{
-											$jjtjr ='';
-										}
-									}
-									else{
-										$jjtjr = '';
-									}
-								}
-								if($value[fxs] != ''){
+							if(!in_array($c_use['user_name'], $arr) && $zz_dls['deposit'] != $c_use['user_name'] ){
+							    $jjtjr = substr($value['jjtjr'], strpos($value['jjtjr'], $c_use['user_name']));
+								if(!empty($value['fxs'])){
 									$sql = "SELECT * FROM {$user_mod->table} WHERE `user_name` = '$value[fxs]'";
 									$zz_fxs = $user_mod->getRow($sql);
 								}
@@ -450,10 +448,29 @@ class UserApp extends BackendApp
 								if(in_array($c_use['user_name'], $are) || $zz_fxs['deposit'] == $c_use['user_name'] ){
 									$dls_data = array('dls' =>$c_use['user_name'], 'jjtjr'=>$jjtjr);
 									$user_mod->edit($value['user_id'], $dls_data);
-								}
-								else{
+                                    //记录到日志
+                                    $cdata = array(
+                                        'uid' => $value['user_id'],
+                                        'user_name' => $value['user_name'],
+                                        'upuser' => $c_use['user_name'],
+                                        'content' => "1.$value[user_name]的代理商更新为$c_use[user_name]. 2.$value[user_name]的间接上线从$c_use[user_name]开始",
+                                        'dateline' => gmtime(),
+                                        'reason' => "$value[user_name]的间接上线$c_use[user_name]升级代理商,并且$c_use[user_name]在代理商中离$value[user_name]最近。",
+                                    );
+                                    $log_mod->add($cdata);
+								}else{
 									$dls_data = array('dls' =>$c_use['user_name'], 'fxs'=>'', 'jjtjr'=>$jjtjr);
 									$user_mod->edit($value['user_id'], $dls_data);
+                                    //记录到日志
+                                    $cdata = array(
+                                        'uid' => $value['user_id'],
+                                        'user_name' => $value['user_name'],
+                                        'upuser' => $c_use['user_name'],
+                                        'content' => "1.$value[user_name]的代理商更新为$c_use[user_name]. 2.$value[user_name]的间接上线从$c_use[user_name]开始. 3.$value[user_name]分销商更新为空",
+                                        'dateline' => gmtime(),
+                                        'reason' => "$value[user_name]的间接上线$c_use[user_name]升级代理商,并且$c_use[user_name]在代理商中离$value[user_name]最近，且$value[user_name]之前的分销商$zz_fxs[user_name]不是$c_use[user_name]的下线。",
+                                    );
+                                    $log_mod->add($cdata);
 								}
 							}
 						}

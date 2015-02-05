@@ -21,8 +21,8 @@ return array(
     'max_per_user' => '每人限购',
     'spec_price' => '规格价格',
     'sku' => '库存',
-    'price' => '原价',
-    'group_price' => '团购价',
+    'price' => '商品原价',
+    'group_price' => '团购价格',
     'spec' => '规格',
     'default_spec' => '默认规格',
     'fill_group_name' => '请填写团购名称',
@@ -72,6 +72,10 @@ return array(
     'fill_max_group_desc' => '团购说明字数不能大于255个',
     'export_ubbcode' => '导出UBB',
     'join_groupbuy' => '参与团购',
-    'copy' => '复制'
+    'copy' => '复制',
+    'integral' => "原&nbsp;&nbsp;积&nbsp;&nbsp;分",
+    'group_integral' => '团购积分',
+    'goods_name' => '商品名称',
+    'image' => '商品图片',
 );
 ?>

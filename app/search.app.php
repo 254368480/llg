@@ -245,12 +245,14 @@ class SearchApp extends MallbaseApp
         {
             $quantity = $groupbuy_mod->get_join_quantity($ids);
         }
+        $goods_mod =& m('group_goods');
         foreach ($groupbuy_list as $key => $groupbuy)
         {
+            $goods = $goods_mod->get($groupbuy['goods_id']);
             $groupbuy_list[$key]['quantity'] = empty($quantity[$key]['quantity']) ? 0 : $quantity[$key]['quantity'];
-            $groupbuy['default_image'] || $groupbuy_list[$key]['default_image'] = Conf::get('default_goods_image');
-            $groupbuy['spec_price'] = unserialize($groupbuy['spec_price']);
-            $groupbuy_list[$key]['group_price'] = $groupbuy['spec_price'][$groupbuy['default_spec']]['price'];
+            $groupbuy_list[$key]['default_image'] = $goods['image_url'];
+            $groupbuy_list[$key]['group_price'] = $goods['group_price'];
+            $groupbuy_list[$key]['group_integral'] = $goods['group_integral'];
             $groupbuy['state'] == GROUP_ON && $groupbuy_list[$key]['lefttime'] = lefttime($groupbuy['end_time']);
         }
         $this->assign('state', array(

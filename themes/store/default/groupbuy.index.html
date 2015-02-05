@@ -35,6 +35,9 @@ $(function(){
             $('input[name="link_man"]').focus();
             $('input[ectype="quantity"]').attr('disabled',true);
         }
+        var total = qty * {$goods.group_price};
+        $('p[ectype="qty"]').text("{$lang.buy_num}"+qty);
+        $('p[ectype="total"]').text("{$lang.re_money}"+"{$lang.money}"+total);
     });
     $('#close').click(function(){
         $('#info').hide();
@@ -89,7 +92,7 @@ $(function(){
             <span class="time">{$group.state_desc}</span></h2>
 
         <div class="ware_info">
-            <div class="ware_pic"><a target="_blank" href="{url app=goods&id=$group.goods_id}"><img src="{$goods.default_image}" /></a></div>
+            <div class="ware_pic"><a target="_blank" href="{url app=goods&id=$group.goods_id}"><img width="300" height="300" src="{$goods.image_url}" /></a></div>
             <form method="post" id="join_group_form" action="index.php?app=groupbuy&amp;id={$group.group_id}">
             <div class="ware_text">
                 <div class="info_particular">
@@ -131,49 +134,17 @@ $(function(){
                         </li>
                     </ul>
                 </div>
-                <div class="info_explain">{$lang.goods_name}: <a target="_blank" href="{url app=goods&id=$goods.goods_id}">{$goods.goods_name}</a></div>
-                <div class="info_table">
-                    <table>
-                        <tr>
-                            <th>{$goods.spec_name|escape}</th>
-                            <th>{$lang.original_price}</th>
-                            <th>{$lang.group_price}</th>
-                            <!-- {if $group.ican.join or $group.ican.join_info} -->
-                            <th>{$lang.buy_quantity}</th>
-                            <!-- {/if} -->
-                        </tr>
-                        <!-- {foreach from=$goods._specs item=spec} -->
-                        <tr>
-                            <td>{$spec.spec}<input ectype="spec" name="spec[]" type="hidden" class="text" value="{$spec.spec}" /><input ectype="spec_id" name="spec_id[]" type="hidden" class="text" value="{$spec.spec_id}" /></td>
-                            <td>{$spec.price|price}</td>
-                            <td>{$spec.group_price|price}</td>
-                            <!-- {if $group.ican.join or $group.ican.join_info} -->
-                            <td>
-                            <!-- {if $group.ican.join} --><input ectype='quantity' name="quantity[]" type="text" class="text" /><!-- {/if} -->
-                            <!-- {if $group.ican.join_info} -->{$spec.my_qty}<!-- {/if} -->
-                            </td>
-                            <!-- {/if} -->
-                        </tr>
-                        <!-- {/foreach} -->
-                    </table>
-                </div>
+                <div style="height: 20px;line-height: 20px">{$lang.goods_name}: <strong>{$goods.goods_name}</strong></div>
+                <div style="height: 20px;line-height: 20px">{$lang.original_price}:{$lang.money}<strike>{$goods.price}</strike></div>
+                <div style="height: 20px;line-height: 20px">{$lang.integral}: <strike>{$goods.integral}</strike></div>
+                <div style="height: 20px;line-height: 20px;color: red">{$lang.group_price}:{$lang.money} {$goods.group_price}</div>
+                <div style="height: 20px;line-height: 20px;color: red">{$lang.group_integral}: {$goods.group_integral}</div>
+
                 <div class="info_fun">
-
-
-                <div class="align">
-                        <!-- {if $group.ican.join_info} -->
-                        <span class="txt">{$lang.joined_this_groupbuy}</span>
-                        <!-- {/if} -->
-                        <!-- {if $group.ican.exit} -->
-                        <input name="exit" class="btn" type="submit" value="{$lang.exit_groupbuy}" />
-                        <!-- {/if} -->
-                        <!-- {if $group.ican.buy} -->
-                        <input name="buy" class="btn" onclick="window.location.href='index.php?app=order&goods=groupbuy&group_id={$smarty.get.id}'" type="button" value="{$lang.buy}" />
-                        <!-- {/if} -->
-                </div>
                 <!-- {if $group.ican.join} -->
-                    <div class="align">
-                        <input id="join" class="big_btn" type="button" value="" />
+                    <div>
+                        {$lang.buy_num}<input ectype="quantity" type="number" name="quantity" class="text width1" value="1" required><br>
+                        <input style="text-align: left;float: left;margin-top: 10px" id="join" class="big_btn" type="button" value="" />
                     </div>
                     <div id="info" class="ware_cen_info_fun" style="display:none">
                         <div class="ware_center_info_fun">
@@ -181,27 +152,47 @@ $(function(){
                                 <span class="dialog_title">{$lang.join_user_info}</span>
                                 <span class="close_link" title="{$lang.close}" id="close" onmouseover="this.className = 'close_hover'" onmouseout="this.className = 'close_link'"></span>                            </h1>
                             <div class="ware_cen_btn">
-
+                                <input type="hidden" name="group_price" value="{$goods.group_price}">
+                                <input type="hidden" name="group_integral" value="{$goods.group_integral}">
                                 <p class="float_layer_text">{$lang.join_tips}</p>
+                                <h2 style="height: 30px;line-height: 30px">{$lang.buyinfo}</h2>
+                                <p style="color: red" ectype="qty"></p>
+                                <p style="color: red" ectype="total"></p>
+                                <h2 style="height: 30px;line-height: 30px">{$lang.payinfo}</h2>
+                                <p>{$lang.bank}</p>
+                                <p>{$lang.alipay}</p>
+                                <h2 style="height: 30px;line-height: 30px">{$lang.userinfo}</h2>
                                 <ul class="fill_in_fun">
                                     <li>
-                                        <p class="title">{$lang.real_name}: </p>
-                                        <p><input name="link_man" type="text" class="text" /></p>
+                                        <p class="title">{$lang.real_name}</p>
+                                        <p><input name="real_name" type="text" class="text" /></p>
                                     </li>
                                     <li>
-                                        <p class="title">{$lang.tel}: </p>
+                                        <p class="title">{$lang.tel}</p>
                                         <p><input name="tel" type="text" class="text" /></p>
+                                    </li>
+                                    <li>
+                                        <p class="title">{$lang.order_num}</p>
+                                        <p><input name="order_num" type="text" class="text" placeholder="{$lang.order_num_info}" /></p>
+                                    </li>
+                                    <li>
+                                        <p class="title">{$lang.address}</p>
+                                        <p><textarea name="address" class="text"></textarea></p>
+                                    </li>
+                                    <li>
+                                        <p class="title">{$lang.remark}</p>
+                                        <p><textarea name="remark" class="text"></textarea></p>
                                     </li>
                                     <li class="btn_fun"><input name="join" type="submit" value="{$lang.join_groupbuy}" /></li>
                                 </ul>
                             </div>
                         </div>
-                        <div class="ware_cen_bottom_info_fun"></div>
                     </div>
                     <!-- {/if}  -->
                 </div>
             </div>
             </form>
+
             <div class="clear"></div>
 
         </div>

@@ -388,9 +388,9 @@ ul, ol { list-style-type:none; }
 .ware_center h1 { background: url(images/login_h1.gif); height: 30px; }
 .dialog_title { background: #fff url(images/linebox_h1_span.gif) no-repeat 3px 3px; display: block; padding: 3px 10px 3px 15px; position: absolute; color: #656565; }
 
-.ware_cen_info_fun { width: 333px; height: 199px; position: absolute; top: 50px; right: 10px; display: none-; }
-.ware_center_info_fun { width: 316px; height: 182px; padding: 7px 4px 0; position: absolute; top: 0; left: 0; z-index: 2; background: #fff; border: 3px solid #dadada; }
-.ware_cen_bottom_info_fun { width: 330px; height: 196px; position: absolute; bottom: -1px; right: -1px; z-index: 1; background: #8d8d8d; -moz-opacity: 0.5; opacity:.5; filter: alpha(opacity=50); }
+.ware_cen_info_fun { width: 333px; height: auto; position: absolute; top: -200px; right: 300px; display: none-; }
+.ware_center_info_fun { width: 316px; height: auto; padding: 7px 4px 0; position: absolute; top: 0; left: 0; z-index: 2; background: #fff; border: 3px solid #dadada; }
+.ware_cen_bottom_info_fun { width: 330px; height: 300px; position: absolute; bottom: -1px; right: -1px; z-index: 1; background: #8d8d8d; -moz-opacity: 0.5; opacity:.5; filter: alpha(opacity=50); }
 .ware_cen_info_fun h1 { background: url(images/login_h1.gif); height: 30px; }
 
 .enter { width: 404px; height: 286px; position: absolute; top: 50%; left: 50%; margin: -142px 0 0 -202px; z-index: 1000; }
@@ -420,9 +420,9 @@ ul, ol { list-style-type:none; }
 .float_layer_text { color: #b9b9b9; padding-bottom: 10px; }
 .fill_in_fun { width: 100%; overflow: hidden; padding-bottom: 10px; }
 .fill_in_fun li { width: 100%; overflow: hidden; float: left; padding-bottom: 10px; }
-.fill_in_fun li p { float: left; }
+.fill_in_fun li p {  }
 .fill_in_fun .title { color: #666; padding-top: 4px; }
-.fill_in_fun .text { width: 165px; }
+.fill_in_fun .text { width: 270px; }
 .fill_in_fun .btn_fun { padding-left: 60px; }
 .fill_in_fun .btn_fun input { border: 0; width: 75px; height: 29px; font-weight: bold; color: #c53800; background: url(images/enter_btn.gif) no-repeat; }
 

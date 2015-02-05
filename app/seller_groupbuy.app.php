@@ -1,7 +1,7 @@
 <?php
 
 /**
- *    å–å®¶å›¢è´­ç®¡ç†æ§åˆ¶å™¨
+ *    Âô¼ÒÍÅ¹º¹ÜÀí¿ØÖÆÆ÷
  *
  *    @author    Hyber
  *    @usage    none
@@ -13,8 +13,9 @@ class Seller_groupbuyApp extends StoreadminbaseApp
     var $_store_mod;
     var $_groupbuy_mod;
     var $_last_update_id;
+    var $_groupgoods_mod;
 
-    /* æ„é€ å‡½æ•° */
+    /* ¹¹Ôìº¯Êı */
     function __construct()
     {
          $this->Seller_groupbuyApp();
@@ -28,40 +29,41 @@ class Seller_groupbuyApp extends StoreadminbaseApp
         $this->_goods_mod =& m('goods');
         $this->_store_mod =& m('store');
         $this->_groupbuy_mod =& m('groupbuy');
+        $this->_groupgoods_mod =& m('group_goods');
     }
 
     function index()
     {
-        /* å–å¾—åˆ—è¡¨æ•°æ® */
+        /* È¡µÃÁĞ±íÊı¾İ */
         $conditions = $this->_get_query_conditions(array(
-            array(      //æŒ‰å›¢è´­çŠ¶æ€æœç´¢
+            array(      //°´ÍÅ¹º×´Ì¬ËÑË÷
                 'field' => 'state',
                 'name'  => 'state',
                 'handler' => 'groupbuy_state_translator',
             ),
-            array(      //æŒ‰å›¢è´­åç§°æœç´¢
+            array(      //°´ÍÅ¹ºÃû³ÆËÑË÷
                 'field' => 'group_name',
                 'name'  => 'group_name',
                 'equal' => 'LIKE',
             ),
         ));
-        // æ ‡è¯†æœ‰æ²¡æœ‰è¿‡æ»¤æ¡ä»¶
+        // ±êÊ¶ÓĞÃ»ÓĞ¹ıÂËÌõ¼ş
         if ($conditions)
         {
             $this->assign('filtered', 1);
         }
 
-        $page   =   $this->_get_page(10);    //è·å–åˆ†é¡µä¿¡æ¯
+        $page   =   $this->_get_page(10);    //»ñÈ¡·ÖÒ³ĞÅÏ¢
         $groupbuy_list = $this->_groupbuy_mod->find(
             array(
                 'join' => 'belong_goods',
                 'conditions' => 'gb.store_id=' . $this->_store_id . $conditions,
                 'order' => 'gb.group_id DESC',
-                'limit' => $page['limit'],  //è·å–å½“å‰é¡µçš„æ•°æ®
+                'limit' => $page['limit'],  //»ñÈ¡µ±Ç°Ò³µÄÊı¾İ
                 'count' => true
             )
         );
-        $page['item_count'] = $this->_groupbuy_mod->getCount();   //è·å–ç»Ÿè®¡çš„æ•°æ®
+        $page['item_count'] = $this->_groupbuy_mod->getCount();   //»ñÈ¡Í³¼ÆµÄÊı¾İ
         if ($ids = array_keys($groupbuy_list))
         {
             $quantity = $this->_groupbuy_mod->get_join_quantity($ids);
@@ -73,21 +75,23 @@ class Seller_groupbuyApp extends StoreadminbaseApp
             $groupbuy['order_count'] = empty($order_count[$key]['count']) ? 0 : $order_count[$key]['count'];
             $groupbuy['ican'] = $this->_ican($groupbuy['group_id']);
             $groupbuy_list[$key] = $groupbuy;
+            $goods = $this->_groupgoods_mod->get($groupbuy['goods_id']);
+            $groupbuy_list[$key]['default_image'] = $goods['image_url'];
             $groupbuy['default_image'] || $groupbuy_list[$key]['default_image'] = Conf::get('default_goods_image');
         }
-        /* å½“å‰ä½ç½® */
+        /* µ±Ç°Î»ÖÃ */
         $this->_curlocal(LANG::get('member_center'),    'index.php?app=member',
                          LANG::get('groupbuy_manage'), 'index.php?app=seller_groupbuy',
                          LANG::get('groupbuy_list'));
 
-        /* å½“å‰ç”¨æˆ·ä¸­å¿ƒèœå• */
+        /* µ±Ç°ÓÃ»§ÖĞĞÄ²Ëµ¥ */
         $this->_curitem('groupbuy_manage');
 
-        /* å½“å‰æ‰€å¤„å­èœå• */
+        /* µ±Ç°Ëù´¦×Ó²Ëµ¥ */
         $this->_curmenu('groupbuy_list');
         $this->_format_page($page);
         $this->_import_resource();
-        $this->assign('page_info', $page);          //å°†åˆ†é¡µä¿¡æ¯ä¼ é€’ç»™è§†å›¾ï¼Œç”¨äºå½¢æˆåˆ†é¡µæ¡
+        $this->assign('page_info', $page);          //½«·ÖÒ³ĞÅÏ¢´«µİ¸øÊÓÍ¼£¬ÓÃÓÚĞÎ³É·ÖÒ³Ìõ
         $this->assign('groupbuy_list', $groupbuy_list);
         $this->assign('state', array('all' => Lang::get('group_all'),
              'pending' => Lang::get('group_pending'),
@@ -111,15 +115,15 @@ class Seller_groupbuyApp extends StoreadminbaseApp
                 $this->show_warning('has_no_goods', 'add_goods', 'index.php?app=my_goods&act=add');
                 return;
             }
-            /* å½“å‰ä½ç½® */
+            /* µ±Ç°Î»ÖÃ */
             $this->_curlocal(LANG::get('member_center'),    'index.php?app=member',
                              LANG::get('groupbuy_manage'), 'index.php?app=seller_groupbuy',
                              LANG::get('add_groupbuy'));
 
-            /* å½“å‰ç”¨æˆ·ä¸­å¿ƒèœå• */
+            /* µ±Ç°ÓÃ»§ÖĞĞÄ²Ëµ¥ */
             $this->_curitem('groupbuy_manage');
 
-            /* å½“å‰æ‰€å¤„å­èœå• */
+            /* µ±Ç°Ëù´¦×Ó²Ëµ¥ */
             $this->_curmenu('add_groupbuy');
             $this->assign('group', array('max_per_user' => 0, 'end_time' => gmtime() + 7 * 24 * 3600));
             $this->assign('store_id', $this->_store_id);
@@ -129,7 +133,7 @@ class Seller_groupbuyApp extends StoreadminbaseApp
         }
         else
         {
-            /* æ£€æŸ¥æ•°æ® */
+            /* ¼ì²éÊı¾İ */
             if (!$this->_handle_post_data($_POST, 0))
             {
                 $this->show_warning($this->get_error());
@@ -176,28 +180,21 @@ class Seller_groupbuyApp extends StoreadminbaseApp
         }
         if (!IS_POST)
         {
-            /* å½“å‰ä½ç½® */
+            /* µ±Ç°Î»ÖÃ */
             $this->_curlocal(LANG::get('member_center'),    'index.php?app=member',
                              LANG::get('groupbuy_manage'), 'index.php?app=seller_groupbuy',
                              LANG::get('edit_groupbuy'));
 
-            /* å½“å‰ç”¨æˆ·ä¸­å¿ƒèœå• */
+            /* µ±Ç°ÓÃ»§ÖĞĞÄ²Ëµ¥ */
             $this->_curitem('groupbuy_manage');
 
-            /* å½“å‰æ‰€å¤„å­èœå• */
+            /* µ±Ç°Ëù´¦×Ó²Ëµ¥ */
             $this->_curmenu('edit_groupbuy');
 
-            /* å›¢è´­ä¿¡æ¯ */
+            /* ÍÅ¹ºĞÅÏ¢ */
             $group = $this->_groupbuy_mod->get($id);
-            $group['spec_price'] = unserialize($group['spec_price']);
             $goods = $this->_query_goods_info($group['goods_id']);
-            foreach ($goods['_specs'] as $key => $spec)
-            {
-                if (!empty($group['spec_price'][$spec['spec_id']]))
-                {
-                    $goods['_specs'][$key]['group_price'] = $group['spec_price'][$spec['spec_id']]['price'];
-                }
-            }
+
             $this->assign('group', $group);
             $this->assign('goods', $goods);
             $this->_config_seo('title', Lang::get('member_center') . ' - ' . Lang::get('edit_groupbuy'));
@@ -206,7 +203,7 @@ class Seller_groupbuyApp extends StoreadminbaseApp
         }
         else
         {
-            /* æ£€æŸ¥æ•°æ® */
+            /* ¼ì²éÊı¾İ */
             if (!$this->_handle_post_data($_POST, $id))
             {
                 $this->show_warning($this->get_error());
@@ -278,7 +275,7 @@ class Seller_groupbuyApp extends StoreadminbaseApp
             $this->show_warning('Hacking Attempt');
             return;
         }
-        /* å›¢è´­ä¿¡æ¯ */
+        /* ÍÅ¹ºĞÅÏ¢ */
         $group = $this->_groupbuy_mod->get(array(
             'conditions' => 'group_id=' . $id,
             'fields'     => 'group_name',
@@ -317,18 +314,18 @@ class Seller_groupbuyApp extends StoreadminbaseApp
         }
         if (!IS_POST)
         {
-            /* å½“å‰ä½ç½® */
+            /* µ±Ç°Î»ÖÃ */
             $this->_curlocal(LANG::get('member_center'),    'index.php?app=member',
                              LANG::get('groupbuy_manage'), 'index.php?app=seller_groupbuy',
                              LANG::get('desc_groupbuy'));
 
-            /* å½“å‰ç”¨æˆ·ä¸­å¿ƒèœå• */
+            /* µ±Ç°ÓÃ»§ÖĞĞÄ²Ëµ¥ */
             $this->_curitem('groupbuy_manage');
 
-            /* å½“å‰æ‰€å¤„å­èœå• */
+            /* µ±Ç°Ëù´¦×Ó²Ëµ¥ */
             $this->_curmenu('desc_groupbuy');
 
-            /* å›¢è´­ä¿¡æ¯ */
+            /* ÍÅ¹ºĞÅÏ¢ */
             $group = $this->_groupbuy_mod->get(array(
                 'conditions' => 'group_id=' . $id,
                 'fields'     => 'group_desc',
@@ -365,7 +362,7 @@ class Seller_groupbuyApp extends StoreadminbaseApp
             $this->show_warning('Hacking Attempt');
             return;
         }
-        /* å›¢è´­ä¿¡æ¯ */
+        /* ÍÅ¹ºĞÅÏ¢ */
         $group = $this->_groupbuy_mod->get(array(
             'conditions' => 'group_id=' . $id,
             'fields'     => 'group_desc,group_name,owner_name',
@@ -374,15 +371,15 @@ class Seller_groupbuyApp extends StoreadminbaseApp
 
         if (!IS_POST)
         {
-            /* å½“å‰ä½ç½® */
+            /* µ±Ç°Î»ÖÃ */
             $this->_curlocal(LANG::get('member_center'),    'index.php?app=member',
                              LANG::get('groupbuy_manage'), 'index.php?app=seller_groupbuy',
                              LANG::get('cancel_groupbuy'));
 
-            /* å½“å‰ç”¨æˆ·ä¸­å¿ƒèœå• */
+            /* µ±Ç°ÓÃ»§ÖĞĞÄ²Ëµ¥ */
             $this->_curitem('groupbuy_manage');
 
-            /* å½“å‰æ‰€å¤„å­èœå• */
+            /* µ±Ç°Ëù´¦×Ó²Ëµ¥ */
             $this->_curmenu('cancel_groupbuy');
 
 
@@ -395,9 +392,19 @@ class Seller_groupbuyApp extends StoreadminbaseApp
             if (!$this->_groupbuy_mod->edit($id, array('state' => GROUP_CANCELED)))
             {
                 $this->show_warning($this->_groupbuy_mod->get_error());
-
                 return;
             }
+            /*»ı·ÖÍË¸øËùÓĞÂò¼Ò*/
+            $user = ($this->visitor->info);
+            $log_mod =& m('groupbuy_log');
+            $db = &db();
+            $logs = $db->getAll("SELECT user_id,user_name,itotal FROM {$log_mod->table} WHERE group_id = $id");
+            foreach($logs as $v){
+                $db->query("UPDATE ecm_member SET integral = (integral + '$v[itotal]') WHERE user_id = '$v[user_id]' ");
+                $content = "{$group['group_name']} ÍÅ¹º»î¶¯È¡Ïû£¬ÍË»¹»ı·Ö£¡";
+                $this->addrecord($v['user_name'], $user['user_name'], $v['itotal'], $content);
+            }
+
             $content = get_msg('tobuyer_groupbuy_cancel_notify', array('reason' => $_POST['reason'], 'url' => SITE_URL . '/' . url("app=groupbuy&id=$id")));
             $this->_groupbuy_mod->sys_notice(
                 $id,
@@ -427,13 +434,18 @@ class Seller_groupbuyApp extends StoreadminbaseApp
             $this->show_warning('Hacking Attempt');
             return;
         }
-        /* å›¢è´­ä¿¡æ¯ */
+        /* ÍÅ¹ºĞÅÏ¢ */
         $group = $this->_groupbuy_mod->get(array(
             'conditions' => 'group_id=' . $id,
             'fields'     => 'group_desc, group_name, goods_id',
         ));
         $goods = $this->_query_goods_info($group['goods_id']);
         $join_list = $this->_groupbuy_mod->get_join_list($id);
+
+        $pay_status = array('Î´¸¶¿î', 'ÒÑ¸¶¿î');
+        $send_status = array('Î´·¢»õ', 'ÒÑ·¢»õ');
+        $this->assign('pays', $pay_status);
+        $this->assign('sends', $send_status);
         $this->assign('join_list', $join_list);
         $this->assign('goods', $goods);
         $this->assign('group', $group);
@@ -441,14 +453,48 @@ class Seller_groupbuyApp extends StoreadminbaseApp
         $this->display('seller_groupbuy.log.html');
     }
 
+    function editlog(){
+        if(isset($_GET['op'])) {
+            $id = empty($_GET['id']) ? 0 : intval($_GET['id']);
+            $op = $this->checkVar($_GET['op']);
+            if (!$id) {
+                $this->show_warning('no_such_groupbuy');
+                return false;
+            }
+            $log_mod =& m('groupbuy_log');
+            $log = $log_mod->get($id);
+
+            $group = $this->_groupbuy_mod->get($log['group_id']);
+            if ($this->_store_id != $group['store_id']) {
+                $this->show_warning('ÎŞ´ËÈ¨ÏŞ£¡');
+                exit;
+            }
+            if($op == 'pays') {
+                $log_mod->edit($id, array('pay_status' => 1));
+                $this->show_message('¸ü¸Ä×´Ì¬³É¹¦£¡');
+                exit;
+            }else if($op == 'sends'){
+                $log_mod->edit($id, array('send_status' => 1));
+                $this->show_message('¸ü¸Ä×´Ì¬³É¹¦£¡');
+                exit;
+            }else{
+                $this->show_warning('Î´¶¨Òå²Ù×÷£¡');
+                exit;
+            }
+        }else{
+            $this->show_warning('Î´¶¨Òå²Ù×÷£¡');
+            exit;
+        }
+    }
+
     /**
-     * æ£€æŸ¥æäº¤çš„æ•°æ®
+     * ¼ì²éÌá½»µÄÊı¾İ
      */
     function _handle_post_data($post, $id = 0)
     {
         if ($post['if_publish'] == 1 || gmstr2time($post['start_time']) <= gmtime())
         {
-            $post['start_time'] = gmtime(); //ç«‹å³å‘å¸ƒ
+            $post['start_time'] = gmtime(); //Á¢¼´·¢²¼
             $post['state'] = GROUP_ON;
         }
         else
@@ -471,49 +517,45 @@ class Seller_groupbuyApp extends StoreadminbaseApp
             return false;
         }
 
-        if (($post['goods_id'] = intval($post['goods_id'])) == 0)
-        {
-            $this->_error('fill_goods');
-            return false;
-        }
-        if (empty($post['spec_id']) || !is_array($post['spec_id']))
-        {
-            $this->_error('fill_spec');
-            return false;
-        }
-        foreach ($post['spec_id'] as $key => $val)
-        {
-            if (empty($post['group_price'][$key]))
-            {
-                $this->_error('invalid_group_price');
-                return false;
-            }
-            $spec_price[$val] = array('price' => number_format($post['group_price'][$key], 2, '.', ''));
+        $image_url = $this->_upload_images(gmtime());
+        /*²åÈëÍÅ¹ºÉÌÆ·*/
+        $data = array(
+            'goods_name' => $post['goods_name'],
+            'price' => $post['price'],
+            'integral' => $post['integral'],
+            'group_price' => $post['group_price'],
+            'group_integral' => $post['integral'],
+            'image_url' => isset($image_url) ? $image_url : ''
+        );
+        if($id > 0){
+            $group = $this->_groupbuy_mod->get($id);
+            $goods_id = $group['goods_id'];
+            $this->_groupgoods_mod->edit($goods_id, $data);
+        }else {
+            $goods_id = $this->_groupgoods_mod->add($data);
         }
 
+        /*²åÈëÍÅ¹ºĞÅÏ¢*/
         $data = array(
             'group_name' => $post['group_name'],
             'group_desc' => html_script($post['group_desc']),
             'start_time' => $post['start_time'],
             'end_time'   => $post['end_time'] - 1,
-            'goods_id'   => $post['goods_id'],
-            'spec_price' => serialize($spec_price),
+            'goods_id'   => $goods_id,
+            'spec_price' => '',
             'min_quantity' => $post['min_quantity'],
             'max_per_user' => $post['max_per_user'],
             'state'        => $post['state'],
             'store_id'     => $this->_store_id
         );
-        if ($id > 0)
-        {
+        if ($id > 0){
             $this->_groupbuy_mod->edit($id, $data);
             if ($this->_groupbuy_mod->has_error())
             {
                 $this->_error($this->_groupbuy_mod->get_error());
                 return false;
             }
-        }
-        else
-        {
+        }else{
             if (!($id = $this->_groupbuy_mod->add($data)))
             {
                 $this->_error($this->_groupbuy_mod->get_error());
@@ -537,34 +579,16 @@ class Seller_groupbuyApp extends StoreadminbaseApp
 
     function _query_goods_info($goods_id)
     {
-        $goods = $this->_goods_mod->get_info($goods_id);
-        if ($goods['spec_qty'] ==1 || $goods['spec_qty'] ==2)
-        {
-            $goods['spec_name'] = htmlspecialchars($goods['spec_name_1'] . ($goods['spec_name_2'] ? ' ' . $goods['spec_name_2'] : ''));
-        }
-        else
-        {
-            $goods['spec_name'] = Lang::get('spec');
-        }
-        foreach ($goods['_specs'] as $key => $spec)
-        {
-            if ($goods['spec_qty'] ==1 || $goods['spec_qty'] ==2)
-            {
-                $goods['_specs'][$key]['spec'] = htmlspecialchars($spec['spec_1'] . ($spec['spec_2'] ? ' ' . $spec['spec_2'] : ''));
-            }
-            else
-            {
-                $goods['_specs'][$key]['spec'] = Lang::get('default_spec');
-            }
-        }
-        $goods['default_image'] || $goods['default_image'] = Conf::get('default_goods_image');
+        $goods = $this->_groupgoods_mod->get_info($goods_id);
+
+        $goods['image_url'] || $goods['image_url'] = Conf::get('default_goods_image');
         return $goods;
     }
     function query_goods()
     {
         $goods_mod = &bm('goods', array('_store_id' => $this->_store_id));
 
-        /* æœç´¢æ¡ä»¶ */
+        /* ËÑË÷Ìõ¼ş */
         $conditions = "1 = 1";
         if (trim($_GET['goods_name']))
         {
@@ -582,7 +606,7 @@ class Seller_groupbuyApp extends StoreadminbaseApp
             $cate_ids = 0;
         }
 
-        /* å–å¾—å•†å“åˆ—è¡¨ */
+        /* È¡µÃÉÌÆ·ÁĞ±í */
         $goods_list = $goods_mod->get_list(array(
             'conditions' => $conditions . ' AND g.if_show=1 AND g.closed=0',
             'order' => 'g.add_time DESC',
@@ -606,18 +630,18 @@ class Seller_groupbuyApp extends StoreadminbaseApp
         }
         if(in_array(ACT, array('index', 'add', 'edit')))
         {
-            $resource['script'][] = array( // å¯¹è¯æ¡†
+            $resource['script'][] = array( // ¶Ô»°¿ò
                 'attr' => 'id="dialog_js"',
                 'path' => 'dialog/dialog.js'
             );
         }
         if(in_array(ACT, array('add', 'edit')))
         {
-            $resource['script'][] = array( // éªŒè¯
+            $resource['script'][] = array( // ÑéÖ¤
                 'path' => 'jquery.plugins/jquery.validate.js'
             );
         }
-        if(in_array(ACT, array('add', 'edit'))) //æ—¥å†ç›¸å…³
+        if(in_array(ACT, array('add', 'edit'))) //ÈÕÀúÏà¹Ø
         {
             $resource['script'][] = array(
                 'path' => 'jquery.ui/i18n/' . i18n_code() . '.js'
@@ -628,7 +652,7 @@ class Seller_groupbuyApp extends StoreadminbaseApp
     }
 
     /**
-     *    ä¸‰çº§èœå•
+     *    Èı¼¶²Ëµ¥
      *
      *    @author    Garbin
      *    @return    void
@@ -668,13 +692,35 @@ class Seller_groupbuyApp extends StoreadminbaseApp
         ));
         if (!$group)
         {
-            return false; // è¶Šæƒæˆ–æ²¡æœ‰è¯¥å›¢è´­
+            return false; // Ô½È¨»òÃ»ÓĞ¸ÃÍÅ¹º
         }
         if (empty($act))
         {
-            return $state_permission[$group['state']]; // è¿”å›è¯¥å›¢è´­æ­¤çŠ¶æ€æ—¶å…è®¸çš„æ“ä½œ
+            return $state_permission[$group['state']]; // ·µ»Ø¸ÃÍÅ¹º´Ë×´Ì¬Ê±ÔÊĞíµÄ²Ù×÷
         }
-        return in_array($act, $state_permission[$group['state']]) ? true : false; // è¯¥å›¢è´­æ­¤çŠ¶æ€æ˜¯å¦å…è®¸æ‰§è¡Œæ­¤æ“ä½œ
+        return in_array($act, $state_permission[$group['state']]) ? true : false; // ¸ÃÍÅ¹º´Ë×´Ì¬ÊÇ·ñÔÊĞíÖ´ĞĞ´Ë²Ù×÷
+    }
+
+    function _upload_images($name)
+    {
+        import('uploader.lib');
+
+        $file = $_FILES['image'];
+
+        if ($file['error'] != UPLOAD_ERR_OK){
+            continue;
+        }
+        $uploader = new Uploader();
+        $uploader->allowed_type(IMAGE_FILE_TYPE);
+        $uploader->addFile($file);
+        if ($uploader->file_info() === false){
+            continue;
+        }
+        $uploader->root_dir(ROOT_PATH);
+        $image_urls = $uploader->save('group_image', $name);
+
+
+        return $image_urls;
     }
 
     function export_ubbcode()
@@ -682,7 +728,7 @@ class Seller_groupbuyApp extends StoreadminbaseApp
         $code = '';
         $crlf = "\\n";
         $group_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
-        /* å›¢è´­ä¿¡æ¯ */
+        /* ÍÅ¹ºĞÅÏ¢ */
         $group = $this->_groupbuy_mod->get($group_id);
         $group['spec_price'] = unserialize($group['spec_price']);
         $goods = $this->_query_goods_info($group['goods_id']);
@@ -694,17 +740,17 @@ class Seller_groupbuyApp extends StoreadminbaseApp
             }
         }
 
-        /* é»˜è®¤å›¾ç‰‡ */
+        /* Ä¬ÈÏÍ¼Æ¬ */
         $goods['default_image'] && $code .= '[img]' . SITE_URL . '/' . $goods['default_image'] . '[/img]' . $crlf;
 
-        /* å›¢è´­åç§° */
+        /* ÍÅ¹ºÃû³Æ */
         $code .= '[b]' . Lang::get('group_name') . ':[/b]' . addslashes($group['group_name']) . $crlf ;
 
-        /* å›¢è´­è¯´æ˜ */
+        /* ÍÅ¹ºËµÃ÷ */
         $code .= '[b]' . Lang::get('group_desc') . ':[/b]' . addslashes($group['group_desc']) . $crlf;
         $code .= '[b]' . Lang::get('group_min_quantity') . ':[/b]' . $group['min_quantity'] . $crlf;
 
-        /* è§„æ ¼ */
+        /* ¹æ¸ñ */
         if ($goods['spec_qty'] == 0)
         {
             $code .= '[b]' . Lang::get('group_price') . ':[/b][color=Red]' . price2ubb($goods['_specs'][0]['group_price']) . '[/color](' . Lang::get('price') . ':' . price2ubb($goods['_specs'][0]['price']) . ')' .$crlf;
@@ -719,7 +765,7 @@ class Seller_groupbuyApp extends StoreadminbaseApp
             $code .= $crlf;
         }
 
-        /* è´­ä¹°åœ°å€ */
+        /* ¹ºÂòµØÖ· */
         $url = SITE_URL . '/' . url('app=groupbuy&id=' . $group_id);
         $url = str_replace('&amp;', '&' , $url);
         $code .= '[b]' . Lang::get('join_groupbuy') . ':[/b]' . '[url=' .$url . ']' . $url . '[/url]';

@@ -1219,6 +1219,29 @@ EOT;
         $ms->feed->add($event, $data);
     }
 
+    /*
+     * 积分变更插入到积分日志
+     */
+    function addrecord($to, $from, $int, $content){
+        $recode_mod =& m('recode');
+        $data = array(
+            'touser' => $to,
+            'fromuser' => $from,
+            'integral' => $int,
+            'time' => gmtime(),
+            'content' => $content,
+        );
+        $recode_mod->add($data);
+        $recode_mod = null;
+    }
+
+    function checkVar($data){
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
+
 }
 
 /**
@@ -1389,6 +1412,8 @@ class BaseVisitor extends Object
             return false;
         }
     }
+
+
 
 }
 ?>

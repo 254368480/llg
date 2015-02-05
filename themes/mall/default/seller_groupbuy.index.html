@@ -72,7 +72,7 @@
                         {elseif $name eq 'finished'}
                         <a href="javascript:drop_confirm('{$lang.finished_confirm}', 'index.php?app=seller_groupbuy&amp;act=finished&id={$group.group_id}');" class="finished">{$lang.finished}</a>
                         {elseif $name eq 'log'}
-                        <a href="javascript:;" dialog_id="log" dialog_title="log" dialog_width="430" ectype="dialog" uri="index.php?app=seller_groupbuy&amp;act=log&id={$group.group_id}" class="log">{$lang.log}</a>
+                        <a target="_blank" href="index.php?app=seller_groupbuy&amp;act=log&id={$group.group_id}" class="log">{$lang.log}</a>
                         {elseif $name eq 'export_ubbcode'}
                         <a  href="javascirpt:;" ectype="dialog" dialog_id="export_ubbcode" dialog_title="{$lang.export_ubbcode}" dialog_width="380" uri="{url app=seller_groupbuy&act=export_ubbcode&id=$group.group_id}" class="export">{$lang.export_ubbcode}</a>
                         {else}

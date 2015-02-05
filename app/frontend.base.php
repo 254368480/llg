@@ -742,6 +742,12 @@ class MemberbaseApp extends MallbaseApp
                     'name'  => 'my_coupon',
                     'icon'  => 'ico20',
                 ),
+                'my_groupbuy'  => array(
+                    'text'  => Lang::get('my_groupbuy'),
+                    'url'   => 'index.php?app=buyer_groupbuy',
+                    'name'  => 'my_groupbuy',
+                    'icon'  => 'ico21',
+                ),
             ),
         );
 
@@ -839,6 +845,12 @@ class MemberbaseApp extends MallbaseApp
                     'url'   => 'index.php?app=coupon',
                     'name'  => 'coupon',
                     'icon'  => 'ico19',
+            );
+            $menu['im_seller']['submenu']['groupbuy_manage'] = array(
+                'text'  => Lang::get('groupbuy_manage'),
+                'url'   => 'index.php?app=seller_groupbuy',
+                'name'  => 'groupbuy_manage',
+                'icon'  => 'ico22',
             );
         }
 
@@ -1150,6 +1162,13 @@ class StorebaseApp extends FrontendApp
         list($template_name, $style_name) = explode('|', $theme);
 
         return $style_name;
+    }
+
+    function checkVar($data){
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
     }
 	
 	

@@ -95,7 +95,7 @@ class GroupbuyModel extends BaseModel
         {
             $ids = array(intval($group_id));
         }
-        $quantity = $this->db->getAllWithIndex("SELECT group_id,sum(quantity) as quantity FROM ". DB_PREFIX ."groupbuy_log  WHERE group_id " . db_create_in($ids) . "GROUP BY group_id", array('group_id'));
+        $quantity = $this->db->getAllWithIndex("SELECT group_id,sum(quantity) as quantity FROM ". DB_PREFIX ."groupbuy_log  WHERE pay_status = 1 AND group_id " . db_create_in($ids) . "GROUP BY group_id", array('group_id'));
         if (is_array($group_id))
         {
             foreach ($ids as $id)

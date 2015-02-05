@@ -38,10 +38,10 @@ $(function(){
             end_time      : {
                 required     : true
             },
-            goods_id      : {
+            /*goods_id      : {
                 required   :true,
                 min    : 1
-            },
+            },*/
             min_quantity :{
                 required   :true,
                 min    :1
@@ -57,10 +57,10 @@ $(function(){
             end_time       : {
                 required     : '{$lang.fill_end_time}'
             },
-            goods_id      : {
+            /*goods_id      : {
                 required:  '{$lang.fill_goods}',
                 min   : '{$lang.fill_goods}'
-            },
+            },*/
             min_quantity: {
                 required : '{$lang.fill_min_quantity}',
                 min   : '{$lang.fill_min_quantity}'
@@ -163,7 +163,7 @@ function query_spec(goods_id){
         <div id="seller_groupbuy_form" class="wrap">
 
             <div class="public">
-                <form method="post" id="group_form">
+                <form method="post" id="group_form" enctype="multipart/form-data">
                     <div class="information_index">
                         <h4>{$lang.groupbuy_basic_info}</h4>
                         <div class="add_wrap">
@@ -203,13 +203,8 @@ function query_spec(goods_id){
                         <div class="add_wrap">
 
                             <div class="assort">
-                                <p class="txt">{$lang.select_goods}:
-                                {if !$goods}
-                                    <input gs_id="goods_id" gs_name="goods_name" gs_callback="gs_callback" gs_title="gselector" gs_width="480" gs_type="store" gs_store_id="{$store_id}" ectype="gselector" type="text" name="goods_name" id="goods_name" value="{$group.goods_name|escape}" class="text" /> <span class="red">*</span>
-                                {else}
-                                    {$goods.goods_name|escape}
-                                {/if}
-                                <input type="hidden" id="goods_id" name="goods_id" value="{$group.goods_id}" />
+                                <p class="txt">{$lang.goods_name}:
+                                <input type="text" name="goods_name" class="text width3" value="{$goods.goods_name}">
                                 </p>
                             </div>
                             <div class="assort">
@@ -221,25 +216,31 @@ function query_spec(goods_id){
                                 <input type="text" name="max_per_user" value="{$group.max_per_user}" class="text width2" /><span class="field_notice">{$lang.note_max_per_user}</span></p>
                             </div>
                             <div class="assort">
-                                <p class="txt" style="float:left">{$lang.spec_price}:
+                                <p class="txt">{$lang.price}:
+                                    <input type="text" name="price" class="text width2" value="{$goods.price}">
                                 </p>
-                                    <div id="group_spec" class="spec" style="float:left">
-                                        <ul class="th">
-                                            <li id="spec_name" class="distance2">{if $goods}{$goods.spec_name}{else}{$lang.spec}{/if}</li>
-                                            <li class="distance1">{$lang.stock}</li>
-                                            <li class="distance1">{$lang.price}</li>
-                                            <li class="distance1">{$lang.group_price}</li>
-                                        </ul>
-                                        {foreach from=$goods._specs item=spec}
-                                        <ul ectype="spec_item" class="td">
-                                        <li class="distance2"><input name="spec_id[]" value="{$spec.spec_id}" type="checkbox"{if $spec.group_price} checked="checked"{/if} />{$spec.spec}</li>
-                                        <li class="distance1">{$spec.stock}</li>
-                                        <li class="distance1">{$spec.price}</li>
-                                        <li><input ectype="group_price" name="group_price[]" type="text" class="text width2" value="{$spec.group_price}"/></li>
-                                        </ul>
-                                        {/foreach}
-                                    </div>
                             </div>
+                            <div class="assort">
+                                <p class="txt">{$lang.group_price}:
+                                    <input type="text" name="group_price" class="text width2" value="{$goods.group_price}">
+                                </p>
+                            </div>
+                            <div class="assort">
+                                <p class="txt">{$lang.integral}:
+                                    <input type="text" name="integral" class="text width2" value="{$goods.integral}">
+                                </p>
+                            </div>
+                            <div class="assort">
+                                <p class="txt">{$lang.group_integral}:
+                                    <input type="text" name="group_integral" class="text width2" value="{$goods.group_integral}">
+                                </p>
+                            </div>
+                            <div class="assort">
+                                <p class="txt">{$lang.image}:
+                                    <input type="file" name="image" value="">
+                                </p>
+                            </div>
+
                             <div class="issuance"><input id="submit_group" type="submit" class="btn" value="{$lang.submit}" /></div>
                         </div>
                     </div>

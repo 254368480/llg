@@ -317,8 +317,8 @@ class StoreApp extends StorebaseApp
         foreach ($groupbuy_list as $key => $_g)
         {
             empty($groupbuy_list[$key]['default_image']) && $groupbuy_list[$key]['default_image'] = Conf::get('default_goods_image');
-            $tmp = current(unserialize($_g['spec_price']));
-            $groupbuy_list[$key]['price'] = $tmp['price'];
+            //$tmp = current(unserialize($_g['spec_price']));
+            //$groupbuy_list[$key]['price'] = $tmp['price'];
             $groupbuy_list[$key]['lefttime'] = lefttime($_g['end_time']);
         }
 

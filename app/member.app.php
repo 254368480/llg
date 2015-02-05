@@ -1176,99 +1176,95 @@ class MemberApp extends MemberbaseApp
 	}
 	//升级用户间接推荐的人的分销商修改
 	function jj_fxs_edit($myjj_deposit, $u, $user_mod, $log_mod){
-                    $ctime = gmtime();
-					if(!empty($myjj_deposit)){
-						foreach($myjj_deposit as $value){
-							if(!empty($value['fxs'])){
-								$sql = "SELECT * FROM {$user_mod->table} WHERE `user_name` = '$value[fxs]'";
-								$zz_fxs = $user_mod->getRow($sql); //我的间接下线的分销商
-                                $arr = explode(",",$zz_fxs['jjtjr']);//我的间接下线的分销商的间接下线
-                                if(!in_array($u['user_name'], $arr) && $zz_fxs['deposit'] != $u['user_name'] ){
-                                    $user_mod->edit($value['user_id'], array('fxs' =>$u['user_name']));
-                                    //记录个人信息变动日志
-                                    $data = array(
-                                        'uid' => $value['user_id'],
-                                        'user_name' => $value['user_name'],
-                                        'upuser' => $u['user_name'],
-                                        'content' => "$value[user_name]的分销商更新为$u[user_name]",
-                                        'dateline' => $ctime,
-                                        'reason' => "$value[user_name]的间接上线$u[user_name]升级分销商，并且$value[user_name]之前的分销商$zz_fxs[user_name]不是$u[user_name]的下线。",
-                                    );
-                                    $log_mod->add($data);
-                                }
-							}else{
-                                $user_mod->edit($value['user_id'], array('fxs' =>$u['user_name']));
-                                //记录个人信息变动日志
-                                $data = array(
-                                    'uid' => $value['user_id'],
-                                    'user_name' => $value['user_name'],
-                                    'upuser' => $u['user_name'],
-                                    'content' => "$value[user_name]的分销商更新为$u[user_name]",
-                                    'dateline' => $ctime,
-                                    'reason' => "$value[user_name]的间接上线$u[user_name]升级分销商,并且$value[user_name]之前没有分销商。",
-                                );
-                                $log_mod->add($data);
-                            }
-						}
-					}
+        $ctime = gmtime();
+        if(!empty($myjj_deposit)){
+            foreach($myjj_deposit as $value){
+                if(!empty($value['fxs'])){
+                    $sql = "SELECT * FROM {$user_mod->table} WHERE `user_name` = '$value[fxs]'";
+                    $zz_fxs = $user_mod->getRow($sql); //我的间接下线的分销商
+                    $arr = explode(",",$zz_fxs['jjtjr']);//我的间接下线的分销商的间接下线
+                    if(!in_array($u['user_name'], $arr) && $zz_fxs['deposit'] != $u['user_name'] ){
+                        $user_mod->edit($value['user_id'], array('fxs' =>$u['user_name']));
+                        //记录个人信息变动日志
+                        $data = array(
+                            'uid' => $value['user_id'],
+                            'user_name' => $value['user_name'],
+                            'upuser' => $u['user_name'],
+                            'content' => "$value[user_name]的分销商更新为$u[user_name]",
+                            'dateline' => $ctime,
+                            'reason' => "$value[user_name]的间接上线$u[user_name]升级分销商，并且$value[user_name]之前的分销商$zz_fxs[user_name]不是$u[user_name]的下线。",
+                        );
+                        $log_mod->add($data);
+                    }
+                }else{
+                    $user_mod->edit($value['user_id'], array('fxs' =>$u['user_name']));
+                    //记录个人信息变动日志
+                    $data = array(
+                        'uid' => $value['user_id'],
+                        'user_name' => $value['user_name'],
+                        'upuser' => $u['user_name'],
+                        'content' => "$value[user_name]的分销商更新为$u[user_name]",
+                        'dateline' => $ctime,
+                        'reason' => "$value[user_name]的间接上线$u[user_name]升级分销商,并且$value[user_name]之前没有分销商。",
+                    );
+                    $log_mod->add($data);
+                }
+            }
+        }
 	}
 	//升级代理商用户 间接推荐的人的 代理商的 修改方法
-	function jj_dls_edit($myjj_deposit, $u, $user_mod){
-					if($myjj_deposit != ''){  
-						foreach($myjj_deposit as $value){
-							if($value[dls] != ''){     
-								//我间接推荐的人的代理商
-								$sql = "SELECT * FROM {$user_mod->table} WHERE `user_name` = '$value[dls]'";
-								$zz_dls = $user_mod->getRow($sql);
-							}
-							$jjtjr = array();
-							$arr = explode(",",$zz_dls['jjtjr']); 
-							//如果我间接推荐的人的代理商是我下面的人，那么就不管这个人！
-							if(in_array($u['user_name'], $arr) || $zz_dls['deposit'] == $u['user_name'] ){
-							}
-							//如果我间接推荐的人的代理商不是我下面的人,那么就根据情况更新dls,fxs,jjtjr的信息
-							else{
-								//我间接推荐的人的间接推荐人信息更新为 从我脱离，我成为间接推荐人的开始
-								$array =explode(",", $value['jjtjr']);  
-								if($array != ''){
-									foreach($array as $key=>$val){
-										if($val == $u['user_name']){
-											$mykey = $key;
-										}
-									}
-									if($mykey != ''){
-										for($i = $mykey;$i<count($array);$i++){
-											$jjtjr[] = $array[$i];
-										}
-										if(count($jjtjr) > 1){
-											$jjtjr = implode(',',$jjtjr);
-										}
-										else{
-											$jjtjr ='';
-										}
-									}
-									else{
-										$jjtjr = '';
-									}
-								}
-								//获取我间接推荐的人的分销商
-								if($value[fxs] != ''){
-									$sql = "SELECT * FROM {$user_mod->table} WHERE `user_name` = '$value[fxs]'";
-									$zz_fxs = $user_mod->getRow($sql);
-								}
-								$are = explode(",",$zz_fxs['jjtjr']);
-								//如果我间接推荐的人的分销商是我下面的人，那么这个人的分销商保留
-								if( in_array($u['user_name'], $are) || $zz_fxs['deposit'] == $u['user_name'] ){
-									$dls_data = array('dls' =>$u['user_name'], 'jjtjr'=>$jjtjr);
-									$user_mod->edit($value['user_id'], $dls_data);
-								}else{
-                                    //如果我间接推荐的人的分销商不是我下面的人，那么这个人的分销商更新为空
-                                    $dls_data = array('dls' =>$u['user_name'], 'jjtjr'=>$jjtjr, 'fxs'=>'');
-									$user_mod->edit($value['user_id'], $dls_data);
-								}
-							}
-						}
-					}
+	function jj_dls_edit($myjj_deposit, $u, $user_mod, $log_mod){
+        $ctime = gmtime();
+        if(!empty($myjj_deposit)){
+            foreach($myjj_deposit as $value){
+                if(!empty($value['dls'])){
+                    //我的间接下线的代理商
+                    $sql = "SELECT * FROM {$user_mod->table} WHERE `user_name` = '$value[dls]'";
+                    $zz_dls = $user_mod->getRow($sql);
+                }
+                $arr = explode(",",$zz_dls['jjtjr']);
+                //如果我间接下线的代理商不是我下面的人，那么就更新信息！
+                if(!in_array($u['user_name'], $arr) && $zz_dls['deposit'] != $u['user_name'] ){
+                    //我间接推荐的人的间接推荐人信息更新为 从我脱离，我成为间接推荐人的开始
+                    $jjtjr = substr($value['jjtjr'], strpos($value['jjtjr'], $u['user_name']));
+                    //获取我间接推荐的人的分销商
+                    if(!empty($value['fxs'])){
+                        $sql = "SELECT * FROM {$user_mod->table} WHERE `user_name` = '$value[fxs]'";
+                        $zz_fxs = $user_mod->getRow($sql);
+                    }
+                    $are = explode(",",$zz_fxs['jjtjr']);
+                    //如果我间接推荐的人的分销商是我下面的人，那么这个人的分销商保留
+                    if( in_array($u['user_name'], $are) || $zz_fxs['deposit'] == $u['user_name'] ){
+                        $dls_data = array('dls' =>$u['user_name'], 'jjtjr'=>$jjtjr);
+                        $user_mod->edit($value['user_id'], $dls_data);
+                        //记录到日志
+                        $data = array(
+                            'uid' => $value['user_id'],
+                            'user_name' => $value['user_name'],
+                            'upuser' => $u['user_name'],
+                            'content' => "1.$value[user_name]的代理商更新为$u[user_name]. 2.$value[user_name]的间接上线从$u[user_name]开始",
+                            'dateline' => $ctime,
+                            'reason' => "$value[user_name]的间接上线$u[user_name]升级代理商,并且$u[user_name]在代理商中离$value[user_name]最近。",
+                        );
+                        $log_mod->add($data);
+                    }else{
+                        //如果我间接推荐的人的分销商不是我下面的人，那么这个人的分销商更新为空
+                        $dls_data = array('dls' =>$u['user_name'], 'jjtjr'=>$jjtjr, 'fxs'=>'');
+                        $user_mod->edit($value['user_id'], $dls_data);
+                        //记录到日志
+                        $data = array(
+                            'uid' => $value['user_id'],
+                            'user_name' => $value['user_name'],
+                            'upuser' => $u['user_name'],
+                            'content' => "1.$value[user_name]的代理商更新为$u[user_name]. 2.$value[user_name]的间接上线从$u[user_name]开始. 3.$value[user_name]分销商更新为空",
+                            'dateline' => $ctime,
+                            'reason' => "$value[user_name]的间接上线$u[user_name]升级代理商,并且$u[user_name]在代理商中离$value[user_name]最近，且$value[user_name]之前的分销商$zz_fxs[user_name]不是$u[user_name]的下线。",
+                        );
+                        $log_mod->add($data);
+                    }
+                }
+            }
+        }
 	}
 	/**
      *    用户升级
@@ -1397,22 +1393,17 @@ class MemberApp extends MemberbaseApp
 			if($fxs == ''){
 				if($user_info['integral'] >= 2500 && $dls['integral'] >= 17500){
 					$this->_upgrade($dls, $user_info, '', $user_mod, 17500, 0, 2500, $money[2], '代理商');//升级
-					
 					//推荐人为$user_info[user_name]的代理商更新为$user_info[user_name]
-					
 					$sql = "UPDATE {$user_mod->table} SET `dls` = '$user_info[user_name]' WHERE `deposit` = '$user_info[user_name]'";
 					$this->db->query($sql);
 					$sql = "UPDATE {$user_mod->table} SET `jjtjr` = '' WHERE `deposit` = '$user_info[user_name]'";
 					$this->db->query($sql);
 					$sql = "UPDATE {$user_mod->table} SET `fxs` = '' WHERE `deposit` = '$user_info[user_name]'";
 					$this->db->query($sql);
-				
-					
 					//我间接推荐的人
 					$myjj_deposit = $this->get_myjj($user_info, $user_mod);
-					
 					//如果我间接推荐的人的分销商不是我的直接或者间接推荐人，那么就更新我间接推荐的人分销商为我自己
-					$this->jj_dls_edit($myjj_deposit, $user_info, $user_mod);
+					$this->jj_dls_edit($myjj_deposit, $user_info, $user_mod, $log_mod);
                     $apply_mod->drop($aid);
 					$this->show_message('升级成功', '返回', '/index.php?app=member&act=upgrade' );
 					return;
@@ -1421,8 +1412,7 @@ class MemberApp extends MemberbaseApp
 					$this->show_warning('积分不足，无法完成升级！', '返回上一页', '/index.php?app=member&act=upgrade');
 					return;
 				}
-			}
-			else{
+			}else{
 				if($user_info['integral'] >= 2500 && $dls['integral'] >= 15000 && $fxs['integral'] >= 2500){
 					$this->_upgrade($dls, $user_info, $fxs, $user_mod, 15000, 2500, 2500, $money[2], '代理商');//升级
 					
@@ -1439,7 +1429,7 @@ class MemberApp extends MemberbaseApp
 					$myjj_deposit = $this->get_myjj($user_info, $user_mod);
 					
 					//如果我间接推荐的人的分销商不是我的直接或者间接推荐人，那么就更新我间接推荐的人分销商为我自己
-					$this->jj_dls_edit($myjj_deposit, $user_info, $user_mod);
+					$this->jj_dls_edit($myjj_deposit, $user_info, $user_mod, $log_mod);
                     $apply_mod->drop($aid);
 					$this->show_message('升级成功', '返回', '/index.php?app=member&act=upgrade' );
 					return;
