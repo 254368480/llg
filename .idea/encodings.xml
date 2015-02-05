@@ -1,8 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="true">
+    <file url="file://$PROJECT_DIR$/admin/app/advert.app.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/admin/app/upchange_log.app.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/admin/app/upgrade.app.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/admin/app/user.app.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/admin/templates/int.index.html" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/admin/templates/upchange_log.index.html" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/admin/templates/user.form.html" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/admin/templates/user.index.html" charset="GBK" />
     <file url="file://$PROJECT_DIR$/app/frontend.base.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/groupbuy.app.php" charset="GBK" />
     <file url="file://$PROJECT_DIR$/app/member.app.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/app/seller_groupbuy.app.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/languages/sc-gbk/admin/acategory.lang.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/languages/sc-gbk/admin/admin.lang.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/languages/sc-gbk/admin/common.lang.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/languages/sc-gbk/admin/setting.lang.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/languages/sc-gbk/admin/store.lang.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/languages/sc-gbk/admin/template.lang.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/languages/sc-gbk/admin/user.lang.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/languages/sc-gbk/groupbuy.lang.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/languages/sc-gbk/seller_groupbuy.lang.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/themes/mall/default/search.groupbuy.html" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/themes/mall/default/seller_groupbuy.log.html" charset="GBK" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

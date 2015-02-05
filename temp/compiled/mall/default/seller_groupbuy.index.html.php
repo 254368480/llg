@@ -78,7 +78,7 @@ if ($this->_foreach['_group_f']['total'] > 0):
                         <?php elseif ($this->_var['name'] == 'finished'): ?>
                         <a href="javascript:drop_confirm('该操作将要把团购设置为成功状态，您确定要完成吗？', 'index.php?app=seller_groupbuy&amp;act=finished&id=<?php echo $this->_var['group']['group_id']; ?>');" class="finished">完成</a>
                         <?php elseif ($this->_var['name'] == 'log'): ?>
-                        <a href="javascript:;" dialog_id="log" dialog_title="log" dialog_width="430" ectype="dialog" uri="index.php?app=seller_groupbuy&amp;act=log&id=<?php echo $this->_var['group']['group_id']; ?>" class="log">订购情况</a>
+                        <a target="_blank" href="index.php?app=seller_groupbuy&amp;act=log&id=<?php echo $this->_var['group']['group_id']; ?>" class="log">订购情况</a>
                         <?php elseif ($this->_var['name'] == 'export_ubbcode'): ?>
                         <a  href="javascirpt:;" ectype="dialog" dialog_id="export_ubbcode" dialog_title="导出UBB" dialog_width="380" uri="<?php echo url('app=seller_groupbuy&act=export_ubbcode&id=' . $this->_var['group']['group_id']. ''); ?>" class="export">导出UBB</a>
                         <?php else: ?>

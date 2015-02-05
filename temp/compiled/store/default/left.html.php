@@ -36,10 +36,10 @@
                 </p>
                 <?php endif; ?>
                 <?php if ($this->_var['store']['address']): ?>
-                <p>详细地址: <?php echo htmlspecialchars($this->_var['store']['address']); ?></p>
+                <p>收货地址：: <?php echo htmlspecialchars($this->_var['store']['address']); ?></p>
                 <?php endif; ?>
                 <?php if ($this->_var['store']['tel']): ?>
-                <p>联系电话: <?php echo htmlspecialchars($this->_var['store']['tel']); ?></p>
+                <p>联系电话：: <?php echo htmlspecialchars($this->_var['store']['tel']); ?></p>
                 <?php endif; ?>
                 <p class="kf">
                     <?php if ($this->_var['store']['im_qq']): ?>

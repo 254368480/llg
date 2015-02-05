@@ -1,7 +1,7 @@
 <?php
 /**
  *  @Created By ECMall PhpCacheServer
- *  @Time:2014-11-24 02:40:27
+ *  @Time:2015-02-04 09:51:00
  */
 
 if(filemtime(__FILE__) + 86400 < time())return false;
@@ -35,7 +35,7 @@ return array (
       'nav_id' => '5',
       'type' => 'middle',
       'title' => '天天免费淘',
-      'link' => 'http://www.linglegou.com/index.php?app=store&id=275&act=search&cate_id=2836',
+      'link' => 'http://www.linglegou.com/index.php?app=goods&id=521',
       'sort_order' => '3',
       'open_new' => '1',
     ),
@@ -56,6 +56,15 @@ return array (
       'link' => 'http://www.linglegou.com/index.php?app=store&id=275&act=search&cate_id=1218',
       'sort_order' => '255',
       'open_new' => '1',
+    ),
+    5 => 
+    array (
+      'nav_id' => '8',
+      'type' => 'middle',
+      'title' => '团购列表',
+      'link' => '/index.php?app=search&act=groupbuy',
+      'sort_order' => '255',
+      'open_new' => '0',
     ),
   ),
   'footer' => 

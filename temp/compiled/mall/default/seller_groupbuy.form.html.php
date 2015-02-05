@@ -38,10 +38,10 @@ $(function(){
             end_time      : {
                 required     : true
             },
-            goods_id      : {
+            /*goods_id      : {
                 required   :true,
                 min    : 1
-            },
+            },*/
             min_quantity :{
                 required   :true,
                 min    :1
@@ -57,10 +57,10 @@ $(function(){
             end_time       : {
                 required     : '请填写结束时间'
             },
-            goods_id      : {
+            /*goods_id      : {
                 required:  '请先搜索团购商品',
                 min   : '请先搜索团购商品'
-            },
+            },*/
             min_quantity: {
                 required : '请正确填写成团件数',
                 min   : '请正确填写成团件数'
@@ -163,7 +163,7 @@ function query_spec(goods_id){
         <div id="seller_groupbuy_form" class="wrap">
 
             <div class="public">
-                <form method="post" id="group_form">
+                <form method="post" id="group_form" enctype="multipart/form-data">
                     <div class="information_index">
                         <h4>团购基本信息</h4>
                         <div class="add_wrap">
@@ -203,13 +203,8 @@ function query_spec(goods_id){
                         <div class="add_wrap">
 
                             <div class="assort">
-                                <p class="txt">选择商品:
-                                <?php if (! $this->_var['goods']): ?>
-                                    <input gs_id="goods_id" gs_name="goods_name" gs_callback="gs_callback" gs_title="gselector" gs_width="480" gs_type="store" gs_store_id="<?php echo $this->_var['store_id']; ?>" ectype="gselector" type="text" name="goods_name" id="goods_name" value="<?php echo htmlspecialchars($this->_var['group']['goods_name']); ?>" class="text" /> <span class="red">*</span>
-                                <?php else: ?>
-                                    <?php echo htmlspecialchars($this->_var['goods']['goods_name']); ?>
-                                <?php endif; ?>
-                                <input type="hidden" id="goods_id" name="goods_id" value="<?php echo $this->_var['group']['goods_id']; ?>" />
+                                <p class="txt">商品名称:
+                                <input type="text" name="goods_name" class="text width3" value="<?php echo $this->_var['goods']['goods_name']; ?>">
                                 </p>
                             </div>
                             <div class="assort">
@@ -221,27 +216,31 @@ function query_spec(goods_id){
                                 <input type="text" name="max_per_user" value="<?php echo $this->_var['group']['max_per_user']; ?>" class="text width2" /><span class="field_notice">每个参团者最多能订购的件数，0为不限制</span></p>
                             </div>
                             <div class="assort">
-                                <p class="txt" style="float:left">规格价格:
+                                <p class="txt">商品原价:
+                                    <input type="text" name="price" class="text width2" value="<?php echo $this->_var['goods']['price']; ?>">
                                 </p>
-                                    <div id="group_spec" class="spec" style="float:left">
-                                        <ul class="th">
-                                            <li id="spec_name" class="distance2"><?php if ($this->_var['goods']): ?><?php echo $this->_var['goods']['spec_name']; ?><?php else: ?>规格<?php endif; ?></li>
-                                            <li class="distance1">库存</li>
-                                            <li class="distance1">原价</li>
-                                            <li class="distance1">团购价</li>
-                                        </ul>
-                                        <?php $_from = $this->_var['goods']['_specs']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }; $this->push_vars('', 'spec');if (count($_from)):
-    foreach ($_from AS $this->_var['spec']):
-?>
-                                        <ul ectype="spec_item" class="td">
-                                        <li class="distance2"><input name="spec_id[]" value="<?php echo $this->_var['spec']['spec_id']; ?>" type="checkbox"<?php if ($this->_var['spec']['group_price']): ?> checked="checked"<?php endif; ?> /><?php echo $this->_var['spec']['spec']; ?></li>
-                                        <li class="distance1"><?php echo $this->_var['spec']['stock']; ?></li>
-                                        <li class="distance1"><?php echo $this->_var['spec']['price']; ?></li>
-                                        <li><input ectype="group_price" name="group_price[]" type="text" class="text width2" value="<?php echo $this->_var['spec']['group_price']; ?>"/></li>
-                                        </ul>
-                                        <?php endforeach; endif; unset($_from); ?><?php $this->pop_vars();; ?>
-                                    </div>
                             </div>
+                            <div class="assort">
+                                <p class="txt">团购价格:
+                                    <input type="text" name="group_price" class="text width2" value="<?php echo $this->_var['goods']['group_price']; ?>">
+                                </p>
+                            </div>
+                            <div class="assort">
+                                <p class="txt">原&nbsp;&nbsp;积&nbsp;&nbsp;分:
+                                    <input type="text" name="integral" class="text width2" value="<?php echo $this->_var['goods']['integral']; ?>">
+                                </p>
+                            </div>
+                            <div class="assort">
+                                <p class="txt">团购积分:
+                                    <input type="text" name="group_integral" class="text width2" value="<?php echo $this->_var['goods']['group_integral']; ?>">
+                                </p>
+                            </div>
+                            <div class="assort">
+                                <p class="txt">商品图片:
+                                    <input type="file" name="image" value="">
+                                </p>
+                            </div>
+
                             <div class="issuance"><input id="submit_group" type="submit" class="btn" value="提交" /></div>
                         </div>
                     </div>

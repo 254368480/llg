@@ -1,7 +1,7 @@
 <?php
 /**
  *  @Created By ECMall PhpCacheServer
- *  @Time:2014-11-24 04:20:34
+ *  @Time:2015-02-04 09:51:07
  */
 
 if(filemtime(__FILE__) + 3600 < time())return false;
@@ -9331,6 +9331,14 @@ return array (
             array (
             ),
           ),
+          7 => 
+          array (
+            'id' => '2929',
+            'value' => '护具',
+            'children' => 
+            array (
+            ),
+          ),
         ),
       ),
       2 => 
@@ -10875,6 +10883,30 @@ return array (
             array (
             ),
           ),
+        ),
+      ),
+    ),
+  ),
+  17 => 
+  array (
+    'id' => '2932',
+    'value' => '找工作',
+    'children' => 
+    array (
+      0 => 
+      array (
+        'id' => '2933',
+        'value' => '全职',
+        'children' => 
+        array (
+        ),
+      ),
+      1 => 
+      array (
+        'id' => '2934',
+        'value' => '兼职',
+        'children' => 
+        array (
         ),
       ),
     ),

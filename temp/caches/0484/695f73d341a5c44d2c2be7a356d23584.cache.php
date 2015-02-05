@@ -1,7 +1,7 @@
 <?php
 /**
  *  @Created By ECMall PhpCacheServer
- *  @Time:2014-07-01 06:30:36
+ *  @Time:2015-02-05 00:50:09
  */
 
 if(filemtime(__FILE__) + 1800 < time())return false;
@@ -20,15 +20,15 @@ return array (
   'apply_remark' => '',
   'credit_value' => '6',
   'praise_rate' => '85.71',
-  'domain' => 'tianwei',
+  'domain' => '',
   'state' => '1',
-  'close_reason' => '关闭！',
+  'close_reason' => '',
   'add_time' => '1249543819',
   'end_time' => '0',
   'certification' => '',
   'sort_order' => '9',
   'recommended' => '1',
-  'theme' => 'default|style6',
+  'theme' => 'default|default',
   'store_banner' => '',
   'store_logo' => 'data/files/store_3/other/store_logo.png',
   'description' => '<pre id="best-content-467178325" class="best-text mb-10">迎您光临&ldquo;&times;&times;&times;&times;店""！我的拍拍小店刚刚开张，还需要您和您的朋友多多<a class="inner-link decor-none" rel="nofollow" href="http://zhidao.baidu.com/search?word=%E6%83%A0%E9%A1%BE&amp;fr=qb_search_exp&amp;ie=utf8" target="_blank">惠顾</a>哦。希望您能找到自己喜欢的商品，谢谢光临!~~~ </pre>',
@@ -43,7 +43,7 @@ return array (
   'ibangkf' => 'qycxcy-club',
   'user_name' => 'seller',
   'email' => 'seller@ecmall.com',
-  'credit_image' => 'http://127.0.0.2/themes/store/default/styles/style6/images/heart_1.gif',
+  'credit_image' => 'http://www.llg.com/themes/store/default/styles/default/images/heart_1.gif',
   'store_owner' => 
   array (
     'user_id' => '3',
@@ -61,17 +61,17 @@ return array (
     'im_yahoo' => NULL,
     'im_aliww' => NULL,
     'reg_time' => '1399194729',
-    'last_login' => '1404195754',
+    'last_login' => '1423035727',
     'last_ip' => '127.0.0.1',
-    'logins' => '106',
+    'logins' => '144',
     'ugrade' => '0',
     'portrait' => NULL,
     'outer_id' => '0',
     'activation' => NULL,
     'feed_config' => '',
     'grade' => '代理商',
-    'integral' => '8001',
-    'money' => '3220',
+    'integral' => '16201',
+    'money' => '5140',
     'bank' => '0',
     'deposit' => '公司',
     'td_int' => '0',
@@ -97,7 +97,7 @@ return array (
       'article_id' => '40',
     ),
   ),
-  'goods_count' => '31',
+  'goods_count' => '29',
   'store_gcates' => 
   array (
     0 => 
@@ -183,7 +183,6 @@ return array (
   ),
   'functions' => 
   array (
-    'subdomain' => 'subdomain',
     'editor_multimedia' => 'editor_multimedia',
     'coupon' => 'coupon',
     'groupbuy' => 'groupbuy',

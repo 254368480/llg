@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ea231c21-0334-439e-af58-3c1014481a48" name="Default" comment="" />
+    <list default="true" id="891b692e-5a66-41fd-855e-387c1b1b3d2e" name="Default" comment="" />
     <ignored path="llg.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -23,112 +23,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="member.app.php" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/member.app.php">
+      <file leaf-file-name="search.app.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/search.app.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4469914" vertical-offset="18213" max-vertical-offset="32680">
-              <caret line="975" column="100" selection-start-line="975" selection-start-column="100" selection-end-line="975" selection-end-column="100" />
+            <state vertical-scroll-proportion="-10.035714" vertical-offset="4545" max-vertical-offset="15200">
+              <caret line="254" column="48" selection-start-line="254" selection-start-column="48" selection-end-line="254" selection-end-column="48" />
               <folding>
-                <marker date="1416803240205" expanded="true" signature="899:960" placeholder="select * FRO..." />
-                <marker date="1416803240205" expanded="true" signature="1047:1115" placeholder="select * FRO..." />
-                <marker date="1416803240205" expanded="true" signature="1168:1236" placeholder="select * FRO..." />
-                <marker date="1416803240205" expanded="true" signature="2789:2908" placeholder="SELECT COUNT..." />
-                <marker date="1416803240205" expanded="true" signature="4234:4336" placeholder="SELECT COUNT..." />
-                <marker date="1416803240205" expanded="true" signature="7197:7266" placeholder="SELECT user_..." />
-                <marker date="1416803240205" expanded="true" signature="8916:8974" placeholder="SELECT COUNT..." />
-                <marker date="1416803240205" expanded="true" signature="10217:10294" placeholder="SELECT user_..." />
-                <marker date="1416803240205" expanded="true" signature="10633:10706" placeholder="SELECT user_..." />
-                <marker date="1416803240205" expanded="true" signature="11071:11144" placeholder="SELECT user_..." />
-                <marker date="1416803240205" expanded="true" signature="12469:12541" placeholder="SELECT COUNT..." />
-                <marker date="1416803240205" expanded="true" signature="13839:13907" placeholder="SELECT COUNT..." />
-                <marker date="1416803240205" expanded="true" signature="14223:14284" placeholder="SELECT * FRO..." />
-                <marker date="1416803240205" expanded="true" signature="18002:18070" placeholder="SELECT COUNT..." />
-                <marker date="1416803240205" expanded="true" signature="18480:18541" placeholder="SELECT * FRO..." />
-                <marker date="1416803240205" expanded="true" signature="21655:21727" placeholder="SELECT * FRO..." />
-                <marker date="1416803240205" expanded="true" signature="23575:23690" placeholder="SELECT * FRO..." />
-                <marker date="1416803240205" expanded="true" signature="25147:25216" placeholder="SELECT COUNT..." />
-                <marker date="1416803240205" expanded="true" signature="25810:25886" placeholder="SELECT user_..." />
-                <marker date="1416803240205" expanded="true" signature="25969:26045" placeholder="SELECT user_..." />
-                <marker date="1416803240205" expanded="true" signature="27934:27985" placeholder="SELECT * FRO..." />
-                <marker date="1416803240205" expanded="true" signature="28894:28975" placeholder="SELECT * FRO..." />
-                <marker date="1416803240205" expanded="true" signature="29740:29791" placeholder="SELECT * FRO..." />
-                <marker date="1416803240205" expanded="true" signature="30533:30614" placeholder="SELECT * FRO..." />
-                <marker date="1416803240205" expanded="true" signature="32044:32121" placeholder="SELECT user_..." />
-                <marker date="1416803240205" expanded="true" signature="32321:32389" placeholder="SELECT * FRO..." />
-                <marker date="1416803240205" expanded="true" signature="32447:32527" placeholder="SELECT * FRO..." />
-                <marker date="1416803240205" expanded="true" signature="33179:33252" placeholder="SELECT user_..." />
-                <marker date="1416803240205" expanded="true" signature="33452:33520" placeholder="SELECT * FRO..." />
-                <marker date="1416803240205" expanded="true" signature="33578:33658" placeholder="SELECT * FRO..." />
-                <marker date="1416803240205" expanded="true" signature="34310:34383" placeholder="SELECT user_..." />
-                <marker date="1416803240205" expanded="true" signature="34583:34651" placeholder="SELECT * FRO..." />
-                <marker date="1416803240205" expanded="true" signature="34709:34789" placeholder="SELECT * FRO..." />
-                <marker date="1416803240205" expanded="true" signature="37938:37988" placeholder="SELECT * FRO..." />
-                <marker date="1416803240205" expanded="true" signature="38430:38496" placeholder="SELECT * FRO..." />
-                <marker date="1416803240205" expanded="true" signature="39251:39317" placeholder="SELECT * FRO..." />
-                <marker date="1416803240205" expanded="true" signature="40297:40363" placeholder="SELECT * FRO..." />
-                <marker date="1416803240205" expanded="true" signature="41213:41264" placeholder="SELECT * FRO..." />
-                <marker date="1416803240205" expanded="true" signature="41988:42059" placeholder="SELECT * FRO..." />
-                <marker date="1416803240205" expanded="true" signature="42106:42177" placeholder="SELECT * FRO..." />
+                <marker date="1423097681150" expanded="true" signature="26385:26425" placeholder="SELECT COUNT..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="uprecode.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/themes/mall/default/uprecode.html">
+      <file leaf-file-name="search.groupbuy.html" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/themes/mall/default/search.groupbuy.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0" vertical-offset="475" max-vertical-offset="1254">
-              <caret line="25" column="27" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="member.header.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/themes/mall/default/member.header.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="209" max-vertical-offset="2584">
-              <caret line="11" column="35" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="35" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="frontend.base.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/frontend.base.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="11485" max-vertical-offset="22306">
-              <caret line="633" column="0" selection-start-line="633" selection-start-column="0" selection-end-line="633" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="common.lang.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/includes/passports/default/sc-gbk/common.lang.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="361" max-vertical-offset="570">
-              <caret line="19" column="14" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="fxsupgrade.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/themes/mall/default/fxsupgrade.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="57" max-vertical-offset="931">
-              <caret line="20" column="45" selection-start-line="13" selection-start-column="28" selection-end-line="20" selection-end-column="45" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dlsupgrade.html" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/themes/mall/default/dlsupgrade.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="342" max-vertical-offset="931">
-              <caret line="18" column="93" selection-start-line="18" selection-start-column="93" selection-end-line="18" selection-end-column="93" />
+            <state vertical-scroll-proportion="0.5716332" vertical-offset="1425" max-vertical-offset="2451">
+              <caret line="96" column="34" selection-start-line="96" selection-start-column="34" selection-end-line="96" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -141,21 +52,57 @@
       <setting name="OPEN_NEW_TAB" value="true" />
     </FindUsagesManager>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/eccore/controller/app.base.php" />
-        <option value="$PROJECT_DIR$/includes/ecapp.base.php" />
+        <option value="$PROJECT_DIR$/admin/index.php" />
+        <option value="$PROJECT_DIR$/admin/app/default.app.php" />
+        <option value="$PROJECT_DIR$/eccore/ecmall.php" />
+        <option value="$PROJECT_DIR$/includes/libraries/session.lib.php" />
         <option value="$PROJECT_DIR$/data/config.inc.php" />
-        <option value="$PROJECT_DIR$/includes/models/pageview.model.php" />
-        <option value="$PROJECT_DIR$/themes/mall/default/toupgrade.html" />
-        <option value="$PROJECT_DIR$/includes/models/member.model.php" />
-        <option value="$PROJECT_DIR$/includes/passports/default/sc-gbk/common.lang.php" />
-        <option value="$PROJECT_DIR$/themes/mall/default/fxsupgrade.html" />
-        <option value="$PROJECT_DIR$/themes/mall/default/dlsupgrade.html" />
+        <option value="$PROJECT_DIR$/includes/models/upchange_log.model.php" />
+        <option value="$PROJECT_DIR$/admin/templates/int.index.html" />
+        <option value="$PROJECT_DIR$/admin/templates/user.index.html" />
+        <option value="$PROJECT_DIR$/languages/sc-gbk/admin/template.lang.php" />
+        <option value="$PROJECT_DIR$/languages/sc-gbk/admin/acategory.lang.php" />
+        <option value="$PROJECT_DIR$/languages/sc-gbk/admin/admin.lang.php" />
+        <option value="$PROJECT_DIR$/languages/sc-gbk/admin/setting.lang.php" />
+        <option value="$PROJECT_DIR$/languages/sc-gbk/admin/store.lang.php" />
+        <option value="$PROJECT_DIR$/languages/sc-gbk/admin/user.lang.php" />
+        <option value="$PROJECT_DIR$/admin/includes/menu.inc.php" />
+        <option value="$PROJECT_DIR$/languages/sc-gbk/admin/common.lang.php" />
+        <option value="$PROJECT_DIR$/admin/includes/priv.inc.php" />
+        <option value="$PROJECT_DIR$/admin/app/upgrade.app.php" />
+        <option value="$PROJECT_DIR$/public/css/common.css" />
+        <option value="$PROJECT_DIR$/admin/app/backend.base.php" />
+        <option value="$PROJECT_DIR$/admin/templates/upchange_log.index.html" />
+        <option value="$PROJECT_DIR$/admin/app/upchange_log.app.php" />
+        <option value="$PROJECT_DIR$/index.php" />
+        <option value="$PROJECT_DIR$/includes/models/group_goods.php" />
+        <option value="$PROJECT_DIR$/app/store.app.php" />
+        <option value="$PROJECT_DIR$/themes/store/default/styles/default/shop.css" />
+        <option value="$PROJECT_DIR$/admin/templates/user.form.html" />
+        <option value="$PROJECT_DIR$/admin/app/user.app.php" />
         <option value="$PROJECT_DIR$/app/frontend.base.php" />
-        <option value="$PROJECT_DIR$/themes/mall/default/uprecode.html" />
+        <option value="$PROJECT_DIR$/includes/models/groupbuy.model.php" />
+        <option value="$PROJECT_DIR$/themes/mall/default/member.menu.html" />
+        <option value="$PROJECT_DIR$/languages/sc-gbk/groupbuy.lang.php" />
+        <option value="$PROJECT_DIR$/includes/ecapp.base.php" />
+        <option value="$PROJECT_DIR$/includes/models/groupbuy_log.model.php" />
+        <option value="$PROJECT_DIR$/themes/mall/default/seller_groupbuy.log.html" />
+        <option value="$PROJECT_DIR$/themes/mall/default/seller_groupbuy.index.html" />
         <option value="$PROJECT_DIR$/app/member.app.php" />
+        <option value="$PROJECT_DIR$/languages/sc-gbk/seller_groupbuy.lang.php" />
+        <option value="$PROJECT_DIR$/themes/mall/default/seller_groupbuy.form.html" />
+        <option value="$PROJECT_DIR$/admin/app/advert.app.php" />
+        <option value="$PROJECT_DIR$/app/seller_groupbuy.app.php" />
+        <option value="$PROJECT_DIR$/themes/store/default/groupbuy.index.html" />
+        <option value="$PROJECT_DIR$/app/groupbuy.app.php" />
+        <option value="$PROJECT_DIR$/app/search.app.php" />
+        <option value="$PROJECT_DIR$/themes/mall/default/search.groupbuy.html" />
       </list>
     </option>
   </component>
@@ -194,7 +141,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -210,7 +156,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="llg" />
+              <option name="myItemId" value="127.0.0.1" />
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -220,7 +166,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="llg" />
+              <option name="myItemId" value="127.0.0.1" />
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -234,7 +180,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="llg" />
+              <option name="myItemId" value="127.0.0.1" />
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -256,16 +202,17 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="llg" />
+              <option name="myItemId" value="127.0.0.1" />
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
+              <option name="myItemId" value="app" />
               <option name="myItemType" value="com.android.tools.idea.gradle.projectView.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -275,9 +222,28 @@
     <property name="MemberChooser.sorted" value="false" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="MemberChooser.copyJavadoc" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="options.lastSelected" value="File.Encoding" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
+    <property name="project.structure.last.edited" value="Global Libraries" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="last_opened_file_path" value="E:/wamp/www/leave" />
+    <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="FullScreen" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
+    <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\PHPnow\vhosts\127.0.0.1\includes\models" />
+      <recent name="D:\PHPnow\vhosts\127.0.0.1\admin\templates" />
+      <recent name="D:\PHPnow\vhosts\127.0.0.1\admin\app" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
@@ -372,7 +338,7 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server" server_id="0d213c25-065a-4141-b8a6-fbac298e9360" server_name="llg">
       <method />
     </configuration>
     <configuration default="true" type="FlashRunConfigurationType" factoryName="Flash App">
@@ -515,18 +481,21 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="ea231c21-0334-439e-af58-3c1014481a48" name="Default" comment="" />
-      <created>1416535563512</created>
-      <updated>1416535563512</updated>
-      <workItem from="1416535564137" duration="17390000" />
-      <workItem from="1416557254575" duration="120000" />
-      <workItem from="1416796641857" duration="3069000" />
-      <workItem from="1416802585375" duration="766000" />
+      <changelist id="891b692e-5a66-41fd-855e-387c1b1b3d2e" name="Default" comment="" />
+      <created>1422351210229</created>
+      <updated>1422351210229</updated>
+      <workItem from="1422351210913" duration="1539000" />
+      <workItem from="1422406088978" duration="1417000" />
+      <workItem from="1422686226752" duration="8935000" />
+      <workItem from="1422856549592" duration="11589000" />
+      <workItem from="1422925187491" duration="7562000" />
+      <workItem from="1423010507874" duration="27274000" />
+      <workItem from="1423097107026" duration="957000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21345000" />
+    <option name="totallyTimeSpent" value="59273000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="0" />
@@ -539,6 +508,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.14305556" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -550,12 +520,13 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17986111" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19027779" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="File Transfer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32898173" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32898173" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -579,548 +550,369 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/member.app.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="32395">
-          <caret line="982" column="34" selection-start-line="982" selection-start-column="34" selection-end-line="982" selection-end-column="34" />
-          <folding>
-            <marker date="1416803240205" expanded="true" signature="899:960" placeholder="select * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="1047:1115" placeholder="select * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="1168:1236" placeholder="select * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="2789:2908" placeholder="SELECT COUNT..." />
-            <marker date="1416803240205" expanded="true" signature="4234:4336" placeholder="SELECT COUNT..." />
-            <marker date="1416803240205" expanded="true" signature="7197:7266" placeholder="SELECT user_..." />
-            <marker date="1416803240205" expanded="true" signature="8916:8974" placeholder="SELECT COUNT..." />
-            <marker date="1416803240205" expanded="true" signature="10217:10294" placeholder="SELECT user_..." />
-            <marker date="1416803240205" expanded="true" signature="10633:10706" placeholder="SELECT user_..." />
-            <marker date="1416803240205" expanded="true" signature="11071:11144" placeholder="SELECT user_..." />
-            <marker date="1416803240205" expanded="true" signature="12469:12541" placeholder="SELECT COUNT..." />
-            <marker date="1416803240205" expanded="true" signature="13839:13907" placeholder="SELECT COUNT..." />
-            <marker date="1416803240205" expanded="true" signature="14223:14284" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="18002:18070" placeholder="SELECT COUNT..." />
-            <marker date="1416803240205" expanded="true" signature="18480:18541" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="21655:21727" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="23575:23690" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="25147:25216" placeholder="SELECT COUNT..." />
-            <marker date="1416803240205" expanded="true" signature="25810:25886" placeholder="SELECT user_..." />
-            <marker date="1416803240205" expanded="true" signature="25969:26045" placeholder="SELECT user_..." />
-            <marker date="1416803240205" expanded="true" signature="27934:27985" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="28894:28975" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="29740:29791" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="30533:30614" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="32044:32121" placeholder="SELECT user_..." />
-            <marker date="1416803240205" expanded="true" signature="32321:32389" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="32447:32527" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="33179:33252" placeholder="SELECT user_..." />
-            <marker date="1416803240205" expanded="true" signature="33452:33520" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="33578:33658" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="34310:34383" placeholder="SELECT user_..." />
-            <marker date="1416803240205" expanded="true" signature="34583:34651" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="34709:34789" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="37938:37988" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="38430:38496" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="39251:39317" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="40297:40363" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="41213:41264" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="41988:42059" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="42106:42177" placeholder="SELECT * FRO..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/themes/mall/default/uprecode.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="475" max-vertical-offset="1254">
-          <caret line="25" column="27" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/themes/mall/default/member.header.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="209" max-vertical-offset="2584">
-          <caret line="11" column="35" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/frontend.base.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="11485" max-vertical-offset="22306">
-          <caret line="633" column="0" selection-start-line="633" selection-start-column="0" selection-end-line="633" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/includes/passports/default/sc-gbk/common.lang.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="361" max-vertical-offset="570">
-          <caret line="19" column="14" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/themes/mall/default/fxsupgrade.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="57" max-vertical-offset="931">
-          <caret line="20" column="45" selection-start-line="13" selection-start-column="28" selection-end-line="20" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/themes/mall/default/dlsupgrade.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="342" max-vertical-offset="931">
-          <caret line="18" column="93" selection-start-line="18" selection-start-column="93" selection-end-line="18" selection-end-column="93" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/member.app.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="18707" max-vertical-offset="31825">
-          <caret line="1014" column="0" selection-start-line="1014" selection-start-column="0" selection-end-line="1014" selection-end-column="0" />
-          <folding>
-            <marker date="1416803240205" expanded="true" signature="899:960" placeholder="select * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="1047:1115" placeholder="select * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="1168:1236" placeholder="select * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="2789:2908" placeholder="SELECT COUNT..." />
-            <marker date="1416803240205" expanded="true" signature="4234:4336" placeholder="SELECT COUNT..." />
-            <marker date="1416803240205" expanded="true" signature="7197:7266" placeholder="SELECT user_..." />
-            <marker date="1416803240205" expanded="true" signature="8916:8974" placeholder="SELECT COUNT..." />
-            <marker date="1416803240205" expanded="true" signature="10217:10294" placeholder="SELECT user_..." />
-            <marker date="1416803240205" expanded="true" signature="10633:10706" placeholder="SELECT user_..." />
-            <marker date="1416803240205" expanded="true" signature="11071:11144" placeholder="SELECT user_..." />
-            <marker date="1416803240205" expanded="true" signature="12469:12541" placeholder="SELECT COUNT..." />
-            <marker date="1416803240205" expanded="true" signature="13839:13907" placeholder="SELECT COUNT..." />
-            <marker date="1416803240205" expanded="true" signature="14223:14284" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="18002:18070" placeholder="SELECT COUNT..." />
-            <marker date="1416803240205" expanded="true" signature="18480:18541" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="21655:21727" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="23575:23690" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="25147:25216" placeholder="SELECT COUNT..." />
-            <marker date="1416803240205" expanded="true" signature="25810:25886" placeholder="SELECT user_..." />
-            <marker date="1416803240205" expanded="true" signature="25969:26045" placeholder="SELECT user_..." />
-            <marker date="1416803240205" expanded="true" signature="27934:27985" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="28894:28975" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="29740:29791" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="30533:30614" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="32044:32121" placeholder="SELECT user_..." />
-            <marker date="1416803240205" expanded="true" signature="32321:32389" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="32447:32527" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="33179:33252" placeholder="SELECT user_..." />
-            <marker date="1416803240205" expanded="true" signature="33452:33520" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="33578:33658" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="34310:34383" placeholder="SELECT user_..." />
-            <marker date="1416803240205" expanded="true" signature="34583:34651" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="34709:34789" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="37938:37988" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="38430:38496" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="39251:39317" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="40297:40363" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="41213:41264" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="41988:42059" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="42106:42177" placeholder="SELECT * FRO..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/themes/mall/default/uprecode.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="209" max-vertical-offset="741">
-          <caret line="11" column="33" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/frontend.base.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="11485" max-vertical-offset="22306">
-          <caret line="633" column="0" selection-start-line="633" selection-start-column="0" selection-end-line="633" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/includes/passports/default/sc-gbk/common.lang.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="361" max-vertical-offset="570">
-          <caret line="19" column="14" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/themes/mall/default/fxsupgrade.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="228" max-vertical-offset="931">
-          <caret line="12" column="72" selection-start-line="12" selection-start-column="72" selection-end-line="12" selection-end-column="72" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/themes/mall/default/dlsupgrade.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="342" max-vertical-offset="931">
-          <caret line="18" column="93" selection-start-line="18" selection-start-column="93" selection-end-line="18" selection-end-column="93" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/member.app.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="18707" max-vertical-offset="31825">
-          <caret line="1014" column="0" selection-start-line="1014" selection-start-column="0" selection-end-line="1014" selection-end-column="0" />
-          <folding>
-            <marker date="1416803240205" expanded="true" signature="899:960" placeholder="select * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="1047:1115" placeholder="select * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="1168:1236" placeholder="select * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="2789:2908" placeholder="SELECT COUNT..." />
-            <marker date="1416803240205" expanded="true" signature="4234:4336" placeholder="SELECT COUNT..." />
-            <marker date="1416803240205" expanded="true" signature="7197:7266" placeholder="SELECT user_..." />
-            <marker date="1416803240205" expanded="true" signature="8916:8974" placeholder="SELECT COUNT..." />
-            <marker date="1416803240205" expanded="true" signature="10217:10294" placeholder="SELECT user_..." />
-            <marker date="1416803240205" expanded="true" signature="10633:10706" placeholder="SELECT user_..." />
-            <marker date="1416803240205" expanded="true" signature="11071:11144" placeholder="SELECT user_..." />
-            <marker date="1416803240205" expanded="true" signature="12469:12541" placeholder="SELECT COUNT..." />
-            <marker date="1416803240205" expanded="true" signature="13839:13907" placeholder="SELECT COUNT..." />
-            <marker date="1416803240205" expanded="true" signature="14223:14284" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="18002:18070" placeholder="SELECT COUNT..." />
-            <marker date="1416803240205" expanded="true" signature="18480:18541" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="21655:21727" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="23575:23690" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="25147:25216" placeholder="SELECT COUNT..." />
-            <marker date="1416803240205" expanded="true" signature="25810:25886" placeholder="SELECT user_..." />
-            <marker date="1416803240205" expanded="true" signature="25969:26045" placeholder="SELECT user_..." />
-            <marker date="1416803240205" expanded="true" signature="27934:27985" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="28894:28975" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="29740:29791" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="30533:30614" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="32044:32121" placeholder="SELECT user_..." />
-            <marker date="1416803240205" expanded="true" signature="32321:32389" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="32447:32527" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="33179:33252" placeholder="SELECT user_..." />
-            <marker date="1416803240205" expanded="true" signature="33452:33520" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="33578:33658" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="34310:34383" placeholder="SELECT user_..." />
-            <marker date="1416803240205" expanded="true" signature="34583:34651" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="34709:34789" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="37938:37988" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="38430:38496" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="39251:39317" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="40297:40363" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="41213:41264" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="41988:42059" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="42106:42177" placeholder="SELECT * FRO..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/themes/mall/default/uprecode.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="209" max-vertical-offset="741">
-          <caret line="11" column="33" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/frontend.base.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="11485" max-vertical-offset="22306">
-          <caret line="633" column="0" selection-start-line="633" selection-start-column="0" selection-end-line="633" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/includes/passports/default/sc-gbk/common.lang.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="361" max-vertical-offset="570">
-          <caret line="19" column="14" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/themes/mall/default/fxsupgrade.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="228" max-vertical-offset="931">
-          <caret line="12" column="72" selection-start-line="12" selection-start-column="72" selection-end-line="12" selection-end-column="72" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/themes/mall/default/dlsupgrade.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="342" max-vertical-offset="931">
-          <caret line="18" column="93" selection-start-line="18" selection-start-column="93" selection-end-line="18" selection-end-column="93" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/tasks.inc.php">
+    <entry file="file://$PROJECT_DIR$/includes/models/money_recode.model.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="739">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/system.info.php">
+    <entry file="file://$PROJECT_DIR$/includes/models/upchange_log.model.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="739">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="-4.75" vertical-offset="0" max-vertical-offset="304">
+          <caret line="7" column="33" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/settings.inc.php">
+    <entry file="file://$PROJECT_DIR$/admin/templates/int.index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="739">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.34739804" vertical-offset="0" max-vertical-offset="711">
+          <caret line="13" column="51" selection-start-line="13" selection-start-column="51" selection-end-line="13" selection-end-column="51" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin.php">
+    <entry file="file://$PROJECT_DIR$/admin/templates/user.index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="739">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="-17.464285" vertical-offset="1126" max-vertical-offset="1824">
+          <caret line="85" column="64" selection-start-line="85" selection-start-column="64" selection-end-line="85" selection-end-column="64" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/eccore/controller/app.base.php">
+    <entry file="file://$PROJECT_DIR$/languages/sc-gbk/admin/template.lang.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.964286" vertical-offset="2391" max-vertical-offset="5244">
-          <caret line="142" column="44" selection-start-line="142" selection-start-column="44" selection-end-line="142" selection-end-column="44" />
-          <folding />
+        <state vertical-scroll-proportion="-12.214286" vertical-offset="0" max-vertical-offset="456">
+          <caret line="18" column="2" selection-start-line="18" selection-start-column="2" selection-end-line="18" selection-end-column="2" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config.inc.php">
+    <entry file="file://$PROJECT_DIR$/languages/sc-gbk/admin/acategory.lang.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="114">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="-11.535714" vertical-offset="0" max-vertical-offset="684">
+          <caret line="17" column="42" selection-start-line="17" selection-start-column="42" selection-end-line="17" selection-end-column="42" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/config.inc.php">
+    <entry file="file://$PROJECT_DIR$/languages/sc-gbk/admin/admin.lang.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.178572" vertical-offset="0" max-vertical-offset="532">
-          <caret line="15" column="27" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
+        <state vertical-scroll-proportion="0.05344585" vertical-offset="741" max-vertical-offset="1539">
+          <caret line="41" column="23" selection-start-line="41" selection-start-column="23" selection-end-line="41" selection-end-column="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/app/user.app.php">
+    <entry file="file://$PROJECT_DIR$/languages/sc-gbk/admin/user.lang.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.178572" vertical-offset="8701" max-vertical-offset="11647">
-          <caret line="470" column="16" selection-start-line="470" selection-start-column="16" selection-end-line="470" selection-end-column="16" />
+        <state vertical-scroll-proportion="0.6146273" vertical-offset="0" max-vertical-offset="1064">
+          <caret line="23" column="22" selection-start-line="23" selection-start-column="22" selection-end-line="23" selection-end-column="22" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/includes/models/pageview.model.php">
+    <entry file="file://$PROJECT_DIR$/languages/sc-gbk/admin/store.lang.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="717">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="-0.790436" vertical-offset="904" max-vertical-offset="1615">
+          <caret line="18" column="27" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/themes/mall/default/toupgrade.html">
+    <entry file="file://$PROJECT_DIR$/languages/sc-gbk/admin/setting.lang.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-9.5" vertical-offset="0" max-vertical-offset="817">
-          <caret line="14" column="40" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="40" />
+        <state vertical-scroll-proportion="0.4275668" vertical-offset="0" max-vertical-offset="2432">
+          <caret line="16" column="29" selection-start-line="16" selection-start-column="29" selection-end-line="16" selection-end-column="29" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$APPLICATION_PLUGINS_DIR$/php/lib/php.jar!/com/jetbrains/php/lang/psi/stubs/data/Core.php">
+    <entry file="file://$PROJECT_DIR$/admin/includes/menu.inc.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34599155" vertical-offset="495" max-vertical-offset="19380">
-          <caret line="39" column="9" selection-start-line="39" selection-start-column="9" selection-end-line="39" selection-end-column="9" />
+        <state vertical-scroll-proportion="0.33236152" vertical-offset="2356" max-vertical-offset="4522">
+          <caret line="136" column="44" selection-start-line="136" selection-start-column="37" selection-end-line="136" selection-end-column="44" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$APPLICATION_PLUGINS_DIR$/php/lib/php.jar!/com/jetbrains/php/lang/psi/stubs/data/standard_4.php">
+    <entry file="file://$PROJECT_DIR$/admin/includes/priv.inc.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34599155" vertical-offset="704" max-vertical-offset="20672">
-          <caret line="50" column="9" selection-start-line="50" selection-start-column="9" selection-end-line="50" selection-end-column="9" />
-          <folding />
+        <state vertical-scroll-proportion="0.36146274" vertical-offset="522" max-vertical-offset="1558">
+          <caret line="51" column="44" selection-start-line="51" selection-start-column="44" selection-end-line="51" selection-end-column="44" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/themes/mall/default/member.index.html">
+    <entry file="file://$PROJECT_DIR$/admin/templates/header.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2698">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state vertical-scroll-proportion="-4.75" vertical-offset="0" max-vertical-offset="608">
+          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="74" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/eccore/model/model.base.php">
+    <entry file="file://$PROJECT_DIR$/admin/templates/upgrade.index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-192.32143" vertical-offset="19467" max-vertical-offset="25232">
-          <caret line="1308" column="4" selection-start-line="1308" selection-start-column="4" selection-end-line="1308" selection-end-column="4" />
+        <state vertical-scroll-proportion="-3.392857" vertical-offset="0" max-vertical-offset="912">
+          <caret line="5" column="84" selection-start-line="5" selection-start-column="36" selection-end-line="5" selection-end-column="84" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/eccore/model/mysql.php">
+    <entry file="file://$PROJECT_DIR$/public/css/common.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-88.82143" vertical-offset="8362" max-vertical-offset="18696">
-          <caret line="581" column="4" selection-start-line="581" selection-start-column="4" selection-end-line="581" selection-end-column="4" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="342">
+          <caret line="11" column="16" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/includes/models/member.model.php">
+    <entry file="file://$PROJECT_DIR$/admin/templates/upchange_log.index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-15.107142" vertical-offset="2579" max-vertical-offset="3268">
-          <caret line="158" column="34" selection-start-line="158" selection-start-column="34" selection-end-line="158" selection-end-column="34" />
+        <state vertical-scroll-proportion="-12.214286" vertical-offset="0" max-vertical-offset="874">
+          <caret line="18" column="35" selection-start-line="18" selection-start-column="35" selection-end-line="18" selection-end-column="35" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/includes/libraries/time.lib.php">
+    <entry file="file://$PROJECT_DIR$/admin/app/upgrade.app.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.357142" vertical-offset="32" max-vertical-offset="3686">
-          <caret line="24" column="9" selection-start-line="24" selection-start-column="9" selection-end-line="24" selection-end-column="9" />
+        <state vertical-scroll-proportion="12.214286" vertical-offset="741" max-vertical-offset="3971">
+          <caret line="21" column="42" selection-start-line="21" selection-start-column="42" selection-end-line="21" selection-end-column="42" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/includes/global.lib.php">
+    <entry file="file://$PROJECT_DIR$/admin/app/upchange_log.app.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.45288327" vertical-offset="5207" max-vertical-offset="13015">
-          <caret line="291" column="28" selection-start-line="291" selection-start-column="28" selection-end-line="291" selection-end-column="28" />
-          <folding />
+        <state vertical-scroll-proportion="-16.285715" vertical-offset="0" max-vertical-offset="931">
+          <caret line="24" column="51" selection-start-line="24" selection-start-column="51" selection-end-line="24" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/app/backend.base.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-20.642857" vertical-offset="3431" max-vertical-offset="5035">
+          <caret line="211" column="14" selection-start-line="211" selection-start-column="14" selection-end-line="211" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/languages/sc-gbk/admin/common.lang.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-12.214286" vertical-offset="0" max-vertical-offset="4009">
+          <caret line="18" column="25" selection-start-line="18" selection-start-column="25" selection-end-line="18" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.6785714" vertical-offset="0" max-vertical-offset="551">
+          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/eccore/ecmall.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34670487" vertical-offset="3444" max-vertical-offset="35796">
-          <caret line="199" column="14" selection-start-line="199" selection-start-column="14" selection-end-line="199" selection-end-column="14" />
+        <state vertical-scroll-proportion="-84.28571" vertical-offset="33075" max-vertical-offset="35796">
+          <caret line="1870" column="10" selection-start-line="1870" selection-start-column="10" selection-end-line="1870" selection-end-column="10" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/includes/models/gradeapply.model.php">
+    <entry file="file://$PROJECT_DIR$/includes/models/group_goods.model.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="739">
+        <state vertical-scroll-proportion="0.13361463" vertical-offset="0" max-vertical-offset="711">
+          <caret line="5" column="32" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/ecmall230-0918-scgbk/sc-gbk/upload/app/frontend.base.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.142858" vertical-offset="11819" max-vertical-offset="20805">
+          <caret line="637" column="18" selection-start-line="632" selection-start-column="16" selection-end-line="637" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/global.lib.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.05344585" vertical-offset="0" max-vertical-offset="13015">
+          <caret line="2" column="10" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/app/user.app.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4556213" vertical-offset="5677" max-vertical-offset="11970">
+          <caret line="315" column="45" selection-start-line="315" selection-start-column="45" selection-end-line="315" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/templates/user.form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.42159763" vertical-offset="2565" max-vertical-offset="4351">
+          <caret line="150" column="38" selection-start-line="150" selection-start-column="38" selection-end-line="150" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/models/member.model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-2.0357144" vertical-offset="0" max-vertical-offset="3268">
+          <caret line="3" column="30" selection-start-line="3" selection-start-column="30" selection-end-line="3" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/mall/default/index - 副本.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1121">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/eccore/controller/message.base.php">
+    <entry file="file://$PROJECT_DIR$/themes/mall/default/member.menu.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3542601" vertical-offset="830" max-vertical-offset="6251">
-          <caret line="62" column="0" selection-start-line="62" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.41364297" vertical-offset="0" max-vertical-offset="741">
+          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/store.app.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.504298" vertical-offset="5728" max-vertical-offset="8360">
+          <caret line="320" column="14" selection-start-line="320" selection-start-column="14" selection-end-line="320" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/store/default/styles/default/shop.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.8719008" vertical-offset="6777" max-vertical-offset="11419">
+          <caret line="390" column="77" selection-start-line="390" selection-start-column="77" selection-end-line="390" selection-end-column="77" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/message.app.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="10906">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/languages/sc-gbk/groupbuy.lang.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.77842563" vertical-offset="796" max-vertical-offset="1501">
+          <caret line="70" column="25" selection-start-line="70" selection-start-column="25" selection-end-line="70" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/models/groupbuy.model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.678571" vertical-offset="1172" max-vertical-offset="4484">
+          <caret line="73" column="44" selection-start-line="73" selection-start-column="44" selection-end-line="73" selection-end-column="44" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/includes/ecapp.base.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.285714" vertical-offset="11955" max-vertical-offset="26600">
-          <caret line="637" column="4" selection-start-line="637" selection-start-column="4" selection-end-line="637" selection-end-column="4" />
+        <state vertical-scroll-proportion="0.5888252" vertical-offset="23073" max-vertical-offset="27075">
+          <caret line="1236" column="0" selection-start-line="1236" selection-start-column="0" selection-end-line="1236" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/app/acategory.app.php">
+    <entry file="file://$PROJECT_DIR$/includes/models/groupbuy_log.model.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.464286" vertical-offset="1909" max-vertical-offset="6232">
-          <caret line="110" column="58" selection-start-line="110" selection-start-column="16" selection-end-line="110" selection-end-column="58" />
+        <state vertical-scroll-proportion="-4.071429" vertical-offset="0" max-vertical-offset="304">
+          <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/themes/mall/default/index.html">
+    <entry file="file://$PROJECT_DIR$/themes/mall/default/seller_groupbuy.index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.40830946" vertical-offset="969" max-vertical-offset="11324">
-          <caret line="66" column="36" selection-start-line="66" selection-start-column="36" selection-end-line="66" selection-end-column="36" />
+        <state vertical-scroll-proportion="0.33283803" vertical-offset="1182" max-vertical-offset="2261">
+          <caret line="74" column="41" selection-start-line="74" selection-start-column="41" selection-end-line="74" selection-end-column="41" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/includes/passports/default/sc-gbk/common.lang.php">
+    <entry file="file://$PROJECT_DIR$/themes/mall/default/seller_groupbuy.log.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="361" max-vertical-offset="570">
-          <caret line="19" column="14" selection-start-line="19" selection-start-column="14" selection-end-line="19" selection-end-column="14" />
-          <folding />
+        <state vertical-scroll-proportion="1.034384" vertical-offset="0" max-vertical-offset="1064">
+          <caret line="38" column="167" selection-start-line="38" selection-start-column="167" selection-end-line="38" selection-end-column="167" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/themes/mall/default/dlsupgrade.html">
+    <entry file="file://$PROJECT_DIR$/eccore/model/model.base.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="342" max-vertical-offset="931">
-          <caret line="18" column="93" selection-start-line="18" selection-start-column="93" selection-end-line="18" selection-end-column="93" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/frontend.base.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="11485" max-vertical-offset="22306">
-          <caret line="633" column="0" selection-start-line="633" selection-start-column="0" selection-end-line="633" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/themes/mall/default/fxsupgrade.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="57" max-vertical-offset="931">
-          <caret line="20" column="45" selection-start-line="13" selection-start-column="28" selection-end-line="20" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/themes/mall/default/member.header.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="209" max-vertical-offset="2584">
-          <caret line="11" column="35" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/themes/mall/default/uprecode.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0" vertical-offset="475" max-vertical-offset="1254">
-          <caret line="25" column="27" selection-start-line="25" selection-start-column="27" selection-end-line="25" selection-end-column="27" />
-          <folding />
+        <state vertical-scroll-proportion="-32.72636" vertical-offset="23185" max-vertical-offset="25232">
+          <caret line="18" column="6" selection-start-line="18" selection-start-column="6" selection-end-line="18" selection-end-column="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/member.app.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4469914" vertical-offset="18213" max-vertical-offset="32680">
-          <caret line="975" column="100" selection-start-line="975" selection-start-column="100" selection-end-line="975" selection-end-column="100" />
+        <state vertical-scroll-proportion="0.33283803" vertical-offset="25407" max-vertical-offset="34257">
+          <caret line="1349" column="30" selection-start-line="1349" selection-start-column="20" selection-end-line="1349" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/models/gcategory.model.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.080168776" vertical-offset="0" max-vertical-offset="7372">
+          <caret line="3" column="34" selection-start-line="3" selection-start-column="34" selection-end-line="3" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/frontend.base.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2137834" vertical-offset="0" max-vertical-offset="22667">
+          <caret line="8" column="32" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/languages/sc-gbk/seller_groupbuy.lang.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-20.285715" vertical-offset="895" max-vertical-offset="1653">
+          <caret line="77" column="27" selection-start-line="77" selection-start-column="27" selection-end-line="77" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/mall/default/seller_groupbuy.form.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-17.464285" vertical-offset="4033" max-vertical-offset="5035">
+          <caret line="238" column="59" selection-start-line="238" selection-start-column="59" selection-end-line="238" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/app/advert.app.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.22222222" vertical-offset="241" max-vertical-offset="4066">
+          <caret line="21" column="32" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/store/default/groupbuy.index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.357142" vertical-offset="1468" max-vertical-offset="4674">
+          <caret line="94" column="118" selection-start-line="94" selection-start-column="118" selection-end-line="94" selection-end-column="118" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/groupbuy.app.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.9527221" vertical-offset="1767" max-vertical-offset="8018">
+          <caret line="58" column="49" selection-start-line="58" selection-start-column="49" selection-end-line="58" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/seller_groupbuy.app.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5988539" vertical-offset="1083" max-vertical-offset="15048">
+          <caret line="79" column="51" selection-start-line="79" selection-start-column="51" selection-end-line="79" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/search.app.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.035714" vertical-offset="4545" max-vertical-offset="15200">
+          <caret line="254" column="48" selection-start-line="254" selection-start-column="48" selection-end-line="254" selection-end-column="48" />
           <folding>
-            <marker date="1416803240205" expanded="true" signature="899:960" placeholder="select * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="1047:1115" placeholder="select * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="1168:1236" placeholder="select * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="2789:2908" placeholder="SELECT COUNT..." />
-            <marker date="1416803240205" expanded="true" signature="4234:4336" placeholder="SELECT COUNT..." />
-            <marker date="1416803240205" expanded="true" signature="7197:7266" placeholder="SELECT user_..." />
-            <marker date="1416803240205" expanded="true" signature="8916:8974" placeholder="SELECT COUNT..." />
-            <marker date="1416803240205" expanded="true" signature="10217:10294" placeholder="SELECT user_..." />
-            <marker date="1416803240205" expanded="true" signature="10633:10706" placeholder="SELECT user_..." />
-            <marker date="1416803240205" expanded="true" signature="11071:11144" placeholder="SELECT user_..." />
-            <marker date="1416803240205" expanded="true" signature="12469:12541" placeholder="SELECT COUNT..." />
-            <marker date="1416803240205" expanded="true" signature="13839:13907" placeholder="SELECT COUNT..." />
-            <marker date="1416803240205" expanded="true" signature="14223:14284" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="18002:18070" placeholder="SELECT COUNT..." />
-            <marker date="1416803240205" expanded="true" signature="18480:18541" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="21655:21727" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="23575:23690" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="25147:25216" placeholder="SELECT COUNT..." />
-            <marker date="1416803240205" expanded="true" signature="25810:25886" placeholder="SELECT user_..." />
-            <marker date="1416803240205" expanded="true" signature="25969:26045" placeholder="SELECT user_..." />
-            <marker date="1416803240205" expanded="true" signature="27934:27985" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="28894:28975" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="29740:29791" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="30533:30614" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="32044:32121" placeholder="SELECT user_..." />
-            <marker date="1416803240205" expanded="true" signature="32321:32389" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="32447:32527" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="33179:33252" placeholder="SELECT user_..." />
-            <marker date="1416803240205" expanded="true" signature="33452:33520" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="33578:33658" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="34310:34383" placeholder="SELECT user_..." />
-            <marker date="1416803240205" expanded="true" signature="34583:34651" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="34709:34789" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="37938:37988" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="38430:38496" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="39251:39317" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="40297:40363" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="41213:41264" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="41988:42059" placeholder="SELECT * FRO..." />
-            <marker date="1416803240205" expanded="true" signature="42106:42177" placeholder="SELECT * FRO..." />
+            <marker date="1423097681150" expanded="true" signature="26385:26425" placeholder="SELECT COUNT..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/themes/mall/default/search.groupbuy.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5716332" vertical-offset="1425" max-vertical-offset="2451">
+          <caret line="96" column="34" selection-start-line="96" selection-start-column="34" selection-end-line="96" selection-end-column="34" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -147,6 +147,10 @@ $(function(){
         <th class="paddingT15"> 联系电话:</th>
         <td class="paddingT15 wordSpacing5"><input class="infoTableInput2" name="im_msn" type="text" id="im_msn" value="<?php echo htmlspecialchars($this->_var['user']['im_msn']); ?>" />        </td>
       </tr>
+        <tr>
+            <th class="paddingT15">身份证:</th>
+            <td class="paddingT15 wordSpacing5"><input class="infoTableInput2" name="sfz" type="text" value="<?php echo $this->_var['user']['sfz']; ?>" />        </td>
+        </tr>
 	  <tr>
         <th class="paddingT15"> 银行卡号:</th>
         <td class="paddingT15 wordSpacing5"><input class="infoTableInput2" name="bank" type="text"  value="<?php echo $this->_var['user']['bank']; ?>" />        </td>
