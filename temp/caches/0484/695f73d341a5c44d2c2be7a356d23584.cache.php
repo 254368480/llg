@@ -1,7 +1,7 @@
 <?php
 /**
  *  @Created By ECMall PhpCacheServer
- *  @Time:2015-02-05 00:50:09
+ *  @Time:2015-02-09 08:46:13
  */
 
 if(filemtime(__FILE__) + 1800 < time())return false;
@@ -61,9 +61,9 @@ return array (
     'im_yahoo' => NULL,
     'im_aliww' => NULL,
     'reg_time' => '1399194729',
-    'last_login' => '1423035727',
+    'last_login' => '1423467160',
     'last_ip' => '127.0.0.1',
-    'logins' => '144',
+    'logins' => '146',
     'ugrade' => '0',
     'portrait' => NULL,
     'outer_id' => '0',

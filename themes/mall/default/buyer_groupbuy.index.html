@@ -57,10 +57,8 @@
                         <span class="color2" ectype="editobj">{$group.end_time|date:Y-m-d}</span></td>
                     <td width="80" class="align2"><!--{if $goods.spec_qty}--><span ectype="dialog" dialog_width="430" uri="index.php?app=my_goods&amp;act=spec_edit&amp;id={$goods.goods_id}" dialog_id="my_goods_spec_edit" class="cursor_pointer"><!--{else}--><span class="color2" ectype="editobj"><!--{/if}-->
                     {$group.quantity}/{$group.min_quantity}</span></td>
-                        <td width="130">
-                        {foreach from=$group.spec_quantity item=spec}
-                        {if $spec.qty gt 0}{if $spec.spec}{$spec.spec}{else}{$lang.default_spec}{/if}: {$spec.qty}{$lang.item}{/if}<br />
-                        {/foreach}
+                        <td width="130" class="align2">
+                            {$group.quantity}
                         </td>
                         <td width="135"><div>
                         {foreach from=$group.ican item=name}

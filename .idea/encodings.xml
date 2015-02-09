@@ -22,8 +22,14 @@
     <file url="file://$PROJECT_DIR$/languages/sc-gbk/admin/user.lang.php" charset="GBK" />
     <file url="file://$PROJECT_DIR$/languages/sc-gbk/groupbuy.lang.php" charset="GBK" />
     <file url="file://$PROJECT_DIR$/languages/sc-gbk/seller_groupbuy.lang.php" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/public/ueditor/ueditor.config.js" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/themes/mall/default/my_goods.form.html" charset="GBK" />
     <file url="file://$PROJECT_DIR$/themes/mall/default/search.groupbuy.html" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/themes/mall/default/seller_groupbuy.form.html" charset="GBK" />
     <file url="file://$PROJECT_DIR$/themes/mall/default/seller_groupbuy.log.html" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/themes/store/default/groupbuy.index.html" charset="GBK" />
+    <file url="file://E:/corpdeyi/public/admin/art.php" charset="GBK" />
+    <file url="file://E:/corpdeyi/public/admin/smarty/templates/art_add.tpl" charset="GBK" />
     <file url="PROJECT" charset="UTF-8" />
   </component>
 </project>

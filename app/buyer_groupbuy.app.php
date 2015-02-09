@@ -58,12 +58,14 @@ class Buyer_groupbuyApp extends MemberbaseApp
             'conditions' => 'user_id=' . $this->visitor->info['user_id'] . $conditions
         ));
         $page['item_count'] = $this->_groupbuy_mod->getCount();   //获取统计的数据
+        $goods_mod =& m('group_goods');
         foreach ($groupbuy_list as $key => $groupbuy)
         {
+            $goods = $goods_mod->get($groupbuy['goods_id']);
             $groupbuy['ican'] = $this->_ican($groupbuy['group_id']);
             $groupbuy_list[$key] = $groupbuy;
             $groupbuy_list[$key]['spec_quantity'] = unserialize($groupbuy['spec_quantity']);
-            $groupbuy['default_image'] || $groupbuy_list[$key]['default_image'] = Conf::get('default_goods_image');
+            $groupbuy_list[$key]['default_image'] = $goods['image_url'];
         }//dump($groupbuy_list);
         /* 当前位置 */
         $this->_curlocal(LANG::get('member_center'),    'index.php?app=member',

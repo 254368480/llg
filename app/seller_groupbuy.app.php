@@ -525,8 +525,11 @@ class Seller_groupbuyApp extends StoreadminbaseApp
             'integral' => $post['integral'],
             'group_price' => $post['group_price'],
             'group_integral' => $post['integral'],
-            'image_url' => isset($image_url) ? $image_url : ''
+            'description' => $post['content'],
         );
+        if(!empty($image_url)){
+            $data['image_url'] = $image_url;
+        }
         if($id > 0){
             $group = $this->_groupbuy_mod->get($id);
             $goods_id = $group['goods_id'];
@@ -546,7 +549,8 @@ class Seller_groupbuyApp extends StoreadminbaseApp
             'min_quantity' => $post['min_quantity'],
             'max_per_user' => $post['max_per_user'],
             'state'        => $post['state'],
-            'store_id'     => $this->_store_id
+            'store_id'     => $this->_store_id,
+            'grade'        => $_POST['grade'],
         );
         if ($id > 0){
             $this->_groupbuy_mod->edit($id, $data);
@@ -707,15 +711,10 @@ class Seller_groupbuyApp extends StoreadminbaseApp
 
         $file = $_FILES['image'];
 
-        if ($file['error'] != UPLOAD_ERR_OK){
-            continue;
-        }
         $uploader = new Uploader();
         $uploader->allowed_type(IMAGE_FILE_TYPE);
         $uploader->addFile($file);
-        if ($uploader->file_info() === false){
-            continue;
-        }
+
         $uploader->root_dir(ROOT_PATH);
         $image_urls = $uploader->save('group_image', $name);
 

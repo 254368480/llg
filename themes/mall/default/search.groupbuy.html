@@ -3,54 +3,10 @@
 <script type="text/javascript" src="{lib file=search_groupbuy.js}" charset="utf-8"></script>
 <div class="content">
     <!--{if $groupbuy_list}-->
-    <div class="left">
 
-        <div class="module_sidebar">
-            <h2><b>{$lang.recommended_groupbuy}</b></h2>
-            <div class="wrap">
-                <div class="wrap_child">
 
-                    <ul class="fellowship">
-                        <!-- {foreach from=$recommended_groupbuy item=group} -->
-                        <li>
-                            <div class="pic"><a target="_blank" href="{url app=groupbuy&id=$group.group_id}"><img src="{$group.default_image}" alt="{$group.group_name|escape}" width="65" height="65" /></a></div>
-                            <dl>
-                                <dt><a title="{$group.group_name|escape}" target="_blank" href="{url app=groupbuy&id=$group.group_id}">{$group.group_name|escape}</a></dt>
-                                <dd class="distance"><span title="{$group.price|price}">{$group.price|price}</span></dd>
-                                <dd class="time">{$group.lefttime}</dd>
-                            </dl>
-                        </li>
-                        <!-- {/foreach} -->
-                    </ul>
-
-                </div>
-            </div>
-            <h2><b>{$lang.last_groupbuy}</b></h2>
-            <div class="wrap">
-                <div class="wrap_child">
-
-                    <ul class="fellowship">
-                        <!-- {foreach from=$last_join_groupbuy item=group} -->
-                        <li>
-                            <div class="pic"><a target="_blank" href="{url app=groupbuy&id=$group.group_id}" ><img src="{$group.default_image}" alt="{$group.group_name|escape}" width="65" height="65" /></a></div>
-                            <dl>
-                                <dt><a target="_blank" href="{url app=groupbuy&id=$group.group_id}" title="{$group.group_name|escape}">{$group.group_name|escape}</a></dt>
-                                <dd class="distance"><span title="{$group.price|price}">{$group.price|price}</span></dd>
-                                <dd class="time">{$group.add_time|date:Y-m-d H:i}</dd>
-                            </dl>
-                        </li>
-                        <!-- {/foreach} -->
-                    </ul>
-
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <div class="right">
-
-        <div class="shop_con_list">
+    <div class="group_content">
+        <div class="shop_con_list" style="width: auto">
             <h2>
                 <div class="ornament1"></div>
                 <div class="ornament2"></div>
@@ -79,35 +35,25 @@
         </div>
 
         <div class="group_shop">
-            <table>
-                <!-- {if $groupbuy_list} -->
-                <tr>
-                    <th colspan="2">{$lang.group_name}</th>
-                    <th>{$lang.group_price}</th>
-                    <th>团购积分</th>
-                    <th>{$lang.group_qty} / {$lang.group_min_qty}</th>
-                    <!-- {if $smarty.get.state eq 'on'} --><th>{$lang.lefttime}</th><!-- {/if} -->
-                </tr>
-                <!-- {/if} -->
+            <ul>
                 <!-- {foreach from=$groupbuy_list item=group} -->
-                <tr>
-                    <td class="group_pic"><a target="_blank" href="{url app=groupbuy&id=$group.group_id}"><img src="{$group.default_image}" alt="{$group.group_name|escape}" width="70" height="70" /></a></td>
-                    <td class="apellation"><a target="_blank" href="{url app=groupbuy&id=$group.group_id}">{$group.group_name|escape}</a></td>
-                    <td class="price">{$group.group_price|price}</td>
-                    <td class="price">{$group.group_integral}</td>
-                    <td class="member">{$group.quantity} / {$group.min_quantity}</td>
-                    <!-- {if $smarty.get.state eq 'on'} -->
-                    <td class="time">{$group.lefttime}</td>
-                    <!-- {/if} -->
-                </tr>
-                <!-- {foreachelse} -->
-                <tr>
-                    <td colspan="6">
-                    <div id="no_results"><!-- {$lang.no_groupbuy} --></div>
-                    </td>
-                </tr>
+                <li>
+                    <div class="g_pic"><a target="_blank" href="{url app=groupbuy&id=$group.group_id}"><img src="{$group.default_image}" alt="{$group.group_name|escape}" width="318" height="200" /></a></div>
+                    <div class="g_content">
+                        <a class="g_title" target="_blank" href="{url app=groupbuy&id=$group.group_id}">{$group.group_name|escape}</a>
+                        <p class="g_info">{$group.group_desc}</p>
+                        <div class="g_price">{$group.group_price|price}<span class="o_price"><strike>原价{$group.price|price}</strike></span></div>
+                    </div>
+                    <div class="info_bottom">
+                        <div class="info_bottom_body">
+                            积分<font color="#F76120">{$group.group_integral}</font>
+                            <span style="float: right">参团等级<font color="#F76120">{$group.grade}</font></span>
+                        </div>
+                    </div>
+                </li>
                 <!-- {/foreach} -->
-            </table>
+                <div class="clear"></div>
+            </ul>
         </div>
 
         <div class="shop_list_page">

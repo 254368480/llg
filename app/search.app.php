@@ -235,7 +235,7 @@ class SearchApp extends MallbaseApp
         $groupbuy_mod = &m('groupbuy');
         $groupbuy_list = $groupbuy_mod->find(array(
             'conditions'    => $conditions,
-            'fields'        => 'gb.group_name,gb.spec_price,gb.min_quantity,gb.store_id,gb.state,gb.end_time,g.default_image,default_spec,s.store_name',
+            'fields'        => 'gb.goods_id,gb.group_desc,gb.grade,gb.group_name,gb.spec_price,gb.min_quantity,gb.store_id,gb.state,gb.end_time,g.default_image,default_spec,s.store_name',
             'join'          => 'belong_store, belong_goods',
             'limit'         => $page['limit'],
             'count'         => true,   //允许统计
@@ -252,6 +252,7 @@ class SearchApp extends MallbaseApp
             $groupbuy_list[$key]['quantity'] = empty($quantity[$key]['quantity']) ? 0 : $quantity[$key]['quantity'];
             $groupbuy_list[$key]['default_image'] = $goods['image_url'];
             $groupbuy_list[$key]['group_price'] = $goods['group_price'];
+            $groupbuy_list[$key]['price'] = $goods['price'];
             $groupbuy_list[$key]['group_integral'] = $goods['group_integral'];
             $groupbuy['state'] == GROUP_ON && $groupbuy_list[$key]['lefttime'] = lefttime($groupbuy['end_time']);
         }

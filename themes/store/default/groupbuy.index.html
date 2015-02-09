@@ -1,5 +1,5 @@
 {include file=header.html}
-{include file=top.html}
+<link href="/public/css/shop.css" rel="stylesheet" type="text/css" />
 <style>
 .inverse_proportion { float: left; width: 100px; height: 16px; overflow: hidden; background: url({res file=images/inverse_proportion.gif}) no-repeat -{$group.left_per}px center; }
 .error { display: block; }
@@ -9,6 +9,10 @@
 //<!CDATA[
 $(function(){
     $('#join').click(function(){
+        if( ("{$user.grade}" == '免费会员') && ("{$group.grade}" == 'VIP会员') ) {
+            alert("您的等级不足以参加活动！");
+            return false;
+        }
         var qty = 0;
         var error = false;
         var max_per_user = {$group.max_per_user};
@@ -36,8 +40,10 @@ $(function(){
             $('input[ectype="quantity"]').attr('disabled',true);
         }
         var total = qty * {$goods.group_price};
+        var itotal = qty * {$goods.group_integral};
         $('p[ectype="qty"]').text("{$lang.buy_num}"+qty);
-        $('p[ectype="total"]').text("{$lang.re_money}"+"{$lang.money}"+total);
+        $('p[ectype="total"]').text("付款金额："+"{$lang.money}"+total);
+        $('p[ectype="itotal"]').text("所需积分："+itotal);
     });
     $('#close').click(function(){
         $('#info').hide();
@@ -81,71 +87,30 @@ $(function(){
 //]]>
 </script>
 <div id="content">
-    <div id="left">
-        {include file=left.html}
-    </div>
+    <div id="groupgoods">
+        <h1>{$group.group_name|escape}</h1>
+        <div class="g_info">{$group.group_desc}</div>
 
-    <div id="right">
-
-        <h2 class="ware_title">
-            <span class="main">{$group.group_name|escape}</span><br />
-            <span class="time">{$group.state_desc}</span></h2>
-
-        <div class="ware_info">
-            <div class="ware_pic"><a target="_blank" href="{url app=goods&id=$group.goods_id}"><img width="300" height="300" src="{$goods.image_url}" /></a></div>
-            <form method="post" id="join_group_form" action="index.php?app=groupbuy&amp;id={$group.group_id}">
-            <div class="ware_text">
-                <div class="info_particular">
-                    <ul>
-                        <li>
-                            <p class="title">{$lang.start_end_time}: </p>
-                            <p class="con">{$group.start_time|date:Y-m-d} {$lang.to} {$group.end_time|date:Y-m-d}</p>
-                        </li>
-                        <li>
-                            <p class="title">{$lang.min_quantity}: </p>
-                            <p class="con">
-                                <span class="quantity">{$group.min_quantity} <span class="ascertain">
-                                {if $group.min_quantity gt $group.quantity}
-                                ({$lang.short_of}{$group.left_quantity})
-                                {else}
-                                ({$lang.joined}{$group.quantity})
-                                {/if}
-                                </span></span>
-                                <span class="inverse_proportion"></span>
-                            </p>
-                        </li>
-                        <!-- {if $group.max_per_user gt 0} -->
-                        <li>
-                            <p class="title">{$lang.max_per_user}: </p>
-                            <p class="con">
-                            {$group.max_per_user}
-                            </p>
-                        </li>
-                        <!-- {/if} -->
-                        <li>
-                            <p class="title">{$lang.group_desc}: </p>
-                            <p class="con">
-                            <!-- {if $group.group_desc} -->
-                            {$group.group_desc}
-                            <!-- {else} -->
-                            {$lang.no_desc}
-                            <!-- {/if} -->
-                            </p>
-                        </li>
-                    </ul>
+        <div class="g_goods">
+            <div class="g_img"><img src="{$goods.image_url}" width="460" height="280" /></div>
+            <div class="g_des">
+                <span style="color: #999;float: left;margin-top: 12px;margin-right: 20px">团购价</span>
+                <span style="font-size: 34px;font-weight: bold;color: #F76120;float: left;margin-right: 10px">{$goods.group_price|price}</span>
+                <strike style="color: #999;float: left;margin-top: 14px;margin-right: 20px">{$goods.price|price}</strike>
+                <div class="clear"></div>
+                <div class="state">
+                    <div class="min">已售<font color="#F76120">{$group.quantity}</font></div>
+                    <div class="ys">成团件数<font color="#F76120">{$group.min_quantity}</font></div>
                 </div>
-                <div style="height: 20px;line-height: 20px">{$lang.goods_name}: <strong>{$goods.goods_name}</strong></div>
-                <div style="height: 20px;line-height: 20px">{$lang.original_price}:{$lang.money}<strike>{$goods.price}</strike></div>
-                <div style="height: 20px;line-height: 20px">{$lang.integral}: <strike>{$goods.integral}</strike></div>
-                <div style="height: 20px;line-height: 20px;color: red">{$lang.group_price}:{$lang.money} {$goods.group_price}</div>
-                <div style="height: 20px;line-height: 20px;color: red">{$lang.group_integral}: {$goods.group_integral}</div>
-
+                <div class="level">等级<span style="color: #F76120;margin-left: 20px">{$group.grade}</span></div>
+                <div class="time">时间<span style="color: #F76120;margin-left: 20px">{$group.start_time|date:Y-m-d} {$lang.to} {$group.end_time|date:Y-m-d}</span></div>
                 <div class="info_fun">
-                <!-- {if $group.ican.join} -->
-                    <div>
-                        {$lang.buy_num}<input ectype="quantity" type="number" name="quantity" class="text width1" value="1" required><br>
-                        <input style="text-align: left;float: left;margin-top: 10px" id="join" class="big_btn" type="button" value="" />
+                    <!-- {if $group.ican.join} -->
+                    <div class="num">
+                        数量<input style="margin-left: 20px" ectype="quantity" type="number" name="quantity" class="text width1" value="1" required><br>
                     </div>
+                    <input style="text-align: left;float: left;margin-top: 20px;margin-left: 42px" id="join" class="big_btn" type="button" value="" />
+
                     <div id="info" class="ware_cen_info_fun" style="display:none">
                         <div class="ware_center_info_fun">
                             <h1>
@@ -158,6 +123,7 @@ $(function(){
                                 <h2 style="height: 30px;line-height: 30px">{$lang.buyinfo}</h2>
                                 <p style="color: red" ectype="qty"></p>
                                 <p style="color: red" ectype="total"></p>
+                                <p style="color: red" ectype="itotal"></p>
                                 <h2 style="height: 30px;line-height: 30px">{$lang.payinfo}</h2>
                                 <p>{$lang.bank}</p>
                                 <p>{$lang.alipay}</p>
@@ -190,48 +156,21 @@ $(function(){
                     </div>
                     <!-- {/if}  -->
                 </div>
-            </div>
-            </form>
+                <div class="clear"></div>
+                <div class="cn">服务承诺</div>
 
+            </div>
             <div class="clear"></div>
-
         </div>
 
-        <div class="module_special">
-            <h2 class="common_title veins2">
-                <div class="ornament1"></div>
-                <div class="ornament2"></div>
-                <span class="ico1"><span class="ico2">{$lang.group_log}</span></span>
-            </h2>
-            <div class="wrap">
-                <div class="wrap_child">
-                    <ul class="buy_name">
-                        <!-- {foreach from=$join_list item=user} -->
-                        <li>{$user.user_name}</li>
-                        <!-- {foreachelse} -->
-                        <li>{$lang.no_groupbuy_log}</li>
-                        <!-- {/foreach} -->
-                    </ul>
-                </div>
+        <div class="goods_info">
+            <div class="title">商品详情</div>
+            <div class="content">
+                {$group.des}
             </div>
         </div>
 
-        <div class="module_currency">
-            <h2 class="common_title veins1">
-                <div class="ornament1"></div>
-                <div class="ornament2"></div>
-                <span class="ico1"><span class="ico2">{$lang.groupbuy_qa}</span></span>
-            </h2>
-            <div class="wrap">
-                <div class="wrap_child">
-                    {include file=qa.html}
-                    <div class="clear"></div>
-                </div>
-            </div>
-        </div>
-
-
-
+        <div class="clear" style="margin-top: 30px"></div>
     </div>
 
     <div class="clear"></div>

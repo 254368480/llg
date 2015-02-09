@@ -1,0 +1,85 @@
+#groupgoods{
+    width: 100%;
+    float: none;
+    border-top: solid 1px #ccc;
+}
+#groupgoods h1{
+    font-size: 28px;
+    color: #333;
+    padding: 0px;
+    margin-top: 10px;
+}
+#groupgoods .g_info{
+    font-size: 16px;
+    line-height: 24px;
+    color: #666;
+}
+#groupgoods .g_goods{
+    margin-top: 10px;
+}
+.g_goods .g_img{
+    float: left;
+    margin-right: 30px;
+}
+.g_goods .g_des{
+    float: left;
+}
+.state{
+    margin-top: 15px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    height: 30px;
+    border-top: 1px solid #EEE;
+    border-bottom: 1px solid #EEE;
+    text-align: center;
+    color: #999;
+    width: 500px;
+}
+.state .min{
+    width: 162px;
+    margin-right: 0px;
+    float: left;
+    line-height: 28px;
+}
+.state .ys{
+    width: 162px;
+    margin-right: 0px;
+    float: right;
+    line-height: 28px;
+}
+.g_des .time{
+    margin-top: 20px;
+    color: #999;
+}
+.g_des .level{
+    margin-top: 20px;
+    color: #999;
+}
+.g_des .num{
+    margin-top: 20px;
+    color: #999;
+}
+.g_des .cn{
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: solid 1px #ccc;
+    color: #999;
+    background: url(/public/img/1.png) no-repeat 60px 5px;
+}
+.goods_info .title{
+    padding: 0px 6px;
+    color: #333;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 36px;
+    background: none repeat scroll 0% 0% #EEE;
+    border-radius: 0px;
+    border-left: 4px solid #2BB8AA;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.clear{
+    clear: both;
+    width: 0;
+}

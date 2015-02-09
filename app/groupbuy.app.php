@@ -31,6 +31,8 @@ class GroupbuyApp extends StorebaseApp
             $this->show_warning('no_such_groupbuy');
             return false;
         }
+        $user_mod =& m('member');
+        $user = $user_mod->get($this->_visitor['user_id']);
         // 团购信息
         $group = $this->_groupbuy_mod->get(array(
             'conditions' => 'group_id=' . $id . ' AND gb.state<>' . GROUP_PENDING,
@@ -92,6 +94,7 @@ class GroupbuyApp extends StorebaseApp
             $group['spec_price'] = unserialize($group['spec_price']);
             // 可执行操作
             $group['ican'] = $this->_ican($group['group_id'], $group['state'], $group['store_id']);
+            $group['des'] = $goods['description'];
             // 参团记录
             $groupbuy_log_mod =& m('groupbuy_log');
             $join_list = $groupbuy_log_mod->find(array(
@@ -130,6 +133,7 @@ class GroupbuyApp extends StorebaseApp
             $this->assign('store', $store);
             $this->assign('goods', $goods);
             $this->assign('group', $group);
+            $this->assign('user', $user);
             $this->assign('guest_comment_enable', Conf::get('guest_comment'));
             $this->assign('join_list', $join_list);
             $this->display('groupbuy.index.html');
@@ -138,6 +142,10 @@ class GroupbuyApp extends StorebaseApp
         {
                 if (isset($_POST['join']))
                 {
+                    if( ($user['grade'] == '免费会员') && ($group['grade'] == 'VIP会员') ) {
+                        $this->show_warning('您的等级不足以参加此次团购！');
+                        return;
+                    }
                     $quantity = intval($_POST['quantity']);
                     if ($quantity == 0)
                     {
@@ -163,7 +171,6 @@ class GroupbuyApp extends StorebaseApp
                     $order_num = $this->checkVar($_POST['order_num']);
                     $address = $this->checkVar($_POST['address']);
                     $remark = $this->checkVar($_POST['remark']);
-
                     /*扣除用户所需支付积分*/
                     $user_mod =& m('member');
                     $user = $user_mod->get($this->_visitor['user_id']);

@@ -7,7 +7,17 @@
 .spec li input {text-align: center;}
 .spec .th {padding: 3px 0; margin-bottom: 10px; border-top: 2px solid #e3e3e3; border-bottom: 1px solid #e3e3e3; background: #f8f8f8;}
 </style>
+<script type="text/javascript" charset="gbk" src="/public/ueditor/lang/zh-cn/zh-cn.js"></script>
+
+<script type="text/javascript" src="/public/ueditor/ueditor.config.js"></script>
+
+<script type="text/javascript" src="/public/ueditor/ueditor.all.js"></script>
+
 <script type="text/javascript">
+    var editor = UE.getEditor('container');
+</script>
+<script type="text/javascript">
+
 //<!CDATA[
 $(function(){
     $('#start_time input').datepicker({dateFormat: 'yy-mm-dd'});
@@ -216,10 +226,19 @@ function query_spec(goods_id){
                                 <input type="text" name="max_per_user" value="<?php echo $this->_var['group']['max_per_user']; ?>" class="text width2" /><span class="field_notice">每个参团者最多能订购的件数，0为不限制</span></p>
                             </div>
                             <div class="assort">
+                                <p class="txt">最低等级:
+                                    <select name="grade">
+                                        <option <?php if ($this->_var['group']['grade'] == '免费会员'): ?>selected="selected"<?php endif; ?> value="免费会员">免费会员</option>
+                                        <option <?php if ($this->_var['group']['grade'] == 'VIP会员'): ?>selected="selected"<?php endif; ?> value="VIP会员">VIP会员</option>
+                                    </select>
+                                </p>
+                            </div>
+                            <div class="assort">
                                 <p class="txt">商品原价:
                                     <input type="text" name="price" class="text width2" value="<?php echo $this->_var['goods']['price']; ?>">
                                 </p>
                             </div>
+
                             <div class="assort">
                                 <p class="txt">团购价格:
                                     <input type="text" name="group_price" class="text width2" value="<?php echo $this->_var['goods']['group_price']; ?>">
@@ -240,6 +259,9 @@ function query_spec(goods_id){
                                     <input type="file" name="image" value="">
                                 </p>
                             </div>
+
+                            <script id="container" name="content" type="text/plain" style="width:750px;height:500px;"><?php echo $this->_var['goods']['description']; ?></script>
+                            <input type="hidden" name="MAX_FILE_SIZE" value="1000000" />
 
                             <div class="issuance"><input id="submit_group" type="submit" class="btn" value="提交" /></div>
                         </div>
