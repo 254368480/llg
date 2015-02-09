@@ -106,6 +106,7 @@ $(function(){
                 <div class="time">时间<span style="color: #F76120;margin-left: 20px">{$group.start_time|date:Y-m-d} {$lang.to} {$group.end_time|date:Y-m-d}</span></div>
                 <div class="info_fun">
                     <!-- {if $group.ican.join} -->
+                    <form method="post" id="join_group_form" action="index.php?app=groupbuy&amp;id={$group.group_id}">
                     <div class="num">
                         数量<input style="margin-left: 20px" ectype="quantity" type="number" name="quantity" class="text width1" value="1" required><br>
                     </div>
@@ -154,6 +155,7 @@ $(function(){
                             </div>
                         </div>
                     </div>
+                    </form>
                     <!-- {/if}  -->
                 </div>
                 <div class="clear"></div>
